@@ -1,0 +1,6 @@
+[submodule "External/AFNetworking"]
+	path = External/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking
+[submodule "External/STTwitter"]
+	path = External/STTwitter
+	url = git://github.com/nst/STTwitter

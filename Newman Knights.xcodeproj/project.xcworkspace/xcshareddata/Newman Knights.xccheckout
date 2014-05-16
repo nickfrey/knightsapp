@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AD74C27C-2DA2-441D-B107-99D28395A183</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Newman Knights</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>50F6F80F-515B-4533-A2AC-7D5992EDD610</key>
+		<string>git://github.com/nst/STTwitter</string>
+		<key>AAEEC515-9A5E-4569-9263-69C3B91A21DA</key>
+		<string>https://github.com/nickfrey/knightsapp.git</string>
+		<key>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</key>
+		<string>git://github.com/AFNetworking/AFNetworking</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Newman Knights.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>50F6F80F-515B-4533-A2AC-7D5992EDD610</key>
+		<string>../../External/STTwitter</string>
+		<key>AAEEC515-9A5E-4569-9263-69C3B91A21DA</key>
+		<string>../..</string>
+		<key>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</key>
+		<string>../../External/AFNetworking</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nickfrey/knightsapp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AAEEC515-9A5E-4569-9263-69C3B91A21DA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AFNetworking</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AAEEC515-9A5E-4569-9263-69C3B91A21DA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>knightsapp</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>50F6F80F-515B-4533-A2AC-7D5992EDD610</string>
+			<key>IDESourceControlWCCName</key>
+			<string>STTwitter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
