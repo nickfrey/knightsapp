@@ -1,6 +1,9 @@
-#define HANDBOOK_DOCUMENT_ID @"1IOlKmYRWKJp6eILY0JsBrdridWvZWimQJPTUF8u6o8o"
-#define GOOGLE_DRIVE_KEY @""
 #define POWERSCHOOL_URL @"https://ps-archd.gwaea.org/public/home.html"
+#define KNIGHTS_API_URL @"http://knights.nickfrey.me/api/"
+
+#define GOOGLE_DRIVE_KEY @""
+#define TWITTER_CONSUMER_KEY @""
+#define TWITTER_CONSUMER_SECRET @""
 
 #define SCHOOL_TITLE @"Newman Catholic Schools"
 #define SCHOOL_SUBTITLE @"Mason City, Iowa"

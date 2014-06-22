@@ -51,6 +51,16 @@
     [self loadPage];
 }
 
+- (void)success {
+    [super success];
+    _webView.hidden = NO;
+}
+
+- (void)failWithError:(NSError *)error {
+    [super failWithError:error];
+    _webView.hidden = YES;
+}
+
 #pragma mark - Internal
 
 - (void)loadPage {
@@ -76,7 +86,6 @@
 #pragma mark - UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    webView.hidden = YES;
     [self failWithError:error];
 }
 
@@ -86,7 +95,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self success];
-    webView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

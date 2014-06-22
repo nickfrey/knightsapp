@@ -22,8 +22,6 @@
 
 @implementation NCEventStore
 
-static NCEventStore *sharedInstance;
-
 + (instancetype)sharedInstance {
     static NCEventStore *sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -75,20 +73,11 @@ static NCEventStore *sharedInstance;
         NSDictionary *document = [NSDictionary dictionaryWithXMLData:responseObject];
         if(![document isKindOfClass:[NSDictionary class]]) return;
         
-        id items = document[@"channel"][@"item"];
-        NSArray *itemsArray;
-        
-        // As single item is parsed as a dictionary
-        if([items isKindOfClass:[NSDictionary class]])
-            itemsArray = @[items];
-        else if([items isKindOfClass:[NSArray class]])
-            itemsArray = items;
-        
         NSDateFormatter *pubDateFormatter = [[NSDateFormatter alloc] init];
         pubDateFormatter.dateFormat = @"EEE, dd MMMM yyyy HH:mm:ss Z";
         pubDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en"];
         
-        for(NSDictionary *event in itemsArray) {
+        for(NSDictionary *event in [document arrayValueForKeyPath:@"channel.item"]) {
             NSDate *pubDate = [[pubDateFormatter dateFromString:event[@"pubDate"]] mn_beginningOfDay:_calendar];
             if(![_eventfulDates containsObject:pubDate])
                 [_eventfulDates addObject:pubDate];
@@ -120,14 +109,7 @@ static NCEventStore *sharedInstance;
     return [manager GET:@"/g5-bin/client.cgi" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *document = [NSDictionary dictionaryWithXMLData:responseObject];
         NSMutableArray *events = [NSMutableArray array];
-        id elements = document[@"xsd:element"];
-        NSArray *eventItems;
-        
-        // As single item is parsed as a dictionary
-        if([elements isKindOfClass:[NSDictionary class]])
-            eventItems = @[elements];
-        else if([elements isKindOfClass:[NSArray class]])
-            eventItems = elements;
+        NSArray *eventItems = [document arrayValueForKeyPath:@"xsd:element"];
         
         for(NSDictionary *eventItem in eventItems) {
             NSDictionary *eventDetails = eventItem[@"xsd:complexType"][@"xsd:sequence"][@"xsd:element"];
@@ -147,25 +129,25 @@ static NCEventStore *sharedInstance;
                         if([attributeName isEqualToString:@"location"]) {
                             if([dict[@"_name"] isEqualToString:@"name"]) {
                                 NSString *location;
-                                if((location = dict[@"__text"]))
+                                if((location = dict.innerText))
                                     attributes[attributeName] = [location stringByReplacingOccurrencesOfString:@"@ " withString:@""];
                             }
                         } else if([attributeName isEqualToString:@"opponent"]) {
                             if([dict[@"_name"] isEqualToString:@"name"]) {
                                 NSString *opponent;
-                                if((opponent = dict[@"__text"]))
+                                if((opponent = dict.innerText))
                                     attributes[attributeName] = [opponent componentsSeparatedByString:@","];
                             }
                         } else {
                             if([dict[@"_name"] isEqualToString:@"conference"]) {
                                 NSString *conference;
-                                if((conference = dict[@"__text"]))
+                                if((conference = dict.innerText))
                                     attributes[attributeName] = conference;
                             }
                         }
                     }
                 } else {
-                    NSString *attributeValue = detailDictionary[@"__text"];
+                    NSString *attributeValue = detailDictionary.innerText;
                     if(attributeValue)
                         attributes[attributeName] = attributeValue;
                 }
@@ -254,9 +236,7 @@ static NCEventStore *sharedInstance;
 }
 
 - (void)cancelAllQueries {
-    for(AFHTTPRequestOperation *operation in _searchQueue) {
-        [operation cancel];
-    }
+    [_searchQueue makeObjectsPerformSelector:@selector(cancel)];
     [_searchQueue removeAllObjects];
 }
 

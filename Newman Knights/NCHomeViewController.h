@@ -11,4 +11,6 @@
 
 @interface NCHomeViewController : NCRemoteViewController
 
+- (void)reloadData;
+
 @end

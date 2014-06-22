@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *coverVerticalConstraint, *coverHeightConstraint;
 @property (nonatomic, strong) NSArray *bulletins;
 @property (nonatomic, strong) UITableViewCell *sizingCell;
+@property (nonatomic) BOOL hasAlreadyFetchedData;
 
 @end
 
@@ -77,11 +78,13 @@ static NSString * const NCHomeBulletinCellIdentifier = @"NCHomeBulletinCellIdent
     _coverHeightConstraint = [NSLayoutConstraint constraintWithItem:_coverView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0 constant:NCHomeCoverViewHeight];
     [self.view addConstraint:_coverVerticalConstraint];
     [self.view addConstraint:_coverHeightConstraint];
-    
-    [self loadRemoteData];
 }
 
-- (void)loadRemoteData {
+- (void)reloadData {
+    [self loadRemoteDataAndFailSilently:_hasAlreadyFetchedData];
+}
+
+- (void)loadRemoteDataAndFailSilently:(BOOL)failSilently {
     __block NSUInteger operationsToSucceed = 2;
     
     void (^operationSuceeded)(void) = ^{
@@ -93,7 +96,7 @@ static NSString * const NCHomeBulletinCellIdentifier = @"NCHomeBulletinCellIdent
     
     [[NCDataSource sharedDataSource] fetchSocialPosts:^(NSArray *tweets, NSError *error) {
         if(error) {
-            [self failWithError:error];
+            if(!failSilently) [self failWithError:error];
         } else {
             NSMutableArray *coverPosts = [NSMutableArray array];
             for(NCSocialPost *socialPost in tweets) {
@@ -111,7 +114,7 @@ static NSString * const NCHomeBulletinCellIdentifier = @"NCHomeBulletinCellIdent
     
     [[NCDataSource sharedDataSource] fetchBulletin:^(NSArray *events, NSError *error) {
         if(error) {
-            [self failWithError:error];
+            if(!failSilently) [self failWithError:error];
         } else {
             _bulletins = events;
             operationSuceeded();
@@ -121,7 +124,7 @@ static NSString * const NCHomeBulletinCellIdentifier = @"NCHomeBulletinCellIdent
 
 - (void)retry {
     [super retry];
-    [self loadRemoteData];
+    [self loadRemoteDataAndFailSilently:NO];
 }
 
 - (void)success {
@@ -129,6 +132,7 @@ static NSString * const NCHomeBulletinCellIdentifier = @"NCHomeBulletinCellIdent
     [_tableView reloadData];
     [_tableView setHidden:NO];
     [_coverView setHidden:NO];
+    _hasAlreadyFetchedData = YES;
 }
 
 #pragma mark - UITableViewDataSource

@@ -28,7 +28,7 @@
 }
 
 - (void)loadPage {
-    NSString *url = [NSString stringWithFormat:@"https://www.googleapis.com/drive/v2/files/%@?key=%@&fields=exportLinks", GOOGLE_DRIVE_KEY, _initialDocumentID];
+    NSString *url = [NSString stringWithFormat:@"https://www.googleapis.com/drive/v2/files/%@?key=%@&fields=exportLinks", _initialDocumentID, GOOGLE_DRIVE_KEY];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

@@ -22,5 +22,6 @@ typedef NS_ENUM(NSUInteger, NCContactDirectory) {
 - (void)fetchSchedules:(void (^)(NSArray *schedules, NSError *error))completionHandler;
 - (void)fetchSocialPosts:(void (^)(NSArray *posts, NSError *error))completionHandler;
 - (void)fetchContactDirectory:(NCContactDirectory)directory completion:(void (^)(NSArray *contacts, NSError *error))completionHandler;
+- (void)fetchAdditionalLinks:(void (^)(NSArray *links, NSDictionary *handbook))completionHandler;
 
 @end

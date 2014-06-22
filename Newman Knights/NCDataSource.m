@@ -7,6 +7,7 @@
 //
 
 #import "NCDataSource.h"
+#import "NCAppConfig.h"
 #import "XMLDictionary.h"
 #import "AFNetworking.h"
 #import "STTwitter.h"
@@ -15,18 +16,11 @@
 
 @interface NCDataSource ()
 
-@property (nonatomic, strong) AFHTTPRequestOperationManager *operationManager;
 @property (nonatomic, strong) STTwitterAPI *twitterAPI;
-@property (nonatomic, strong) NSString *twitterAccessToken;
 
 @end
 
 @implementation NCDataSource
-
-static NCDataSource *_dataSource = nil;
-static NSString *const twitterConsumerKey = @"m12hFA0g3CO8EHi4HYl2zA";
-static NSString *const twitterConsumerSecret = @"m3N2CMjnV0l6jkcYNmxCI6eB7SpHm6z0hh1I15ClY";
-static NSString *const apiURL = @"http://nickfrey.me/knights/";
 
 + (instancetype)sharedDataSource {
     static NCDataSource *sharedDataSource = nil;
@@ -40,7 +34,7 @@ static NSString *const apiURL = @"http://nickfrey.me/knights/";
 - (id)init {
     self = [super init];
     if(self) {
-        _twitterAPI = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:twitterConsumerKey consumerSecret:twitterConsumerSecret];
+        _twitterAPI = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:TWITTER_CONSUMER_KEY consumerSecret:TWITTER_CONSUMER_SECRET];
     }
     return self;
 }
@@ -48,14 +42,13 @@ static NSString *const apiURL = @"http://nickfrey.me/knights/";
 #pragma mark - Social
 
 - (void)authenticateTwitterRequest:(void (^)(NSError *error))completion {
-    if(_twitterAccessToken) {
+    if(_twitterAPI.oauthAccessToken) {
         // Already authenticated
         completion(nil);
         return;
     }
     
     [_twitterAPI verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
-        _twitterAccessToken = bearerToken;
         completion(nil);
     } errorBlock:^(NSError *error) {
         completion(error);
@@ -124,7 +117,10 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
     
     NSDictionary *parameters = @{@"option": @"com_content", @"view": @"featured", @"format": @"feed", @"type": @"rss"};
     
-    [manager GET:@"/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"/"
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
         NSDictionary *rssFeed = [NSDictionary dictionaryWithXMLData:responseObject];
         NSString *bulletinText = [rssFeed valueForKeyPath:@"channel.item.description"];
         NSMutableArray *weeklyBulletin = [NSMutableArray array];
@@ -181,6 +177,7 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
         }
         
         completion(weeklyBulletin, nil);
+             
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(nil, error);
     }];
@@ -188,13 +185,18 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
 
 - (void)fetchSchedules:(void (^)(NSArray *, NSError *))completion {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:apiURL parameters:@{@"action": @"schedules"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager GET:KNIGHTS_API_URL
+      parameters:@{@"action": @"schedules"}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
         if([responseObject isKindOfClass:[NSDictionary class]])
             if([responseObject[@"schedules"] isKindOfClass:[NSArray class]])
                 return completion(responseObject[@"schedules"], nil);
 
         NSError *error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorBadServerResponse userInfo:@{NSLocalizedDescriptionKey: @"This document could not be located."}];
         completion(nil, error);
+             
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(nil, error);
     }];
@@ -216,14 +218,35 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
     }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:apiURL parameters:@{@"action": @"contacts", @"directory": directoryName} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager GET:KNIGHTS_API_URL
+      parameters:@{@"action": @"contacts", @"directory": directoryName}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
         if([responseObject isKindOfClass:[NSArray class]])
             return completion(responseObject, nil);
         
         NSError *error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorBadServerResponse userInfo:@{NSLocalizedDescriptionKey: @"An unknown server error occurred."}];
         completion(nil, error);
+             
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(nil, error);
+    }];
+}
+
+- (void)fetchAdditionalLinks:(void (^)(NSArray *, NSDictionary *))completionHandler {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager GET:KNIGHTS_API_URL
+      parameters:@{@"action": @"info"}
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
+        if([responseObject isKindOfClass:[NSDictionary class]])
+            if([responseObject[@"links"] isKindOfClass:[NSArray class]])
+                completionHandler(responseObject[@"links"], responseObject[@"handbook"]);
+             
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completionHandler(nil, nil);
     }];
 }
 
