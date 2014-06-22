@@ -86,7 +86,7 @@
             viewController.tabBarItem.image = [UIImage imageNamed:@"tabHandbook"];
             
             UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-            [viewControllers insertObject:navController atIndex:viewControllers.count-2];
+            [viewControllers insertObject:navController atIndex:viewControllers.count-1];
         }
         
         if(links) {
