@@ -10,37 +10,37 @@
 	<string>Newman Knights</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>50F6F80F-515B-4533-A2AC-7D5992EDD610</key>
+		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>
 		<string>git://github.com/nst/STTwitter</string>
-		<key>AAEEC515-9A5E-4569-9263-69C3B91A21DA</key>
+		<key>9E0EC8A674F927A26896C51171604D0B3F58FCF2</key>
 		<string>https://github.com/nickfrey/knightsapp.git</string>
-		<key>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</key>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
 		<string>git://github.com/AFNetworking/AFNetworking</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Newman Knights.xcodeproj/project.xcworkspace</string>
+	<string>Newman Knights.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>50F6F80F-515B-4533-A2AC-7D5992EDD610</key>
-		<string>../../External/STTwitter</string>
-		<key>AAEEC515-9A5E-4569-9263-69C3B91A21DA</key>
+		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>
+		<string>../..External/STTwitter</string>
+		<key>9E0EC8A674F927A26896C51171604D0B3F58FCF2</key>
 		<string>../..</string>
-		<key>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</key>
-		<string>../../External/AFNetworking</string>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
+		<string>../..External/AFNetworking</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/nickfrey/knightsapp.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AAEEC515-9A5E-4569-9263-69C3B91A21DA</string>
+	<string>9E0EC8A674F927A26896C51171604D0B3F58FCF2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C9457E82-8C1E-4E80-9DDB-7E1AF84F3E2B</string>
+			<string>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AFNetworking</string>
 		</dict>
@@ -48,7 +48,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AAEEC515-9A5E-4569-9263-69C3B91A21DA</string>
+			<string>9E0EC8A674F927A26896C51171604D0B3F58FCF2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>knightsapp</string>
 		</dict>
@@ -56,7 +56,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>50F6F80F-515B-4533-A2AC-7D5992EDD610</string>
+			<string>18587E881E3ABFA494C4A3627AA8693F7A3692F3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>STTwitter</string>
 		</dict>

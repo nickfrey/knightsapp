@@ -78,6 +78,7 @@
 		B28A462218D3B03B0055426F /* NCErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A462118D3B03B0055426F /* NCErrorView.m */; };
 		B28A463D18DBE46D0055426F /* NCSocialPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A463C18DBE46D0055426F /* NCSocialPost.m */; };
 		B28A464718DD5E970055426F /* NCCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A464618DD5E970055426F /* NCCoverView.m */; };
+		B28A97871A1C07ED00F560C7 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28A97861A1C07ED00F560C7 /* Launch Screen.xib */; };
 		B2DA06B4191066BF00867F18 /* NCContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06B3191066BF00867F18 /* NCContactViewController.m */; };
 		B2DA06B61910936B00867F18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DA06B51910936B00867F18 /* MapKit.framework */; };
 		B2DA06B91911D6D500867F18 /* NCCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06B81911D6D500867F18 /* NCCalendarEvent.m */; };
@@ -237,6 +238,7 @@
 		B28A463C18DBE46D0055426F /* NCSocialPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSocialPost.m; sourceTree = "<group>"; };
 		B28A464518DD5E970055426F /* NCCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCoverView.h; sourceTree = "<group>"; };
 		B28A464618DD5E970055426F /* NCCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCoverView.m; sourceTree = "<group>"; };
+		B28A97861A1C07ED00F560C7 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
 		B2DA06B2191066BE00867F18 /* NCContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCContactViewController.h; sourceTree = "<group>"; };
 		B2DA06B3191066BF00867F18 /* NCContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCContactViewController.m; sourceTree = "<group>"; };
 		B2DA06B51910936B00867F18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -606,6 +608,7 @@
 				B23E429B19170D9B00B29D61 /* Schedules */,
 				B2226752192188EC00F511CA /* Contact */,
 				B2FD4E7D180752FB00EB1C51 /* Images.xcassets */,
+				B28A97861A1C07ED00F560C7 /* Launch Screen.xib */,
 				B2FD4E66180752FA00EB1C51 /* Supporting Files */,
 			);
 			path = "Newman Knights";
@@ -682,6 +685,7 @@
 			files = (
 				B2FD4E7E180752FB00EB1C51 /* Images.xcassets in Resources */,
 				B2FD4E6A180752FA00EB1C51 /* InfoPlist.strings in Resources */,
+				B28A97871A1C07ED00F560C7 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,14 +862,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newman Knights/Newman Knights-Prefix.pch";
 				INFOPLIST_FILE = "Newman Knights/Newman Knights-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F9F60256-5154-43B7-B8B3-55E782A87013";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -875,14 +879,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newman Knights/Newman Knights-Prefix.pch";
 				INFOPLIST_FILE = "Newman Knights/Newman Knights-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F9F60256-5154-43B7-B8B3-55E782A87013";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

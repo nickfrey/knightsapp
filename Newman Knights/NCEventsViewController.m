@@ -219,7 +219,7 @@
             _resultsTableView.hidden = YES;
         }
     } else {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(-8, 0, self.view.bounds.size.width, 44)];
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 8, 44)];
         _searchBar.showsCancelButton = YES;
         _searchBar.backgroundImage = [UIImage new];
         _searchBar.delegate = self;
