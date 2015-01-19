@@ -122,17 +122,17 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
         NSDictionary *rssFeed = [NSDictionary dictionaryWithXMLData:responseObject];
-        NSString *bulletinText = [rssFeed valueForKeyPath:@"channel.item.description"];
+        NSMutableString *bulletinText = [[rssFeed valueForKeyPath:@"channel.item.description"] mutableCopy];
         NSMutableArray *weeklyBulletin = [NSMutableArray array];
         
         // Strip HTML
-        bulletinText = [bulletinText stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
-        bulletinText = [bulletinText stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
+        [bulletinText replaceOccurrencesOfString:@"<br>" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
+        [bulletinText replaceOccurrencesOfString:@"<br />" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
+        [bulletinText replaceOccurrencesOfString:@"&nbsp;" withString:@" " options:0 range:NSMakeRange(0, bulletinText.length)];
         
         NSRange r;
         while ((r = [bulletinText rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-            bulletinText = [bulletinText stringByReplacingCharactersInRange:r withString:@""];
-        bulletinText = [bulletinText stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
+            [bulletinText replaceCharactersInRange:r withString:@""];
         
         // Detect dates
         NSString *pattern = @"(?:(Sun(?:day)?|Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|Fri(?:day)?|Sat(?:urday)?))?.*?((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)).*?(:)";
