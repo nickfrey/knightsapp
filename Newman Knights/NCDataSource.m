@@ -126,6 +126,9 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
         NSMutableArray *weeklyBulletin = [NSMutableArray array];
         
         // Strip HTML
+        bulletinText = [bulletinText stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
+        bulletinText = [bulletinText stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, bulletinText.length)];
+        
         NSRange r;
         while ((r = [bulletinText rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
             bulletinText = [bulletinText stringByReplacingCharactersInRange:r withString:@""];
