@@ -173,7 +173,8 @@ NSArray *twitterAccounts = @[@"NewmanKnights", @"NewmanMusicDept", @"Newman_AD",
                 }
             }
             
-            if([dateMatch.date compare:[[NSDate date] mn_beginningOfDay:[NSCalendar currentCalendar]]] != NSOrderedAscending) {
+            NSDate *beginningOfDay = [[NSDate date] mn_beginningOfDay:[NSCalendar currentCalendar]];
+            if(dateMatch.date && beginningOfDay && [dateMatch.date compare:beginningOfDay] != NSOrderedAscending) {
                 [weeklyBulletin addObject:@{@"date": dateMatch.date, @"events":eventsList}];
             }
             matchIndex++;
