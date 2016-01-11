@@ -1,6 +1,12 @@
-[submodule "External/AFNetworking"]
-	path = External/AFNetworking
-	url = git://github.com/AFNetworking/AFNetworking
-[submodule "External/STTwitter"]
-	path = External/STTwitter
-	url = git://github.com/nst/STTwitter
+[submodule "External/MNCalendarView"]
+	path = External/MNCalendarView
+	url = https://github.com/min/MNCalendarView
+[submodule "External/Swifter"]
+	path = External/Swifter
+	url = https://github.com/mattdonnelly/Swifter
+[submodule "External/MHPrettyDate"]
+	path = External/MHPrettyDate
+	url = https://github.com/bobjustbob/MHPrettyDate
+[submodule "External/SWXMLHash"]
+	path = External/SWXMLHash
+	url = https://github.com/drmohundro/SWXMLHash

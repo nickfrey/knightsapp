@@ -7,634 +7,289 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B222674E192100A100F511CA /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = B222674D192100A100F511CA /* NSString+HTML.m */; };
-		B22267511921835800F511CA /* NCDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267501921835800F511CA /* NCDirectoryViewController.m */; };
-		B22267571921A5A300F511CA /* NCCoverViewPreviewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267561921A5A300F511CA /* NCCoverViewPreviewItem.m */; };
-		B22267591921BBD400F511CA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22267581921BBD400F511CA /* MessageUI.framework */; };
-		B222675B1921BBE300F511CA /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B222675A1921BBE300F511CA /* QuickLook.framework */; };
-		B22267741926B6AD00F511CA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22267731926B6AD00F511CA /* MobileCoreServices.framework */; };
-		B22267781926B6B400F511CA /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22267771926B6B400F511CA /* Twitter.framework */; };
-		B222677A1926B6B800F511CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22267791926B6B800F511CA /* QuartzCore.framework */; };
-		B222677C1926B6C400F511CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B222677B1926B6C400F511CA /* SystemConfiguration.framework */; };
-		B222677E1926B6D800F511CA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B222677D1926B6D800F511CA /* Accounts.framework */; };
-		B222679F1926BEC100F511CA /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267831926BEC100F511CA /* NSDateFormatter+STTwitter.m */; };
-		B22267A01926BEC100F511CA /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267851926BEC100F511CA /* NSError+STTwitter.m */; };
-		B22267A11926BEC100F511CA /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267871926BEC100F511CA /* NSString+STTwitter.m */; };
-		B22267A21926BEC100F511CA /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267891926BEC100F511CA /* STHTTPRequest+STTwitter.m */; };
-		B22267A31926BEC100F511CA /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B222678C1926BEC100F511CA /* STTwitterAPI.m */; };
-		B22267A41926BEC100F511CA /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = B222678E1926BEC100F511CA /* STTwitterAppOnly.m */; };
-		B22267A51926BEC100F511CA /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267901926BEC100F511CA /* STTwitterHTML.m */; };
-		B22267A61926BEC100F511CA /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267921926BEC100F511CA /* STTwitterOAuth.m */; };
-		B22267A71926BEC100F511CA /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267941926BEC100F511CA /* STTwitterOS.m */; };
-		B22267A81926BEC100F511CA /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267961926BEC100F511CA /* STTwitterOSRequest.m */; };
-		B22267A91926BEC100F511CA /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B222679A1926BEC100F511CA /* BAVPlistNode.m */; };
-		B22267AA1926BEC100F511CA /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = B222679C1926BEC100F511CA /* JSONSyntaxHighlight.m */; };
-		B22267AB1926BEC100F511CA /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B222679E1926BEC100F511CA /* STHTTPRequest.m */; };
-		B22267D21926C03900F511CA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267AE1926C03900F511CA /* AFHTTPRequestOperation.m */; };
-		B22267D31926C03900F511CA /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267B01926C03900F511CA /* AFHTTPRequestOperationManager.m */; };
-		B22267D41926C03900F511CA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267B21926C03900F511CA /* AFHTTPSessionManager.m */; };
-		B22267D51926C03900F511CA /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267B51926C03900F511CA /* AFNetworkReachabilityManager.m */; };
-		B22267D61926C03900F511CA /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267B71926C03900F511CA /* AFSecurityPolicy.m */; };
-		B22267D71926C03900F511CA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267B91926C03900F511CA /* AFURLConnectionOperation.m */; };
-		B22267D81926C03900F511CA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267BB1926C03900F511CA /* AFURLRequestSerialization.m */; };
-		B22267D91926C03900F511CA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267BD1926C03900F511CA /* AFURLResponseSerialization.m */; };
-		B22267DA1926C03900F511CA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267BF1926C03900F511CA /* AFURLSessionManager.m */; };
-		B22267DB1926C03900F511CA /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267C21926C03900F511CA /* AFNetworkActivityIndicatorManager.m */; };
-		B22267DC1926C03900F511CA /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267C41926C03900F511CA /* UIActivityIndicatorView+AFNetworking.m */; };
-		B22267DD1926C03900F511CA /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267C61926C03900F511CA /* UIAlertView+AFNetworking.m */; };
-		B22267DE1926C03900F511CA /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267C81926C03900F511CA /* UIButton+AFNetworking.m */; };
-		B22267DF1926C03900F511CA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267CA1926C03900F511CA /* UIImageView+AFNetworking.m */; };
-		B22267E01926C03900F511CA /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267CD1926C03900F511CA /* UIProgressView+AFNetworking.m */; };
-		B22267E11926C03900F511CA /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267CF1926C03900F511CA /* UIRefreshControl+AFNetworking.m */; };
-		B22267E21926C03900F511CA /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B22267D11926C03900F511CA /* UIWebView+AFNetworking.m */; };
-		B23E42831915C90200B29D61 /* MNCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42731915C90200B29D61 /* MNCalendarHeaderView.m */; };
-		B23E42841915C90200B29D61 /* MNCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42761915C90200B29D61 /* MNCalendarView.m */; };
-		B23E42851915C90200B29D61 /* MNCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42781915C90200B29D61 /* MNCalendarViewCell.m */; };
-		B23E42861915C90200B29D61 /* MNCalendarViewDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E427A1915C90200B29D61 /* MNCalendarViewDayCell.m */; };
-		B23E42871915C90200B29D61 /* MNCalendarViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E427C1915C90200B29D61 /* MNCalendarViewLayout.m */; };
-		B23E42881915C90200B29D61 /* MNCalendarViewWeekdayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E427E1915C90200B29D61 /* MNCalendarViewWeekdayCell.m */; };
-		B23E42891915C90200B29D61 /* MNFastDateEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42801915C90200B29D61 /* MNFastDateEnumeration.m */; };
-		B23E428A1915C90200B29D61 /* NSDate+MNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42821915C90200B29D61 /* NSDate+MNAdditions.m */; };
-		B23E428D1915CDC400B29D61 /* NCCalendarViewDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E428C1915CDC400B29D61 /* NCCalendarViewDayCell.m */; };
-		B23E4297191706BF00B29D61 /* UITabBarController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E4296191706BF00B29D61 /* UITabBarController+Rotations.m */; };
-		B23E429A19170D9600B29D61 /* NCScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E429919170D9600B29D61 /* NCScheduleCell.m */; };
-		B23E429E19172FE600B29D61 /* NCEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E429D19172FE600B29D61 /* NCEventStore.m */; };
-		B23E42A11919CFEC00B29D61 /* NCDailyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42A01919CFEC00B29D61 /* NCDailyEventsViewController.m */; };
-		B23E42A41919D82500B29D61 /* NCEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42A31919D82500B29D61 /* NCEventDetailsViewController.m */; };
-		B23E42A7191AB7C900B29D61 /* NCEventDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42A6191AB7C900B29D61 /* NCEventDetailsCell.m */; };
-		B23E42AA191ABA1100B29D61 /* NCEventOpponentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42A9191ABA1100B29D61 /* NCEventOpponentsCell.m */; };
-		B23E42AD191ABC8D00B29D61 /* NCEfficientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42AC191ABC8D00B29D61 /* NCEfficientTableViewCell.m */; };
-		B23E42B0191B281700B29D61 /* NCDailyEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42AF191B281700B29D61 /* NCDailyEventCell.m */; };
-		B23E42B4191ED5E900B29D61 /* NCSocialPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42B3191ED5E900B29D61 /* NCSocialPostCell.m */; };
-		B23E42B7191F2EFC00B29D61 /* MHPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42B6191F2EFC00B29D61 /* MHPrettyDate.m */; };
-		B23E42BE191FBA5C00B29D61 /* NCHomeBulletinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E42BD191FBA5C00B29D61 /* NCHomeBulletinCell.m */; };
-		B28A45F518D096880055426F /* NCEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A45F418D096880055426F /* NCEventsViewController.m */; };
-		B28A460818D2BC250055426F /* NCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A460718D2BC250055426F /* NCWebViewController.m */; };
-		B28A461218D2D2160055426F /* NCDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A461118D2D2160055426F /* NCDocumentViewController.m */; };
-		B28A461518D2D2E90055426F /* NCSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A461418D2D2E90055426F /* NCSocialViewController.m */; };
-		B28A461818D2D5250055426F /* NCSchedulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A461718D2D5250055426F /* NCSchedulesViewController.m */; };
-		B28A461C18D3881B0055426F /* NCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A461B18D3881B0055426F /* NCLoadingView.m */; };
-		B28A461F18D3A5380055426F /* NCRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A461E18D3A5380055426F /* NCRemoteViewController.m */; };
-		B28A462218D3B03B0055426F /* NCErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A462118D3B03B0055426F /* NCErrorView.m */; };
-		B28A463D18DBE46D0055426F /* NCSocialPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A463C18DBE46D0055426F /* NCSocialPost.m */; };
-		B28A464718DD5E970055426F /* NCCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28A464618DD5E970055426F /* NCCoverView.m */; };
-		B28A97871A1C07ED00F560C7 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28A97861A1C07ED00F560C7 /* Launch Screen.xib */; };
-		B2DA06B4191066BF00867F18 /* NCContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06B3191066BF00867F18 /* NCContactViewController.m */; };
-		B2DA06B61910936B00867F18 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DA06B51910936B00867F18 /* MapKit.framework */; };
-		B2DA06B91911D6D500867F18 /* NCCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06B81911D6D500867F18 /* NCCalendarEvent.m */; };
-		B2FD4E60180752FA00EB1C51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FD4E5F180752FA00EB1C51 /* Foundation.framework */; };
-		B2FD4E62180752FA00EB1C51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FD4E61180752FA00EB1C51 /* CoreGraphics.framework */; };
-		B2FD4E64180752FA00EB1C51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FD4E63180752FA00EB1C51 /* UIKit.framework */; };
-		B2FD4E6A180752FA00EB1C51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2FD4E68180752FA00EB1C51 /* InfoPlist.strings */; };
-		B2FD4E6C180752FA00EB1C51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4E6B180752FA00EB1C51 /* main.m */; };
-		B2FD4E70180752FA00EB1C51 /* NCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4E6F180752FA00EB1C51 /* NCAppDelegate.m */; };
-		B2FD4E79180752FA00EB1C51 /* NCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4E78180752FA00EB1C51 /* NCHomeViewController.m */; };
-		B2FD4E7E180752FB00EB1C51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2FD4E7D180752FB00EB1C51 /* Images.xcassets */; };
-		B2FD4E9C1809171C00EB1C51 /* NCGradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4E9B1809171C00EB1C51 /* NCGradesViewController.m */; };
-		B2FD4E9F18099FE800EB1C51 /* NCDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4E9E18099FE800EB1C51 /* NCDataSource.m */; };
-		B2FD4EAC1809E15600EB1C51 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4EAB1809E15600EB1C51 /* XMLDictionary.m */; };
+		B21AA1491C35E2700041DCD5 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21AA1481C35E2700041DCD5 /* AppConfiguration.swift */; };
+		B21AA14B1C38CFDE0041DCD5 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21AA14A1C38CFDE0041DCD5 /* DirectoryViewController.swift */; };
+		B292F2771C2763C200DF0FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2761C2763C200DF0FC0 /* AppDelegate.swift */; };
+		B292F27E1C2763C200DF0FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B292F27D1C2763C200DF0FC0 /* Assets.xcassets */; };
+		B292F2811C2763C200DF0FC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B292F27F1C2763C200DF0FC0 /* LaunchScreen.storyboard */; };
+		B292F2891C27658800DF0FC0 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2881C27658800DF0FC0 /* DataSource.swift */; };
+		B292F28D1C27686A00DF0FC0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F28C1C27686A00DF0FC0 /* NewsViewController.swift */; };
+		B292F28F1C27688F00DF0FC0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F28E1C27688F00DF0FC0 /* CalendarViewController.swift */; };
+		B292F2911C2768AF00DF0FC0 /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2901C2768AF00DF0FC0 /* GradesViewController.swift */; };
+		B292F2931C2768C000DF0FC0 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2921C2768C000DF0FC0 /* SocialViewController.swift */; };
+		B292F2951C2768E100DF0FC0 /* SchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2941C2768E100DF0FC0 /* SchedulesViewController.swift */; };
+		B292F2971C2768EB00DF0FC0 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2961C2768EB00DF0FC0 /* ContactViewController.swift */; };
+		B292F2991C276EB400DF0FC0 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2981C276EB400DF0FC0 /* Models.swift */; };
+		B292F29B1C27783A00DF0FC0 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F29A1C27783A00DF0FC0 /* DocumentViewController.swift */; };
+		B292F29D1C27787700DF0FC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F29C1C27787700DF0FC0 /* WebViewController.swift */; };
+		B292F29F1C2792EB00DF0FC0 /* FetchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F29E1C2792EB00DF0FC0 /* FetchedViewController.swift */; };
+		B292F2A11C2872B200DF0FC0 /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F2A01C2872B200DF0FC0 /* EventCalendar.swift */; };
+		B292F3051C2A198600DF0FC0 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = B292F3041C2A198600DF0FC0 /* UIAppearance+Swift.m */; };
+		B292F3081C2C84BA00DF0FC0 /* CalendarSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F3071C2C84BA00DF0FC0 /* CalendarSearchViewController.swift */; };
+		B292F30A1C2C870D00DF0FC0 /* CalendarDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F3091C2C870D00DF0FC0 /* CalendarDayViewController.swift */; };
+		B292F30C1C2C87CB00DF0FC0 /* CalendarEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292F30B1C2C87CB00DF0FC0 /* CalendarEventViewController.swift */; };
+		B29E47E31C430AEF00736315 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E47E21C430AEF00736315 /* RemoteImageView.swift */; };
+		B29E47E71C43971300736315 /* MHPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47E61C43971300736315 /* MHPrettyDate.m */; };
+		B29E47FA1C43971E00736315 /* MNCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47EA1C43971E00736315 /* MNCalendarHeaderView.m */; };
+		B29E47FB1C43971E00736315 /* MNCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47ED1C43971E00736315 /* MNCalendarView.m */; };
+		B29E47FC1C43971E00736315 /* MNCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47EF1C43971E00736315 /* MNCalendarViewCell.m */; };
+		B29E47FD1C43971E00736315 /* MNCalendarViewDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F11C43971E00736315 /* MNCalendarViewDayCell.m */; };
+		B29E47FE1C43971E00736315 /* MNCalendarViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F31C43971E00736315 /* MNCalendarViewLayout.m */; };
+		B29E47FF1C43971E00736315 /* MNCalendarViewWeekdayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */; };
+		B29E48001C43971E00736315 /* MNFastDateEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */; };
+		B29E48011C43971E00736315 /* NSDate+MNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */; };
+		B29E48221C43973400736315 /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48031C43973300736315 /* Dictionary+Swifter.swift */; };
+		B29E48241C43973400736315 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48051C43973300736315 /* JSON.swift */; };
+		B29E48261C43973400736315 /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48071C43973300736315 /* NSURL+Swifter.swift */; };
+		B29E48271C43973400736315 /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48081C43973300736315 /* String+Swifter.swift */; };
+		B29E48281C43973400736315 /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480B1C43973300736315 /* Swifter.swift */; };
+		B29E48291C43973400736315 /* SwifterAccountsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480C1C43973300736315 /* SwifterAccountsClient.swift */; };
+		B29E482A1C43973400736315 /* SwifterAppOnlyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */; };
+		B29E482B1C43973400736315 /* SwifterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480E1C43973300736315 /* SwifterAuth.swift */; };
+		B29E482C1C43973400736315 /* SwifterClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480F1C43973300736315 /* SwifterClientProtocol.swift */; };
+		B29E482D1C43973400736315 /* SwifterCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48101C43973300736315 /* SwifterCredential.swift */; };
+		B29E48311C43973400736315 /* SwifterHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48141C43973300736315 /* SwifterHTTPRequest.swift */; };
+		B29E48341C43973400736315 /* SwifterOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48171C43973400736315 /* SwifterOAuthClient.swift */; };
+		B29E483B1C43973400736315 /* SwifterTimelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E481E1C43973400736315 /* SwifterTimelines.swift */; };
+		B29E48411C43977600736315 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48401C43977600736315 /* SWXMLHash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B222674C192100A100F511CA /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
-		B222674D192100A100F511CA /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
-		B222674F1921835800F511CA /* NCDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDirectoryViewController.h; sourceTree = "<group>"; };
-		B22267501921835800F511CA /* NCDirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDirectoryViewController.m; sourceTree = "<group>"; };
-		B22267551921A5A300F511CA /* NCCoverViewPreviewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCoverViewPreviewItem.h; sourceTree = "<group>"; };
-		B22267561921A5A300F511CA /* NCCoverViewPreviewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCoverViewPreviewItem.m; sourceTree = "<group>"; };
-		B22267581921BBD400F511CA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B222675A1921BBE300F511CA /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
-		B22267731926B6AD00F511CA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B22267751926B6B100F511CA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		B22267771926B6B400F511CA /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		B22267791926B6B800F511CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		B222677B1926B6C400F511CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B222677D1926B6D800F511CA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		B22267821926BEC100F511CA /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+STTwitter.h"; sourceTree = "<group>"; };
-		B22267831926BEC100F511CA /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+STTwitter.m"; sourceTree = "<group>"; };
-		B22267841926BEC100F511CA /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+STTwitter.h"; sourceTree = "<group>"; };
-		B22267851926BEC100F511CA /* NSError+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+STTwitter.m"; sourceTree = "<group>"; };
-		B22267861926BEC100F511CA /* NSString+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STTwitter.h"; sourceTree = "<group>"; };
-		B22267871926BEC100F511CA /* NSString+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STTwitter.m"; sourceTree = "<group>"; };
-		B22267881926BEC100F511CA /* STHTTPRequest+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STHTTPRequest+STTwitter.h"; sourceTree = "<group>"; };
-		B22267891926BEC100F511CA /* STHTTPRequest+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STHTTPRequest+STTwitter.m"; sourceTree = "<group>"; };
-		B222678A1926BEC100F511CA /* STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitter.h; sourceTree = "<group>"; };
-		B222678B1926BEC100F511CA /* STTwitterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAPI.h; sourceTree = "<group>"; };
-		B222678C1926BEC100F511CA /* STTwitterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAPI.m; sourceTree = "<group>"; };
-		B222678D1926BEC100F511CA /* STTwitterAppOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAppOnly.h; sourceTree = "<group>"; };
-		B222678E1926BEC100F511CA /* STTwitterAppOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAppOnly.m; sourceTree = "<group>"; };
-		B222678F1926BEC100F511CA /* STTwitterHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterHTML.h; sourceTree = "<group>"; };
-		B22267901926BEC100F511CA /* STTwitterHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterHTML.m; sourceTree = "<group>"; };
-		B22267911926BEC100F511CA /* STTwitterOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOAuth.h; sourceTree = "<group>"; };
-		B22267921926BEC100F511CA /* STTwitterOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOAuth.m; sourceTree = "<group>"; };
-		B22267931926BEC100F511CA /* STTwitterOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOS.h; sourceTree = "<group>"; };
-		B22267941926BEC100F511CA /* STTwitterOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOS.m; sourceTree = "<group>"; };
-		B22267951926BEC100F511CA /* STTwitterOSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOSRequest.h; sourceTree = "<group>"; };
-		B22267961926BEC100F511CA /* STTwitterOSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOSRequest.m; sourceTree = "<group>"; };
-		B22267971926BEC100F511CA /* STTwitterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterProtocol.h; sourceTree = "<group>"; };
-		B22267991926BEC100F511CA /* BAVPlistNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAVPlistNode.h; sourceTree = "<group>"; };
-		B222679A1926BEC100F511CA /* BAVPlistNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAVPlistNode.m; sourceTree = "<group>"; };
-		B222679B1926BEC100F511CA /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSyntaxHighlight.h; sourceTree = "<group>"; };
-		B222679C1926BEC100F511CA /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
-		B222679D1926BEC100F511CA /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
-		B222679E1926BEC100F511CA /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
-		B22267AD1926C03900F511CA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		B22267AE1926C03900F511CA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		B22267AF1926C03900F511CA /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
-		B22267B01926C03900F511CA /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
-		B22267B11926C03900F511CA /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		B22267B21926C03900F511CA /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		B22267B31926C03900F511CA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		B22267B41926C03900F511CA /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		B22267B51926C03900F511CA /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		B22267B61926C03900F511CA /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
-		B22267B71926C03900F511CA /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
-		B22267B81926C03900F511CA /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		B22267B91926C03900F511CA /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		B22267BA1926C03900F511CA /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
-		B22267BB1926C03900F511CA /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		B22267BC1926C03900F511CA /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		B22267BD1926C03900F511CA /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		B22267BE1926C03900F511CA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		B22267BF1926C03900F511CA /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		B22267C11926C03900F511CA /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		B22267C21926C03900F511CA /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		B22267C31926C03900F511CA /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267C41926C03900F511CA /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267C51926C03900F511CA /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267C61926C03900F511CA /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267C71926C03900F511CA /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267C81926C03900F511CA /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267C91926C03900F511CA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267CA1926C03900F511CA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267CB1926C03900F511CA /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267CC1926C03900F511CA /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267CD1926C03900F511CA /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267CE1926C03900F511CA /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267CF1926C03900F511CA /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267D01926C03900F511CA /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
-		B22267D11926C03900F511CA /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		B22267E31926CF3C00F511CA /* NCAppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCAppConfig.h; sourceTree = SOURCE_ROOT; };
-		B23E42721915C90200B29D61 /* MNCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarHeaderView.h; sourceTree = "<group>"; };
-		B23E42731915C90200B29D61 /* MNCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarHeaderView.m; sourceTree = "<group>"; };
-		B23E42741915C90200B29D61 /* MNCalendarView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MNCalendarView-Prefix.pch"; sourceTree = "<group>"; };
-		B23E42751915C90200B29D61 /* MNCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarView.h; sourceTree = "<group>"; };
-		B23E42761915C90200B29D61 /* MNCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarView.m; sourceTree = "<group>"; };
-		B23E42771915C90200B29D61 /* MNCalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewCell.h; sourceTree = "<group>"; };
-		B23E42781915C90200B29D61 /* MNCalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewCell.m; sourceTree = "<group>"; };
-		B23E42791915C90200B29D61 /* MNCalendarViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewDayCell.h; sourceTree = "<group>"; };
-		B23E427A1915C90200B29D61 /* MNCalendarViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewDayCell.m; sourceTree = "<group>"; };
-		B23E427B1915C90200B29D61 /* MNCalendarViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewLayout.h; sourceTree = "<group>"; };
-		B23E427C1915C90200B29D61 /* MNCalendarViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewLayout.m; sourceTree = "<group>"; };
-		B23E427D1915C90200B29D61 /* MNCalendarViewWeekdayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewWeekdayCell.h; sourceTree = "<group>"; };
-		B23E427E1915C90200B29D61 /* MNCalendarViewWeekdayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewWeekdayCell.m; sourceTree = "<group>"; };
-		B23E427F1915C90200B29D61 /* MNFastDateEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNFastDateEnumeration.h; sourceTree = "<group>"; };
-		B23E42801915C90200B29D61 /* MNFastDateEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNFastDateEnumeration.m; sourceTree = "<group>"; };
-		B23E42811915C90200B29D61 /* NSDate+MNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MNAdditions.h"; sourceTree = "<group>"; };
-		B23E42821915C90200B29D61 /* NSDate+MNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MNAdditions.m"; sourceTree = "<group>"; };
-		B23E428B1915CDC400B29D61 /* NCCalendarViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCalendarViewDayCell.h; sourceTree = "<group>"; };
-		B23E428C1915CDC400B29D61 /* NCCalendarViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCalendarViewDayCell.m; sourceTree = "<group>"; };
-		B23E4295191706BF00B29D61 /* UITabBarController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Rotations.h"; sourceTree = "<group>"; };
-		B23E4296191706BF00B29D61 /* UITabBarController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Rotations.m"; sourceTree = "<group>"; };
-		B23E429819170D9600B29D61 /* NCScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCScheduleCell.h; sourceTree = "<group>"; };
-		B23E429919170D9600B29D61 /* NCScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCScheduleCell.m; sourceTree = "<group>"; };
-		B23E429C19172FE600B29D61 /* NCEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEventStore.h; sourceTree = "<group>"; };
-		B23E429D19172FE600B29D61 /* NCEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEventStore.m; sourceTree = "<group>"; };
-		B23E429F1919CFEC00B29D61 /* NCDailyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDailyEventsViewController.h; sourceTree = "<group>"; };
-		B23E42A01919CFEC00B29D61 /* NCDailyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDailyEventsViewController.m; sourceTree = "<group>"; };
-		B23E42A21919D82500B29D61 /* NCEventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEventDetailsViewController.h; sourceTree = "<group>"; };
-		B23E42A31919D82500B29D61 /* NCEventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEventDetailsViewController.m; sourceTree = "<group>"; };
-		B23E42A5191AB7C900B29D61 /* NCEventDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEventDetailsCell.h; sourceTree = "<group>"; };
-		B23E42A6191AB7C900B29D61 /* NCEventDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEventDetailsCell.m; sourceTree = "<group>"; };
-		B23E42A8191ABA1100B29D61 /* NCEventOpponentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEventOpponentsCell.h; sourceTree = "<group>"; };
-		B23E42A9191ABA1100B29D61 /* NCEventOpponentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEventOpponentsCell.m; sourceTree = "<group>"; };
-		B23E42AB191ABC8D00B29D61 /* NCEfficientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEfficientTableViewCell.h; sourceTree = "<group>"; };
-		B23E42AC191ABC8D00B29D61 /* NCEfficientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEfficientTableViewCell.m; sourceTree = "<group>"; };
-		B23E42AE191B281700B29D61 /* NCDailyEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDailyEventCell.h; sourceTree = "<group>"; };
-		B23E42AF191B281700B29D61 /* NCDailyEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDailyEventCell.m; sourceTree = "<group>"; };
-		B23E42B2191ED5E900B29D61 /* NCSocialPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSocialPostCell.h; sourceTree = "<group>"; };
-		B23E42B3191ED5E900B29D61 /* NCSocialPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSocialPostCell.m; sourceTree = "<group>"; };
-		B23E42B5191F2EFC00B29D61 /* MHPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPrettyDate.h; sourceTree = "<group>"; };
-		B23E42B6191F2EFC00B29D61 /* MHPrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPrettyDate.m; sourceTree = "<group>"; };
-		B23E42BC191FBA5C00B29D61 /* NCHomeBulletinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCHomeBulletinCell.h; sourceTree = "<group>"; };
-		B23E42BD191FBA5C00B29D61 /* NCHomeBulletinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCHomeBulletinCell.m; sourceTree = "<group>"; };
-		B28A45F318D096880055426F /* NCEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEventsViewController.h; sourceTree = "<group>"; };
-		B28A45F418D096880055426F /* NCEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEventsViewController.m; sourceTree = "<group>"; };
-		B28A460618D2BC250055426F /* NCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWebViewController.h; sourceTree = "<group>"; };
-		B28A460718D2BC250055426F /* NCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWebViewController.m; sourceTree = "<group>"; };
-		B28A461018D2D2160055426F /* NCDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDocumentViewController.h; sourceTree = "<group>"; };
-		B28A461118D2D2160055426F /* NCDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDocumentViewController.m; sourceTree = "<group>"; };
-		B28A461318D2D2E90055426F /* NCSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSocialViewController.h; sourceTree = "<group>"; };
-		B28A461418D2D2E90055426F /* NCSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSocialViewController.m; sourceTree = "<group>"; };
-		B28A461618D2D5250055426F /* NCSchedulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSchedulesViewController.h; sourceTree = "<group>"; };
-		B28A461718D2D5250055426F /* NCSchedulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSchedulesViewController.m; sourceTree = "<group>"; };
-		B28A461A18D3881B0055426F /* NCLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCLoadingView.h; sourceTree = "<group>"; };
-		B28A461B18D3881B0055426F /* NCLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCLoadingView.m; sourceTree = "<group>"; };
-		B28A461D18D3A5380055426F /* NCRemoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCRemoteViewController.h; sourceTree = "<group>"; };
-		B28A461E18D3A5380055426F /* NCRemoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCRemoteViewController.m; sourceTree = "<group>"; };
-		B28A462018D3B03B0055426F /* NCErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCErrorView.h; sourceTree = "<group>"; };
-		B28A462118D3B03B0055426F /* NCErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCErrorView.m; sourceTree = "<group>"; };
-		B28A463B18DBE46D0055426F /* NCSocialPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSocialPost.h; sourceTree = "<group>"; };
-		B28A463C18DBE46D0055426F /* NCSocialPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSocialPost.m; sourceTree = "<group>"; };
-		B28A464518DD5E970055426F /* NCCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCoverView.h; sourceTree = "<group>"; };
-		B28A464618DD5E970055426F /* NCCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCoverView.m; sourceTree = "<group>"; };
-		B28A97861A1C07ED00F560C7 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
-		B2DA06B2191066BE00867F18 /* NCContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCContactViewController.h; sourceTree = "<group>"; };
-		B2DA06B3191066BF00867F18 /* NCContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCContactViewController.m; sourceTree = "<group>"; };
-		B2DA06B51910936B00867F18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B2DA06B71911D6D500867F18 /* NCCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCalendarEvent.h; sourceTree = "<group>"; };
-		B2DA06B81911D6D500867F18 /* NCCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCCalendarEvent.m; sourceTree = "<group>"; };
-		B2FD4E5C180752FA00EB1C51 /* Newman Knights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Newman Knights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2FD4E5F180752FA00EB1C51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B2FD4E61180752FA00EB1C51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B2FD4E63180752FA00EB1C51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B2FD4E67180752FA00EB1C51 /* Newman Knights-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Newman Knights-Info.plist"; sourceTree = "<group>"; };
-		B2FD4E69180752FA00EB1C51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B2FD4E6B180752FA00EB1C51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2FD4E6D180752FA00EB1C51 /* Newman Knights-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Newman Knights-Prefix.pch"; sourceTree = "<group>"; };
-		B2FD4E6E180752FA00EB1C51 /* NCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCAppDelegate.h; sourceTree = "<group>"; };
-		B2FD4E6F180752FA00EB1C51 /* NCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCAppDelegate.m; sourceTree = "<group>"; };
-		B2FD4E77180752FA00EB1C51 /* NCHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCHomeViewController.h; sourceTree = "<group>"; };
-		B2FD4E78180752FA00EB1C51 /* NCHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCHomeViewController.m; sourceTree = "<group>"; };
-		B2FD4E7D180752FB00EB1C51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B2FD4E84180752FB00EB1C51 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B2FD4E9A1809171C00EB1C51 /* NCGradesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCGradesViewController.h; sourceTree = "<group>"; };
-		B2FD4E9B1809171C00EB1C51 /* NCGradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCGradesViewController.m; sourceTree = "<group>"; };
-		B2FD4E9D18099FE800EB1C51 /* NCDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataSource.h; sourceTree = "<group>"; };
-		B2FD4E9E18099FE800EB1C51 /* NCDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataSource.m; sourceTree = "<group>"; };
-		B2FD4EAA1809E15600EB1C51 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
-		B2FD4EAB1809E15600EB1C51 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
+		B21AA1481C35E2700041DCD5 /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		B21AA14A1C38CFDE0041DCD5 /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		B292F2731C2763C200DF0FC0 /* Newman Knights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Newman Knights.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B292F2761C2763C200DF0FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B292F27D1C2763C200DF0FC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B292F2801C2763C200DF0FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B292F2821C2763C200DF0FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B292F2881C27658800DF0FC0 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		B292F28C1C27686A00DF0FC0 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		B292F28E1C27688F00DF0FC0 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B292F2901C2768AF00DF0FC0 /* GradesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
+		B292F2921C2768C000DF0FC0 /* SocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		B292F2941C2768E100DF0FC0 /* SchedulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulesViewController.swift; sourceTree = "<group>"; };
+		B292F2961C2768EB00DF0FC0 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		B292F2981C276EB400DF0FC0 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B292F29A1C27783A00DF0FC0 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		B292F29C1C27787700DF0FC0 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B292F29E1C2792EB00DF0FC0 /* FetchedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedViewController.swift; sourceTree = "<group>"; };
+		B292F2A01C2872B200DF0FC0 /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
+		B292F2A71C28942600DF0FC0 /* Newman Knights-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Newman Knights-Bridging-Header.h"; sourceTree = "<group>"; };
+		B292F3031C2A198600DF0FC0 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		B292F3041C2A198600DF0FC0 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		B292F3071C2C84BA00DF0FC0 /* CalendarSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSearchViewController.swift; sourceTree = "<group>"; };
+		B292F3091C2C870D00DF0FC0 /* CalendarDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayViewController.swift; sourceTree = "<group>"; };
+		B292F30B1C2C87CB00DF0FC0 /* CalendarEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventViewController.swift; sourceTree = "<group>"; };
+		B29E47E21C430AEF00736315 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		B29E47E51C43971300736315 /* MHPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHPrettyDate.h; path = External/MHPrettyDate/MHPrettyDate/MHPrettyDate.h; sourceTree = SOURCE_ROOT; };
+		B29E47E61C43971300736315 /* MHPrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHPrettyDate.m; path = External/MHPrettyDate/MHPrettyDate/MHPrettyDate.m; sourceTree = SOURCE_ROOT; };
+		B29E47E91C43971E00736315 /* MNCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarHeaderView.h; sourceTree = "<group>"; };
+		B29E47EA1C43971E00736315 /* MNCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarHeaderView.m; sourceTree = "<group>"; };
+		B29E47EC1C43971E00736315 /* MNCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarView.h; sourceTree = "<group>"; };
+		B29E47ED1C43971E00736315 /* MNCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarView.m; sourceTree = "<group>"; };
+		B29E47EE1C43971E00736315 /* MNCalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewCell.h; sourceTree = "<group>"; };
+		B29E47EF1C43971E00736315 /* MNCalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewCell.m; sourceTree = "<group>"; };
+		B29E47F01C43971E00736315 /* MNCalendarViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewDayCell.h; sourceTree = "<group>"; };
+		B29E47F11C43971E00736315 /* MNCalendarViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewDayCell.m; sourceTree = "<group>"; };
+		B29E47F21C43971E00736315 /* MNCalendarViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewLayout.h; sourceTree = "<group>"; };
+		B29E47F31C43971E00736315 /* MNCalendarViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewLayout.m; sourceTree = "<group>"; };
+		B29E47F41C43971E00736315 /* MNCalendarViewWeekdayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewWeekdayCell.h; sourceTree = "<group>"; };
+		B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewWeekdayCell.m; sourceTree = "<group>"; };
+		B29E47F61C43971E00736315 /* MNFastDateEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNFastDateEnumeration.h; sourceTree = "<group>"; };
+		B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNFastDateEnumeration.m; sourceTree = "<group>"; };
+		B29E47F81C43971E00736315 /* NSDate+MNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MNAdditions.h"; sourceTree = "<group>"; };
+		B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MNAdditions.m"; sourceTree = "<group>"; };
+		B29E48031C43973300736315 /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
+		B29E48051C43973300736315 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		B29E48071C43973300736315 /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
+		B29E48081C43973300736315 /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
+		B29E480B1C43973300736315 /* Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swifter.swift; sourceTree = "<group>"; };
+		B29E480C1C43973300736315 /* SwifterAccountsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAccountsClient.swift; sourceTree = "<group>"; };
+		B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAppOnlyClient.swift; sourceTree = "<group>"; };
+		B29E480E1C43973300736315 /* SwifterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAuth.swift; sourceTree = "<group>"; };
+		B29E480F1C43973300736315 /* SwifterClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterClientProtocol.swift; sourceTree = "<group>"; };
+		B29E48101C43973300736315 /* SwifterCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterCredential.swift; sourceTree = "<group>"; };
+		B29E48141C43973300736315 /* SwifterHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterHTTPRequest.swift; sourceTree = "<group>"; };
+		B29E48171C43973400736315 /* SwifterOAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterOAuthClient.swift; sourceTree = "<group>"; };
+		B29E481E1C43973400736315 /* SwifterTimelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTimelines.swift; sourceTree = "<group>"; };
+		B29E48401C43977600736315 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = External/SWXMLHash/Source/SWXMLHash.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B2FD4E59180752FA00EB1C51 /* Frameworks */ = {
+		B292F2701C2763C200DF0FC0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B222677E1926B6D800F511CA /* Accounts.framework in Frameworks */,
-				B222677C1926B6C400F511CA /* SystemConfiguration.framework in Frameworks */,
-				B222677A1926B6B800F511CA /* QuartzCore.framework in Frameworks */,
-				B22267781926B6B400F511CA /* Twitter.framework in Frameworks */,
-				B22267741926B6AD00F511CA /* MobileCoreServices.framework in Frameworks */,
-				B222675B1921BBE300F511CA /* QuickLook.framework in Frameworks */,
-				B22267591921BBD400F511CA /* MessageUI.framework in Frameworks */,
-				B2DA06B61910936B00867F18 /* MapKit.framework in Frameworks */,
-				B2FD4E62180752FA00EB1C51 /* CoreGraphics.framework in Frameworks */,
-				B2FD4E64180752FA00EB1C51 /* UIKit.framework in Frameworks */,
-				B2FD4E60180752FA00EB1C51 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B2226748192077C200F511CA /* Social */ = {
+		B21AA1431C32208C0041DCD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B28A461318D2D2E90055426F /* NCSocialViewController.h */,
-				B28A461418D2D2E90055426F /* NCSocialViewController.m */,
-				B23E42B2191ED5E900B29D61 /* NCSocialPostCell.h */,
-				B23E42B3191ED5E900B29D61 /* NCSocialPostCell.m */,
+				B292F2881C27658800DF0FC0 /* DataSource.swift */,
+				B292F2A01C2872B200DF0FC0 /* EventCalendar.swift */,
+				B292F2981C276EB400DF0FC0 /* Models.swift */,
 			);
-			name = Social;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		B2226752192188EC00F511CA /* Contact */ = {
+		B21AA1441C3220A00041DCD5 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				B2DA06B2191066BE00867F18 /* NCContactViewController.h */,
-				B2DA06B3191066BF00867F18 /* NCContactViewController.m */,
-				B222674F1921835800F511CA /* NCDirectoryViewController.h */,
-				B22267501921835800F511CA /* NCDirectoryViewController.m */,
-			);
-			name = Contact;
-			sourceTree = "<group>";
-		};
-		B2226753192188FD00F511CA /* Day View */ = {
-			isa = PBXGroup;
-			children = (
-				B23E429F1919CFEC00B29D61 /* NCDailyEventsViewController.h */,
-				B23E42A01919CFEC00B29D61 /* NCDailyEventsViewController.m */,
-				B23E42AE191B281700B29D61 /* NCDailyEventCell.h */,
-				B23E42AF191B281700B29D61 /* NCDailyEventCell.m */,
-			);
-			name = "Day View";
-			sourceTree = "<group>";
-		};
-		B22267541921890500F511CA /* Event Detail View */ = {
-			isa = PBXGroup;
-			children = (
-				B23E42A21919D82500B29D61 /* NCEventDetailsViewController.h */,
-				B23E42A31919D82500B29D61 /* NCEventDetailsViewController.m */,
-				B23E42A5191AB7C900B29D61 /* NCEventDetailsCell.h */,
-				B23E42A6191AB7C900B29D61 /* NCEventDetailsCell.m */,
-				B23E42A8191ABA1100B29D61 /* NCEventOpponentsCell.h */,
-				B23E42A9191ABA1100B29D61 /* NCEventOpponentsCell.m */,
-			);
-			name = "Event Detail View";
-			sourceTree = "<group>";
-		};
-		B22267721926B61100F511CA /* Grades */ = {
-			isa = PBXGroup;
-			children = (
-				B2FD4E9A1809171C00EB1C51 /* NCGradesViewController.h */,
-				B2FD4E9B1809171C00EB1C51 /* NCGradesViewController.m */,
-			);
-			name = Grades;
-			sourceTree = "<group>";
-		};
-		B22267811926BEC100F511CA /* STTwitter */ = {
-			isa = PBXGroup;
-			children = (
-				B22267821926BEC100F511CA /* NSDateFormatter+STTwitter.h */,
-				B22267831926BEC100F511CA /* NSDateFormatter+STTwitter.m */,
-				B22267841926BEC100F511CA /* NSError+STTwitter.h */,
-				B22267851926BEC100F511CA /* NSError+STTwitter.m */,
-				B22267861926BEC100F511CA /* NSString+STTwitter.h */,
-				B22267871926BEC100F511CA /* NSString+STTwitter.m */,
-				B22267881926BEC100F511CA /* STHTTPRequest+STTwitter.h */,
-				B22267891926BEC100F511CA /* STHTTPRequest+STTwitter.m */,
-				B222678A1926BEC100F511CA /* STTwitter.h */,
-				B222678B1926BEC100F511CA /* STTwitterAPI.h */,
-				B222678C1926BEC100F511CA /* STTwitterAPI.m */,
-				B222678D1926BEC100F511CA /* STTwitterAppOnly.h */,
-				B222678E1926BEC100F511CA /* STTwitterAppOnly.m */,
-				B222678F1926BEC100F511CA /* STTwitterHTML.h */,
-				B22267901926BEC100F511CA /* STTwitterHTML.m */,
-				B22267911926BEC100F511CA /* STTwitterOAuth.h */,
-				B22267921926BEC100F511CA /* STTwitterOAuth.m */,
-				B22267931926BEC100F511CA /* STTwitterOS.h */,
-				B22267941926BEC100F511CA /* STTwitterOS.m */,
-				B22267951926BEC100F511CA /* STTwitterOSRequest.h */,
-				B22267961926BEC100F511CA /* STTwitterOSRequest.m */,
-				B22267971926BEC100F511CA /* STTwitterProtocol.h */,
-				B22267981926BEC100F511CA /* Vendor */,
-			);
-			name = STTwitter;
-			path = External/STTwitter/STTwitter;
-			sourceTree = SOURCE_ROOT;
-		};
-		B22267981926BEC100F511CA /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				B22267991926BEC100F511CA /* BAVPlistNode.h */,
-				B222679A1926BEC100F511CA /* BAVPlistNode.m */,
-				B222679B1926BEC100F511CA /* JSONSyntaxHighlight.h */,
-				B222679C1926BEC100F511CA /* JSONSyntaxHighlight.m */,
-				B222679D1926BEC100F511CA /* STHTTPRequest.h */,
-				B222679E1926BEC100F511CA /* STHTTPRequest.m */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		B22267AC1926C03900F511CA /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				B22267AD1926C03900F511CA /* AFHTTPRequestOperation.h */,
-				B22267AE1926C03900F511CA /* AFHTTPRequestOperation.m */,
-				B22267AF1926C03900F511CA /* AFHTTPRequestOperationManager.h */,
-				B22267B01926C03900F511CA /* AFHTTPRequestOperationManager.m */,
-				B22267B11926C03900F511CA /* AFHTTPSessionManager.h */,
-				B22267B21926C03900F511CA /* AFHTTPSessionManager.m */,
-				B22267B31926C03900F511CA /* AFNetworking.h */,
-				B22267B41926C03900F511CA /* AFNetworkReachabilityManager.h */,
-				B22267B51926C03900F511CA /* AFNetworkReachabilityManager.m */,
-				B22267B61926C03900F511CA /* AFSecurityPolicy.h */,
-				B22267B71926C03900F511CA /* AFSecurityPolicy.m */,
-				B22267B81926C03900F511CA /* AFURLConnectionOperation.h */,
-				B22267B91926C03900F511CA /* AFURLConnectionOperation.m */,
-				B22267BA1926C03900F511CA /* AFURLRequestSerialization.h */,
-				B22267BB1926C03900F511CA /* AFURLRequestSerialization.m */,
-				B22267BC1926C03900F511CA /* AFURLResponseSerialization.h */,
-				B22267BD1926C03900F511CA /* AFURLResponseSerialization.m */,
-				B22267BE1926C03900F511CA /* AFURLSessionManager.h */,
-				B22267BF1926C03900F511CA /* AFURLSessionManager.m */,
-			);
-			name = AFNetworking;
-			path = External/AFNetworking/AFNetworking;
-			sourceTree = SOURCE_ROOT;
-		};
-		B22267C01926C03900F511CA /* UIKit+AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				B22267C11926C03900F511CA /* AFNetworkActivityIndicatorManager.h */,
-				B22267C21926C03900F511CA /* AFNetworkActivityIndicatorManager.m */,
-				B22267C31926C03900F511CA /* UIActivityIndicatorView+AFNetworking.h */,
-				B22267C41926C03900F511CA /* UIActivityIndicatorView+AFNetworking.m */,
-				B22267C51926C03900F511CA /* UIAlertView+AFNetworking.h */,
-				B22267C61926C03900F511CA /* UIAlertView+AFNetworking.m */,
-				B22267C71926C03900F511CA /* UIButton+AFNetworking.h */,
-				B22267C81926C03900F511CA /* UIButton+AFNetworking.m */,
-				B22267C91926C03900F511CA /* UIImageView+AFNetworking.h */,
-				B22267CA1926C03900F511CA /* UIImageView+AFNetworking.m */,
-				B22267CB1926C03900F511CA /* UIKit+AFNetworking.h */,
-				B22267CC1926C03900F511CA /* UIProgressView+AFNetworking.h */,
-				B22267CD1926C03900F511CA /* UIProgressView+AFNetworking.m */,
-				B22267CE1926C03900F511CA /* UIRefreshControl+AFNetworking.h */,
-				B22267CF1926C03900F511CA /* UIRefreshControl+AFNetworking.m */,
-				B22267D01926C03900F511CA /* UIWebView+AFNetworking.h */,
-				B22267D11926C03900F511CA /* UIWebView+AFNetworking.m */,
-			);
-			name = "UIKit+AFNetworking";
-			path = "External/AFNetworking/UIKit+AFNetworking";
-			sourceTree = SOURCE_ROOT;
-		};
-		B2264D431870AFA100182F0D /* News */ = {
-			isa = PBXGroup;
-			children = (
-				B2FD4E77180752FA00EB1C51 /* NCHomeViewController.h */,
-				B2FD4E78180752FA00EB1C51 /* NCHomeViewController.m */,
-				B23E42BC191FBA5C00B29D61 /* NCHomeBulletinCell.h */,
-				B23E42BD191FBA5C00B29D61 /* NCHomeBulletinCell.m */,
-				B28A464518DD5E970055426F /* NCCoverView.h */,
-				B28A464618DD5E970055426F /* NCCoverView.m */,
-				B22267551921A5A300F511CA /* NCCoverViewPreviewItem.h */,
-				B22267561921A5A300F511CA /* NCCoverViewPreviewItem.m */,
+				B292F28C1C27686A00DF0FC0 /* NewsViewController.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
 		};
-		B23E42711915C90200B29D61 /* MNCalendarView */ = {
+		B21AA1471C3220BB0041DCD5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B23E42721915C90200B29D61 /* MNCalendarHeaderView.h */,
-				B23E42731915C90200B29D61 /* MNCalendarHeaderView.m */,
-				B23E42741915C90200B29D61 /* MNCalendarView-Prefix.pch */,
-				B23E42751915C90200B29D61 /* MNCalendarView.h */,
-				B23E42761915C90200B29D61 /* MNCalendarView.m */,
-				B23E42771915C90200B29D61 /* MNCalendarViewCell.h */,
-				B23E42781915C90200B29D61 /* MNCalendarViewCell.m */,
-				B23E42791915C90200B29D61 /* MNCalendarViewDayCell.h */,
-				B23E427A1915C90200B29D61 /* MNCalendarViewDayCell.m */,
-				B23E427B1915C90200B29D61 /* MNCalendarViewLayout.h */,
-				B23E427C1915C90200B29D61 /* MNCalendarViewLayout.m */,
-				B23E427D1915C90200B29D61 /* MNCalendarViewWeekdayCell.h */,
-				B23E427E1915C90200B29D61 /* MNCalendarViewWeekdayCell.m */,
-				B23E427F1915C90200B29D61 /* MNFastDateEnumeration.h */,
-				B23E42801915C90200B29D61 /* MNFastDateEnumeration.m */,
-				B23E42811915C90200B29D61 /* NSDate+MNAdditions.h */,
-				B23E42821915C90200B29D61 /* NSDate+MNAdditions.m */,
+				B292F3031C2A198600DF0FC0 /* UIAppearance+Swift.h */,
+				B292F3041C2A198600DF0FC0 /* UIAppearance+Swift.m */,
+				B292F29E1C2792EB00DF0FC0 /* FetchedViewController.swift */,
+				B292F29C1C27787700DF0FC0 /* WebViewController.swift */,
+				B292F29A1C27783A00DF0FC0 /* DocumentViewController.swift */,
+				B29E47E21C430AEF00736315 /* RemoteImageView.swift */,
 			);
-			path = MNCalendarView;
+			name = Common;
 			sourceTree = "<group>";
 		};
-		B23E428E1915CDCE00B29D61 /* Events */ = {
+		B292F26A1C2763C200DF0FC0 = {
 			isa = PBXGroup;
 			children = (
-				B28A45F318D096880055426F /* NCEventsViewController.h */,
-				B28A45F418D096880055426F /* NCEventsViewController.m */,
-				B23E428B1915CDC400B29D61 /* NCCalendarViewDayCell.h */,
-				B23E428C1915CDC400B29D61 /* NCCalendarViewDayCell.m */,
-				B2226753192188FD00F511CA /* Day View */,
-				B22267541921890500F511CA /* Event Detail View */,
-			);
-			name = Events;
-			sourceTree = "<group>";
-		};
-		B23E429B19170D9B00B29D61 /* Schedules */ = {
-			isa = PBXGroup;
-			children = (
-				B28A461618D2D5250055426F /* NCSchedulesViewController.h */,
-				B28A461718D2D5250055426F /* NCSchedulesViewController.m */,
-				B23E429819170D9600B29D61 /* NCScheduleCell.h */,
-				B23E429919170D9600B29D61 /* NCScheduleCell.m */,
-			);
-			name = Schedules;
-			sourceTree = "<group>";
-		};
-		B23E42B1191C6E3100B29D61 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				B22267AC1926C03900F511CA /* AFNetworking */,
-				B22267C01926C03900F511CA /* UIKit+AFNetworking */,
-				B22267811926BEC100F511CA /* STTwitter */,
-				B2FD4EAA1809E15600EB1C51 /* XMLDictionary.h */,
-				B2FD4EAB1809E15600EB1C51 /* XMLDictionary.m */,
-				B23E42B5191F2EFC00B29D61 /* MHPrettyDate.h */,
-				B23E42B6191F2EFC00B29D61 /* MHPrettyDate.m */,
-				B222674C192100A100F511CA /* NSString+HTML.h */,
-				B222674D192100A100F511CA /* NSString+HTML.m */,
-				B23E42711915C90200B29D61 /* MNCalendarView */,
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
-		B28A45F618D097510055426F /* Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				B2FD4E9D18099FE800EB1C51 /* NCDataSource.h */,
-				B2FD4E9E18099FE800EB1C51 /* NCDataSource.m */,
-				B23E429C19172FE600B29D61 /* NCEventStore.h */,
-				B23E429D19172FE600B29D61 /* NCEventStore.m */,
-				B28A463B18DBE46D0055426F /* NCSocialPost.h */,
-				B28A463C18DBE46D0055426F /* NCSocialPost.m */,
-				B2DA06B71911D6D500867F18 /* NCCalendarEvent.h */,
-				B2DA06B81911D6D500867F18 /* NCCalendarEvent.m */,
-			);
-			name = "Data Source";
-			sourceTree = "<group>";
-		};
-		B28A461918D2D5300055426F /* Generic */ = {
-			isa = PBXGroup;
-			children = (
-				B23E4295191706BF00B29D61 /* UITabBarController+Rotations.h */,
-				B23E4296191706BF00B29D61 /* UITabBarController+Rotations.m */,
-				B28A461D18D3A5380055426F /* NCRemoteViewController.h */,
-				B28A461E18D3A5380055426F /* NCRemoteViewController.m */,
-				B28A460618D2BC250055426F /* NCWebViewController.h */,
-				B28A460718D2BC250055426F /* NCWebViewController.m */,
-				B28A461018D2D2160055426F /* NCDocumentViewController.h */,
-				B28A461118D2D2160055426F /* NCDocumentViewController.m */,
-				B28A461A18D3881B0055426F /* NCLoadingView.h */,
-				B28A461B18D3881B0055426F /* NCLoadingView.m */,
-				B28A462018D3B03B0055426F /* NCErrorView.h */,
-				B28A462118D3B03B0055426F /* NCErrorView.m */,
-				B23E42AB191ABC8D00B29D61 /* NCEfficientTableViewCell.h */,
-				B23E42AC191ABC8D00B29D61 /* NCEfficientTableViewCell.m */,
-			);
-			name = Generic;
-			sourceTree = "<group>";
-		};
-		B2FD4E53180752FA00EB1C51 = {
-			isa = PBXGroup;
-			children = (
-				B2FD4E65180752FA00EB1C51 /* Newman Knights */,
-				B2FD4E5E180752FA00EB1C51 /* Frameworks */,
-				B2FD4E5D180752FA00EB1C51 /* Products */,
+				B292F2751C2763C200DF0FC0 /* Newman Knights */,
+				B292F2741C2763C200DF0FC0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B2FD4E5D180752FA00EB1C51 /* Products */ = {
+		B292F2741C2763C200DF0FC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2FD4E5C180752FA00EB1C51 /* Newman Knights.app */,
+				B292F2731C2763C200DF0FC0 /* Newman Knights.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2FD4E5E180752FA00EB1C51 /* Frameworks */ = {
+		B292F2751C2763C200DF0FC0 /* Newman Knights */ = {
 			isa = PBXGroup;
 			children = (
-				B222677D1926B6D800F511CA /* Accounts.framework */,
-				B222677B1926B6C400F511CA /* SystemConfiguration.framework */,
-				B22267791926B6B800F511CA /* QuartzCore.framework */,
-				B22267771926B6B400F511CA /* Twitter.framework */,
-				B22267751926B6B100F511CA /* Security.framework */,
-				B22267731926B6AD00F511CA /* MobileCoreServices.framework */,
-				B222675A1921BBE300F511CA /* QuickLook.framework */,
-				B22267581921BBD400F511CA /* MessageUI.framework */,
-				B2DA06B51910936B00867F18 /* MapKit.framework */,
-				B2FD4E5F180752FA00EB1C51 /* Foundation.framework */,
-				B2FD4E61180752FA00EB1C51 /* CoreGraphics.framework */,
-				B2FD4E63180752FA00EB1C51 /* UIKit.framework */,
-				B2FD4E84180752FB00EB1C51 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B2FD4E65180752FA00EB1C51 /* Newman Knights */ = {
-			isa = PBXGroup;
-			children = (
-				B23E42B1191C6E3100B29D61 /* External */,
-				B28A45F618D097510055426F /* Data Source */,
-				B2FD4E6E180752FA00EB1C51 /* NCAppDelegate.h */,
-				B2FD4E6F180752FA00EB1C51 /* NCAppDelegate.m */,
-				B22267E31926CF3C00F511CA /* NCAppConfig.h */,
-				B28A461918D2D5300055426F /* Generic */,
-				B2264D431870AFA100182F0D /* News */,
-				B23E428E1915CDCE00B29D61 /* Events */,
-				B22267721926B61100F511CA /* Grades */,
-				B2226748192077C200F511CA /* Social */,
-				B23E429B19170D9B00B29D61 /* Schedules */,
-				B2226752192188EC00F511CA /* Contact */,
-				B2FD4E7D180752FB00EB1C51 /* Images.xcassets */,
-				B28A97861A1C07ED00F560C7 /* Launch Screen.xib */,
-				B2FD4E66180752FA00EB1C51 /* Supporting Files */,
+				B292F2761C2763C200DF0FC0 /* AppDelegate.swift */,
+				B21AA1481C35E2700041DCD5 /* AppConfiguration.swift */,
+				B21AA1431C32208C0041DCD5 /* Model */,
+				B21AA1471C3220BB0041DCD5 /* Common */,
+				B21AA1441C3220A00041DCD5 /* News */,
+				B292F3061C2C84A300DF0FC0 /* Events */,
+				B292F2901C2768AF00DF0FC0 /* GradesViewController.swift */,
+				B292F2921C2768C000DF0FC0 /* SocialViewController.swift */,
+				B292F2941C2768E100DF0FC0 /* SchedulesViewController.swift */,
+				B292F2961C2768EB00DF0FC0 /* ContactViewController.swift */,
+				B21AA14A1C38CFDE0041DCD5 /* DirectoryViewController.swift */,
+				B292F2A71C28942600DF0FC0 /* Newman Knights-Bridging-Header.h */,
+				B292F2A21C28938700DF0FC0 /* External */,
+				B292F27D1C2763C200DF0FC0 /* Assets.xcassets */,
+				B292F27F1C2763C200DF0FC0 /* LaunchScreen.storyboard */,
+				B292F2821C2763C200DF0FC0 /* Info.plist */,
 			);
 			path = "Newman Knights";
 			sourceTree = "<group>";
 		};
-		B2FD4E66180752FA00EB1C51 /* Supporting Files */ = {
+		B292F2A21C28938700DF0FC0 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				B2FD4E67180752FA00EB1C51 /* Newman Knights-Info.plist */,
-				B2FD4E68180752FA00EB1C51 /* InfoPlist.strings */,
-				B2FD4E6B180752FA00EB1C51 /* main.m */,
-				B2FD4E6D180752FA00EB1C51 /* Newman Knights-Prefix.pch */,
+				B29E47E41C43970A00736315 /* MHPrettyDate */,
+				B29E47E81C43971E00736315 /* MNCalendarView */,
+				B29E48021C43973300736315 /* Swifter */,
+				B29E483F1C43976A00736315 /* SWXMLHash */,
 			);
-			name = "Supporting Files";
+			name = External;
+			sourceTree = "<group>";
+		};
+		B292F3061C2C84A300DF0FC0 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				B292F28E1C27688F00DF0FC0 /* CalendarViewController.swift */,
+				B292F3091C2C870D00DF0FC0 /* CalendarDayViewController.swift */,
+				B292F30B1C2C87CB00DF0FC0 /* CalendarEventViewController.swift */,
+				B292F3071C2C84BA00DF0FC0 /* CalendarSearchViewController.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		B29E47E41C43970A00736315 /* MHPrettyDate */ = {
+			isa = PBXGroup;
+			children = (
+				B29E47E51C43971300736315 /* MHPrettyDate.h */,
+				B29E47E61C43971300736315 /* MHPrettyDate.m */,
+			);
+			name = MHPrettyDate;
+			sourceTree = "<group>";
+		};
+		B29E47E81C43971E00736315 /* MNCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				B29E47E91C43971E00736315 /* MNCalendarHeaderView.h */,
+				B29E47EA1C43971E00736315 /* MNCalendarHeaderView.m */,
+				B29E47EC1C43971E00736315 /* MNCalendarView.h */,
+				B29E47ED1C43971E00736315 /* MNCalendarView.m */,
+				B29E47EE1C43971E00736315 /* MNCalendarViewCell.h */,
+				B29E47EF1C43971E00736315 /* MNCalendarViewCell.m */,
+				B29E47F01C43971E00736315 /* MNCalendarViewDayCell.h */,
+				B29E47F11C43971E00736315 /* MNCalendarViewDayCell.m */,
+				B29E47F21C43971E00736315 /* MNCalendarViewLayout.h */,
+				B29E47F31C43971E00736315 /* MNCalendarViewLayout.m */,
+				B29E47F41C43971E00736315 /* MNCalendarViewWeekdayCell.h */,
+				B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */,
+				B29E47F61C43971E00736315 /* MNFastDateEnumeration.h */,
+				B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */,
+				B29E47F81C43971E00736315 /* NSDate+MNAdditions.h */,
+				B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */,
+			);
+			name = MNCalendarView;
+			path = External/MNCalendarView/MNCalendarView;
+			sourceTree = SOURCE_ROOT;
+		};
+		B29E48021C43973300736315 /* Swifter */ = {
+			isa = PBXGroup;
+			children = (
+				B29E48031C43973300736315 /* Dictionary+Swifter.swift */,
+				B29E48051C43973300736315 /* JSON.swift */,
+				B29E48071C43973300736315 /* NSURL+Swifter.swift */,
+				B29E48081C43973300736315 /* String+Swifter.swift */,
+				B29E480B1C43973300736315 /* Swifter.swift */,
+				B29E480C1C43973300736315 /* SwifterAccountsClient.swift */,
+				B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */,
+				B29E480E1C43973300736315 /* SwifterAuth.swift */,
+				B29E480F1C43973300736315 /* SwifterClientProtocol.swift */,
+				B29E48101C43973300736315 /* SwifterCredential.swift */,
+				B29E48141C43973300736315 /* SwifterHTTPRequest.swift */,
+				B29E48171C43973400736315 /* SwifterOAuthClient.swift */,
+				B29E481E1C43973400736315 /* SwifterTimelines.swift */,
+			);
+			name = Swifter;
+			path = External/Swifter/Swifter;
+			sourceTree = SOURCE_ROOT;
+		};
+		B29E483F1C43976A00736315 /* SWXMLHash */ = {
+			isa = PBXGroup;
+			children = (
+				B29E48401C43977600736315 /* SWXMLHash.swift */,
+			);
+			name = SWXMLHash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B2FD4E5B180752FA00EB1C51 /* Newman Knights */ = {
+		B292F2721C2763C200DF0FC0 /* Newman Knights */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2FD4E94180752FB00EB1C51 /* Build configuration list for PBXNativeTarget "Newman Knights" */;
+			buildConfigurationList = B292F2851C2763C200DF0FC0 /* Build configuration list for PBXNativeTarget "Newman Knights" */;
 			buildPhases = (
-				B2FD4E58180752FA00EB1C51 /* Sources */,
-				B2FD4E59180752FA00EB1C51 /* Frameworks */,
-				B2FD4E5A180752FA00EB1C51 /* Resources */,
+				B292F26F1C2763C200DF0FC0 /* Sources */,
+				B292F2701C2763C200DF0FC0 /* Frameworks */,
+				B292F2711C2763C200DF0FC0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -642,25 +297,25 @@
 			);
 			name = "Newman Knights";
 			productName = "Newman Knights";
-			productReference = B2FD4E5C180752FA00EB1C51 /* Newman Knights.app */;
+			productReference = B292F2731C2763C200DF0FC0 /* Newman Knights.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B2FD4E54180752FA00EB1C51 /* Project object */ = {
+		B292F26B1C2763C200DF0FC0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = NC;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Newman Catholic";
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Nick Frey";
 				TargetAttributes = {
-					B2FD4E5B180752FA00EB1C51 = {
-						DevelopmentTeam = 7299G5Q7ZR;
+					B292F2721C2763C200DF0FC0 = {
+						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
-			buildConfigurationList = B2FD4E57180752FA00EB1C51 /* Build configuration list for PBXProject "Newman Knights" */;
+			buildConfigurationList = B292F26E1C2763C200DF0FC0 /* Build configuration list for PBXProject "Newman Knights" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -668,124 +323,94 @@
 				en,
 				Base,
 			);
-			mainGroup = B2FD4E53180752FA00EB1C51;
-			productRefGroup = B2FD4E5D180752FA00EB1C51 /* Products */;
+			mainGroup = B292F26A1C2763C200DF0FC0;
+			productRefGroup = B292F2741C2763C200DF0FC0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B2FD4E5B180752FA00EB1C51 /* Newman Knights */,
+				B292F2721C2763C200DF0FC0 /* Newman Knights */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B2FD4E5A180752FA00EB1C51 /* Resources */ = {
+		B292F2711C2763C200DF0FC0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FD4E7E180752FB00EB1C51 /* Images.xcassets in Resources */,
-				B2FD4E6A180752FA00EB1C51 /* InfoPlist.strings in Resources */,
-				B28A97871A1C07ED00F560C7 /* Launch Screen.xib in Resources */,
+				B292F2811C2763C200DF0FC0 /* LaunchScreen.storyboard in Resources */,
+				B292F27E1C2763C200DF0FC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B2FD4E58180752FA00EB1C51 /* Sources */ = {
+		B292F26F1C2763C200DF0FC0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22267A71926BEC100F511CA /* STTwitterOS.m in Sources */,
-				B22267A01926BEC100F511CA /* NSError+STTwitter.m in Sources */,
-				B22267AB1926BEC100F511CA /* STHTTPRequest.m in Sources */,
-				B23E428A1915C90200B29D61 /* NSDate+MNAdditions.m in Sources */,
-				B23E42841915C90200B29D61 /* MNCalendarView.m in Sources */,
-				B23E428D1915CDC400B29D61 /* NCCalendarViewDayCell.m in Sources */,
-				B22267A41926BEC100F511CA /* STTwitterAppOnly.m in Sources */,
-				B28A464718DD5E970055426F /* NCCoverView.m in Sources */,
-				B22267D71926C03900F511CA /* AFURLConnectionOperation.m in Sources */,
-				B2FD4E9F18099FE800EB1C51 /* NCDataSource.m in Sources */,
-				B22267A51926BEC100F511CA /* STTwitterHTML.m in Sources */,
-				B28A461518D2D2E90055426F /* NCSocialViewController.m in Sources */,
-				B28A45F518D096880055426F /* NCEventsViewController.m in Sources */,
-				B22267A11926BEC100F511CA /* NSString+STTwitter.m in Sources */,
-				B22267571921A5A300F511CA /* NCCoverViewPreviewItem.m in Sources */,
-				B22267E01926C03900F511CA /* UIProgressView+AFNetworking.m in Sources */,
-				B23E42B4191ED5E900B29D61 /* NCSocialPostCell.m in Sources */,
-				B2DA06B4191066BF00867F18 /* NCContactViewController.m in Sources */,
-				B22267DC1926C03900F511CA /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				B23E42861915C90200B29D61 /* MNCalendarViewDayCell.m in Sources */,
-				B22267A31926BEC100F511CA /* STTwitterAPI.m in Sources */,
-				B23E42BE191FBA5C00B29D61 /* NCHomeBulletinCell.m in Sources */,
-				B23E42A41919D82500B29D61 /* NCEventDetailsViewController.m in Sources */,
-				B23E429A19170D9600B29D61 /* NCScheduleCell.m in Sources */,
-				B22267D21926C03900F511CA /* AFHTTPRequestOperation.m in Sources */,
-				B22267D51926C03900F511CA /* AFNetworkReachabilityManager.m in Sources */,
-				B2FD4E6C180752FA00EB1C51 /* main.m in Sources */,
-				B23E42B7191F2EFC00B29D61 /* MHPrettyDate.m in Sources */,
-				B22267DB1926C03900F511CA /* AFNetworkActivityIndicatorManager.m in Sources */,
-				B23E42AA191ABA1100B29D61 /* NCEventOpponentsCell.m in Sources */,
-				B23E42A7191AB7C900B29D61 /* NCEventDetailsCell.m in Sources */,
-				B23E42851915C90200B29D61 /* MNCalendarViewCell.m in Sources */,
-				B2FD4E70180752FA00EB1C51 /* NCAppDelegate.m in Sources */,
-				B22267D91926C03900F511CA /* AFURLResponseSerialization.m in Sources */,
-				B2FD4E79180752FA00EB1C51 /* NCHomeViewController.m in Sources */,
-				B22267A81926BEC100F511CA /* STTwitterOSRequest.m in Sources */,
-				B22267D61926C03900F511CA /* AFSecurityPolicy.m in Sources */,
-				B2DA06B91911D6D500867F18 /* NCCalendarEvent.m in Sources */,
-				B22267A61926BEC100F511CA /* STTwitterOAuth.m in Sources */,
-				B23E4297191706BF00B29D61 /* UITabBarController+Rotations.m in Sources */,
-				B222674E192100A100F511CA /* NSString+HTML.m in Sources */,
-				B28A461218D2D2160055426F /* NCDocumentViewController.m in Sources */,
-				B23E42B0191B281700B29D61 /* NCDailyEventCell.m in Sources */,
-				B28A463D18DBE46D0055426F /* NCSocialPost.m in Sources */,
-				B23E429E19172FE600B29D61 /* NCEventStore.m in Sources */,
-				B22267AA1926BEC100F511CA /* JSONSyntaxHighlight.m in Sources */,
-				B22267E21926C03900F511CA /* UIWebView+AFNetworking.m in Sources */,
-				B22267D41926C03900F511CA /* AFHTTPSessionManager.m in Sources */,
-				B22267A91926BEC100F511CA /* BAVPlistNode.m in Sources */,
-				B2FD4EAC1809E15600EB1C51 /* XMLDictionary.m in Sources */,
-				B22267511921835800F511CA /* NCDirectoryViewController.m in Sources */,
-				B22267E11926C03900F511CA /* UIRefreshControl+AFNetworking.m in Sources */,
-				B222679F1926BEC100F511CA /* NSDateFormatter+STTwitter.m in Sources */,
-				B23E42A11919CFEC00B29D61 /* NCDailyEventsViewController.m in Sources */,
-				B22267A21926BEC100F511CA /* STHTTPRequest+STTwitter.m in Sources */,
-				B22267DA1926C03900F511CA /* AFURLSessionManager.m in Sources */,
-				B22267DE1926C03900F511CA /* UIButton+AFNetworking.m in Sources */,
-				B23E42831915C90200B29D61 /* MNCalendarHeaderView.m in Sources */,
-				B28A462218D3B03B0055426F /* NCErrorView.m in Sources */,
-				B28A461C18D3881B0055426F /* NCLoadingView.m in Sources */,
-				B23E42891915C90200B29D61 /* MNFastDateEnumeration.m in Sources */,
-				B2FD4E9C1809171C00EB1C51 /* NCGradesViewController.m in Sources */,
-				B22267D81926C03900F511CA /* AFURLRequestSerialization.m in Sources */,
-				B22267D31926C03900F511CA /* AFHTTPRequestOperationManager.m in Sources */,
-				B22267DF1926C03900F511CA /* UIImageView+AFNetworking.m in Sources */,
-				B22267DD1926C03900F511CA /* UIAlertView+AFNetworking.m in Sources */,
-				B28A460818D2BC250055426F /* NCWebViewController.m in Sources */,
-				B28A461818D2D5250055426F /* NCSchedulesViewController.m in Sources */,
-				B23E42AD191ABC8D00B29D61 /* NCEfficientTableViewCell.m in Sources */,
-				B23E42881915C90200B29D61 /* MNCalendarViewWeekdayCell.m in Sources */,
-				B28A461F18D3A5380055426F /* NCRemoteViewController.m in Sources */,
-				B23E42871915C90200B29D61 /* MNCalendarViewLayout.m in Sources */,
+				B29E48011C43971E00736315 /* NSDate+MNAdditions.m in Sources */,
+				B29E47FB1C43971E00736315 /* MNCalendarView.m in Sources */,
+				B292F30C1C2C87CB00DF0FC0 /* CalendarEventViewController.swift in Sources */,
+				B29E47E31C430AEF00736315 /* RemoteImageView.swift in Sources */,
+				B292F2911C2768AF00DF0FC0 /* GradesViewController.swift in Sources */,
+				B29E482C1C43973400736315 /* SwifterClientProtocol.swift in Sources */,
+				B292F2891C27658800DF0FC0 /* DataSource.swift in Sources */,
+				B292F2931C2768C000DF0FC0 /* SocialViewController.swift in Sources */,
+				B29E47FD1C43971E00736315 /* MNCalendarViewDayCell.m in Sources */,
+				B29E48241C43973400736315 /* JSON.swift in Sources */,
+				B292F3081C2C84BA00DF0FC0 /* CalendarSearchViewController.swift in Sources */,
+				B29E48311C43973400736315 /* SwifterHTTPRequest.swift in Sources */,
+				B29E47FC1C43971E00736315 /* MNCalendarViewCell.m in Sources */,
+				B292F2A11C2872B200DF0FC0 /* EventCalendar.swift in Sources */,
+				B21AA1491C35E2700041DCD5 /* AppConfiguration.swift in Sources */,
+				B292F30A1C2C870D00DF0FC0 /* CalendarDayViewController.swift in Sources */,
+				B292F29B1C27783A00DF0FC0 /* DocumentViewController.swift in Sources */,
+				B292F29F1C2792EB00DF0FC0 /* FetchedViewController.swift in Sources */,
+				B29E48341C43973400736315 /* SwifterOAuthClient.swift in Sources */,
+				B292F3051C2A198600DF0FC0 /* UIAppearance+Swift.m in Sources */,
+				B29E48261C43973400736315 /* NSURL+Swifter.swift in Sources */,
+				B292F2771C2763C200DF0FC0 /* AppDelegate.swift in Sources */,
+				B21AA14B1C38CFDE0041DCD5 /* DirectoryViewController.swift in Sources */,
+				B29E47FA1C43971E00736315 /* MNCalendarHeaderView.m in Sources */,
+				B29E482D1C43973400736315 /* SwifterCredential.swift in Sources */,
+				B292F2991C276EB400DF0FC0 /* Models.swift in Sources */,
+				B29E482B1C43973400736315 /* SwifterAuth.swift in Sources */,
+				B29E48221C43973400736315 /* Dictionary+Swifter.swift in Sources */,
+				B29E482A1C43973400736315 /* SwifterAppOnlyClient.swift in Sources */,
+				B292F29D1C27787700DF0FC0 /* WebViewController.swift in Sources */,
+				B29E48271C43973400736315 /* String+Swifter.swift in Sources */,
+				B29E48001C43971E00736315 /* MNFastDateEnumeration.m in Sources */,
+				B29E48411C43977600736315 /* SWXMLHash.swift in Sources */,
+				B29E48281C43973400736315 /* Swifter.swift in Sources */,
+				B292F2971C2768EB00DF0FC0 /* ContactViewController.swift in Sources */,
+				B292F28D1C27686A00DF0FC0 /* NewsViewController.swift in Sources */,
+				B292F28F1C27688F00DF0FC0 /* CalendarViewController.swift in Sources */,
+				B29E48291C43973400736315 /* SwifterAccountsClient.swift in Sources */,
+				B292F2951C2768E100DF0FC0 /* SchedulesViewController.swift in Sources */,
+				B29E47FF1C43971E00736315 /* MNCalendarViewWeekdayCell.m in Sources */,
+				B29E47E71C43971300736315 /* MHPrettyDate.m in Sources */,
+				B29E483B1C43973400736315 /* SwifterTimelines.swift in Sources */,
+				B29E47FE1C43971E00736315 /* MNCalendarViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B2FD4E68180752FA00EB1C51 /* InfoPlist.strings */ = {
+		B292F27F1C2763C200DF0FC0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B2FD4E69180752FA00EB1C51 /* en */,
+				B292F2801C2763C200DF0FC0 /* Base */,
 			);
-			name = InfoPlist.strings;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B2FD4E92180752FB00EB1C51 /* Debug */ = {
+		B292F2831C2763C200DF0FC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -800,31 +425,37 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		B2FD4E93180752FB00EB1C51 /* Release */ = {
+		B292F2841C2763C200DF0FC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -839,80 +470,77 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B2FD4E95180752FB00EB1C51 /* Debug */ = {
+		B292F2861C2763C200DF0FC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Newman Knights/Newman Knights-Prefix.pch";
-				INFOPLIST_FILE = "Newman Knights/Newman Knights-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = "Newman Knights/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.newmancatholic.knightsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				WRAPPER_EXTENSION = app;
+				SWIFT_OBJC_BRIDGING_HEADER = "Newman Knights/Newman Knights-Bridging-Header.h";
 			};
 			name = Debug;
 		};
-		B2FD4E96180752FB00EB1C51 /* Release */ = {
+		B292F2871C2763C200DF0FC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Newman Knights/Newman Knights-Prefix.pch";
-				INFOPLIST_FILE = "Newman Knights/Newman Knights-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = "Newman Knights/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.newmancatholic.knightsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				WRAPPER_EXTENSION = app;
+				SWIFT_OBJC_BRIDGING_HEADER = "Newman Knights/Newman Knights-Bridging-Header.h";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B2FD4E57180752FA00EB1C51 /* Build configuration list for PBXProject "Newman Knights" */ = {
+		B292F26E1C2763C200DF0FC0 /* Build configuration list for PBXProject "Newman Knights" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2FD4E92180752FB00EB1C51 /* Debug */,
-				B2FD4E93180752FB00EB1C51 /* Release */,
+				B292F2831C2763C200DF0FC0 /* Debug */,
+				B292F2841C2763C200DF0FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2FD4E94180752FB00EB1C51 /* Build configuration list for PBXNativeTarget "Newman Knights" */ = {
+		B292F2851C2763C200DF0FC0 /* Build configuration list for PBXNativeTarget "Newman Knights" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2FD4E95180752FB00EB1C51 /* Debug */,
-				B2FD4E96180752FB00EB1C51 /* Release */,
+				B292F2861C2763C200DF0FC0 /* Debug */,
+				B292F2871C2763C200DF0FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B2FD4E54180752FA00EB1C51 /* Project object */;
+	rootObject = B292F26B1C2763C200DF0FC0 /* Project object */;
 }
