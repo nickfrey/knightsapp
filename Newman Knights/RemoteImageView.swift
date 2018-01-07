@@ -9,14 +9,14 @@
 import UIKit
 
 class RemoteImageView: UIImageView {
-    weak var imageCache: NSCache?
-    private var dataTask: NSURLSessionDataTask?
-    private weak var indicatorView: UIActivityIndicatorView?
+    weak var imageCache: NSCache<AnyObject, AnyObject>?
+    fileprivate var dataTask: URLSessionDataTask?
+    fileprivate weak var indicatorView: UIActivityIndicatorView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicatorView.hidesWhenStopped = true
         self.addSubview(indicatorView)
         self.indicatorView = indicatorView
@@ -30,31 +30,31 @@ class RemoteImageView: UIImageView {
         super.layoutSubviews()
         if let indicatorView = self.indicatorView {
             let indicatorSize = indicatorView.frame.size
-            indicatorView.frame = CGRectMake(
-                (CGRectGetWidth(self.frame) - indicatorSize.width)/2,
-                (CGRectGetHeight(self.frame) - indicatorSize.height)/2,
-                indicatorSize.width,
-                indicatorSize.height
+            indicatorView.frame = CGRect(
+                x: (self.frame.width - indicatorSize.width)/2,
+                y: (self.frame.height - indicatorSize.height)/2,
+                width: indicatorSize.width,
+                height: indicatorSize.height
             )
         }
     }
     
-    func updateImage(URL: NSURL?, transition: Bool, completionHandler: (() -> Void)?) {
+    func updateImage(_ URL: URL?, transition: Bool, completionHandler: (() -> Void)?) {
         if let dataTask = self.dataTask {
             dataTask.cancel()
             self.dataTask = nil
         }
         
         guard let imageURL = URL else {
-            return UIView.transitionWithView(self, duration: (transition ? 0.5 : 0), options: .TransitionCrossDissolve, animations: { () -> Void in
+            return UIView.transition(with: self, duration: (transition ? 0.5 : 0), options: .transitionCrossDissolve, animations: { () -> Void in
                 self.image = nil
             }, completion: { (completed) -> Void in
                 completionHandler?()
             })
         }
         
-        if let cachedImage = self.imageCache?.objectForKey(imageURL) {
-            UIView.transitionWithView(self, duration: (transition ? 0.5 : 0), options: .TransitionCrossDissolve, animations: { () -> Void in
+        if let cachedImage = self.imageCache?.object(forKey: imageURL as AnyObject) {
+            UIView.transition(with: self, duration: (transition ? 0.5 : 0), options: .transitionCrossDissolve, animations: { () -> Void in
                 self.image = cachedImage as? UIImage
             }, completion: { (completed) -> Void in
                 completionHandler?()
@@ -65,17 +65,17 @@ class RemoteImageView: UIImageView {
             }
             
             self.indicatorView?.startAnimating()
-            self.dataTask = NSURLSession.sharedSession().dataTaskWithURL(imageURL, completionHandler: { (data, response, error) -> Void in
-                dispatch_async(dispatch_get_main_queue(), {
+            self.dataTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) -> Void in
+                DispatchQueue.main.async(execute: {
                     self.indicatorView?.stopAnimating()
-                    guard let data = data where error == nil else {
+                    guard let data = data, error == nil else {
                         completionHandler?()
                         return
                     }
                     
                     if let image = UIImage(data: data) {
-                        self.imageCache?.setObject(image, forKey: imageURL)
-                        UIView.transitionWithView(self, duration: (transition ? 0.5 : 0), options: .TransitionCrossDissolve, animations: { () -> Void in
+                        self.imageCache?.setObject(image, forKey: imageURL as AnyObject)
+                        UIView.transition(with: self, duration: (transition ? 0.5 : 0), options: .transitionCrossDissolve, animations: { () -> Void in
                             self.image = image
                         }, completion: { (completed) -> Void in
                             completionHandler?()

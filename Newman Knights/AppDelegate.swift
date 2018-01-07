@@ -11,14 +11,14 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private var tabBarController: UITabBarController?
-    private var navigationControllers: [UINavigationController] = []
+    fileprivate var tabBarController: UITabBarController?
+    fileprivate var navigationControllers: [UINavigationController] = []
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Global navigation bar settings
-        UINavigationBar.appearance().barStyle = .Black
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigationBar"), forBarMetrics: .Default)
+        UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigationBar"), for: .default)
         
         // Prepare view controllers
         let viewControllers = [
@@ -40,25 +40,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.customizableViewControllers = nil
         self.tabBarController = tabBarController
         
-        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window.backgroundColor = UIColor.whiteColor()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.backgroundColor = .white
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
         
         if #available(iOS 9.0, *) {
-            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
-                self.application(application, performActionForShortcutItem: shortcutItem, completionHandler: {_ in })
+            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+                self.application(application, performActionFor: shortcutItem, completionHandler: {_ in })
             }
         }
         
         return true
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         DataSource.fetchBookmarks { (bookmarks, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                guard let bookmarks = bookmarks where error == nil
+            DispatchQueue.main.async(execute: {
+                guard let bookmarks = bookmarks, error == nil
                     else { return }
                 
                 var navigationControllers = self.navigationControllers
@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         if shortcutItem.type == "org.newmancatholic.knightsapp.shortcut.events" {
             self.tabBarController?.selectedIndex = 1
         } else if shortcutItem.type == "org.newmancatholic.knightsapp.shortcut.grades" {
@@ -95,11 +95,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func imageForBookmarkIcon(icon: Bookmark.Icon) -> UIImage? {
+    fileprivate func imageForBookmarkIcon(_ icon: Bookmark.Icon) -> UIImage? {
         switch icon {
-        case .Default:
+        case .default:
             return UIImage(named: "tabLink")
-        case .Book:
+        case .book:
             return UIImage(named: "tabHandbook")
         }
     }

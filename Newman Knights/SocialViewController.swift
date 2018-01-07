@@ -9,11 +9,11 @@
 import UIKit
 
 class SocialViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate {
-    private weak var tableView: UITableView?
-    private var refreshControl: UIRefreshControl?
-    private var posts: Array<SocialPost> = []
-    private let imageCache: NSCache
-    private let cellIdentifier = "Cell"
+    fileprivate weak var tableView: UITableView?
+    fileprivate var refreshControl: UIRefreshControl?
+    fileprivate var posts: Array<SocialPost> = []
+    fileprivate let imageCache: NSCache<AnyObject, AnyObject>
+    fileprivate let cellIdentifier = "Cell"
     
     init() {
         self.imageCache = NSCache()
@@ -32,9 +32,9 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.hidden = true
+        tableView.isHidden = true
         tableView.estimatedRowHeight = 50
-        tableView.registerClass(Cell.self, forCellReuseIdentifier: self.cellIdentifier)
+        tableView.register(Cell.self, forCellReuseIdentifier: self.cellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
         
@@ -43,9 +43,9 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         }
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "fetch", forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
         tableView.addSubview(refreshControl)
-        tableView.sendSubviewToBack(refreshControl)
+        tableView.sendSubview(toBack: refreshControl)
         self.refreshControl = refreshControl
     }
     
@@ -60,11 +60,11 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         self.fetch()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
-            self.tableView?.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+            self.tableView?.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
     
@@ -72,11 +72,11 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         super.fetch()
         
         DataSource.fetchSocialPosts(35) { (posts, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.refreshControl?.endRefreshing()
                 
-                guard let posts = posts where error == nil else {
-                    self.tableView?.hidden = true
+                guard let posts = posts, error == nil else {
+                    self.tableView?.isHidden = true
                     let fallbackError = NSError(
                         domain: NSURLErrorDomain,
                         code: NSURLErrorUnknown,
@@ -88,39 +88,39 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
                 self.posts = posts
                 self.fetchFinished(nil)
                 self.tableView?.reloadData()
-                self.tableView?.hidden = false
+                self.tableView?.isHidden = false
             })
         }
     }
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Cell.heightForPost(self.posts[indexPath.row], contentWidth: tableView.bounds.size.width)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! Cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! Cell
         cell.imageCache = self.imageCache
         cell.post = self.posts[indexPath.row]
         return cell
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.posts[indexPath.row].openInExternalApplication()
     }
     
     // MARK: Table View Cell
     class Cell: UITableViewCell {
-        private let avatarImageView: RemoteImageView
-        private let displayNameLabel: UILabel
-        private let contentLabel: UILabel
-        private let dateLabel: UILabel
+        fileprivate let avatarImageView: RemoteImageView
+        fileprivate let displayNameLabel: UILabel
+        fileprivate let contentLabel: UILabel
+        fileprivate let dateLabel: UILabel
         
         var post: SocialPost? {
             didSet {
@@ -147,11 +147,11 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
                 }
                 
                 self.contentLabel.text = post.content
-                self.dateLabel.text = MHPrettyDate.prettyDateFromDate(post.creationDate, withFormat: MHPrettyDateLongRelativeTime)
+                self.dateLabel.text = MHPrettyDate.prettyDate(from: post.creationDate, with: MHPrettyDateLongRelativeTime)
             }
         }
         
-        var imageCache: NSCache? {
+        var imageCache: NSCache<AnyObject, AnyObject>? {
             get {
                 return self.avatarImageView.imageCache
             }
@@ -161,7 +161,7 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         }
         
         override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-            self.avatarImageView = RemoteImageView(frame: CGRectZero)
+            self.avatarImageView = RemoteImageView(frame: .zero)
             self.displayNameLabel = UILabel()
             self.contentLabel = UILabel()
             self.dateLabel = UILabel()
@@ -172,14 +172,14 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
             self.avatarImageView.layer.cornerRadius = 6
             self.contentView.addSubview(self.avatarImageView)
             
-            self.displayNameLabel.font = self.dynamicType.displayNameFont()
+            self.displayNameLabel.font = type(of: self).displayNameFont()
             self.contentView.addSubview(self.displayNameLabel)
             
             self.contentLabel.numberOfLines = 0
-            self.contentLabel.font = self.dynamicType.contentFont()
+            self.contentLabel.font = type(of: self).contentFont()
             self.contentView.addSubview(self.contentLabel)
             
-            self.dateLabel.font = self.dynamicType.contentFont()
+            self.dateLabel.font = type(of: self).contentFont()
             self.dateLabel.textColor = UIColor(white: 0.5, alpha: 1)
             self.contentView.addSubview(self.dateLabel)
         }
@@ -199,18 +199,18 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            let margin = self.dynamicType.contentInsets()
-            let avatarSize = self.dynamicType.avatarSize()
-            let width = CGRectGetWidth(self.bounds)
+            let margin = type(of: self).contentInsets()
+            let avatarSize = type(of: self).avatarSize()
+            let width = self.bounds.width
             let labelWidth = (width - margin.left - margin.right)
-            let dateFittingSize = self.dateLabel.sizeThatFits(CGSizeMake(labelWidth, CGFloat.max))
-            let dateFrame = CGRectMake(width - dateFittingSize.width - margin.right, margin.top, dateFittingSize.width, dateFittingSize.height)
-            let displayNameFittingSize = self.displayNameLabel.sizeThatFits(CGSizeMake(labelWidth - CGRectGetWidth(dateFrame) - 20, CGFloat.max))
-            let displayNameFrame = CGRectMake(margin.left, margin.top, labelWidth - CGRectGetWidth(dateFrame) - 20, displayNameFittingSize.height)
-            let contentFittingSize = self.contentLabel.sizeThatFits(CGSizeMake(labelWidth, CGFloat.max))
-            let contentFrame = CGRectMake(margin.left, CGRectGetMaxY(displayNameFrame) + 2, labelWidth, contentFittingSize.height)
+            let dateFittingSize = self.dateLabel.sizeThatFits(CGSize(width: labelWidth, height: .greatestFiniteMagnitude))
+            let dateFrame = CGRect(x: width - dateFittingSize.width - margin.right, y: margin.top, width: dateFittingSize.width, height: dateFittingSize.height)
+            let displayNameFittingSize = self.displayNameLabel.sizeThatFits(CGSize(width: labelWidth - dateFrame.width - 20, height: .greatestFiniteMagnitude))
+            let displayNameFrame = CGRect(x: margin.left, y: margin.top, width: labelWidth - dateFrame.width - 20, height: displayNameFittingSize.height)
+            let contentFittingSize = self.contentLabel.sizeThatFits(CGSize(width: labelWidth, height: .greatestFiniteMagnitude))
+            let contentFrame = CGRect(x: margin.left, y: displayNameFrame.maxY + 2, width: labelWidth, height: contentFittingSize.height)
             
-            self.avatarImageView.frame = CGRectMake(10, margin.top, avatarSize.width, avatarSize.height)
+            self.avatarImageView.frame = CGRect(x: 10, y: margin.top, width: avatarSize.width, height: avatarSize.height)
             self.displayNameLabel.frame = displayNameFrame
             self.contentLabel.frame = contentFrame
             self.dateLabel.frame = dateFrame
@@ -222,40 +222,40 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         }
         
         class func avatarSize() -> CGSize {
-            return CGSizeMake(50, 50)
+            return CGSize(width: 50, height: 50)
         }
         
         class func displayNameFont() -> UIFont {
-            return UIFont.boldSystemFontOfSize(15)
+            return UIFont.boldSystemFont(ofSize: 15)
         }
         
         class func contentFont() -> UIFont {
-            return UIFont.systemFontOfSize(14)
+            return UIFont.systemFont(ofSize: 14)
         }
         
-        class func heightForPost(post: SocialPost, contentWidth: CGFloat) -> CGFloat {
+        class func heightForPost(_ post: SocialPost, contentWidth: CGFloat) -> CGFloat {
             let margins = self.contentInsets()
             let availableWidth = (contentWidth - margins.left - margins.right)
             var totalHeight = (margins.top + margins.bottom)
             
-            totalHeight += post.content.boundingRectWithSize(
-                CGSizeMake(availableWidth, CGFloat.max),
-                options: [.UsesLineFragmentOrigin],
+            totalHeight += post.content.boundingRect(
+                with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin],
                 attributes: [NSFontAttributeName: self.contentFont()],
                 context: nil
             ).height
             
             if let displayName = post.author.displayName {
-                totalHeight += (displayName.boundingRectWithSize(
-                    CGSizeMake(availableWidth, CGFloat.max),
-                    options: [.UsesLineFragmentOrigin],
+                totalHeight += (displayName.boundingRect(
+                    with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
+                    options: [.usesLineFragmentOrigin],
                     attributes: [NSFontAttributeName: self.displayNameFont()],
                     context: nil
                 ).height + 2)
             } else if let username = post.author.username {
-                totalHeight += (username.boundingRectWithSize(
-                    CGSizeMake(availableWidth, CGFloat.max),
-                    options: [.UsesLineFragmentOrigin],
+                totalHeight += (username.boundingRect(
+                    with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
+                    options: [.usesLineFragmentOrigin],
                     attributes: [NSFontAttributeName: self.displayNameFont()],
                     context: nil
                 ).height + 2)

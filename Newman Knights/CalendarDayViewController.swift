@@ -9,21 +9,21 @@
 import UIKit
 
 class CalendarDayViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate {
-    let date: NSDate
-    private var events: Array<Event> = []
-    private weak var tableView: UITableView?
-    private let eventCellIdentifier = "Event"
-    private let emptyCellIdentifier = "Empty"
+    let date: Date
+    fileprivate var events: Array<Event> = []
+    fileprivate weak var tableView: UITableView?
+    fileprivate let eventCellIdentifier = "Event"
+    fileprivate let emptyCellIdentifier = "Empty"
     
-    init(date: NSDate) {
+    init(date: Date) {
         self.date = date
         super.init(nibName: nil, bundle: nil)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .MediumStyle
-        dateFormatter.timeStyle = .NoStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         
-        self.title = dateFormatter.stringFromDate(date)
+        self.title = dateFormatter.string(from: date)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,15 +33,15 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "fetch")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetch))
         
-        let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.hidden = true
+        tableView.isHidden = true
         tableView.rowHeight = 55
-        tableView.registerClass(EventCell.self, forCellReuseIdentifier: self.eventCellIdentifier)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.emptyCellIdentifier)
+        tableView.register(EventCell.self, forCellReuseIdentifier: self.eventCellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.emptyCellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
     }
@@ -51,11 +51,11 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
         self.tableView?.frame = self.view.bounds
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
-            self.tableView?.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+            self.tableView?.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
     
@@ -65,52 +65,52 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
     }
     
     override func fetch() {
-        self.tableView?.hidden = true
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        self.tableView?.isHidden = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         super.fetch()
         
-        EventCalendar.fetchEvents(self.date) { (events, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                guard let events = events where error == nil else {
+        _ = EventCalendar.fetchEvents(self.date) { (events, error) -> Void in
+            DispatchQueue.main.async(execute: {
+                guard let events = events, error == nil else {
                     return self.fetchFinished(error)
                 }
                 
                 self.events = events
                 self.fetchFinished(nil)
                 self.tableView?.reloadData()
-                self.tableView?.hidden = false
+                self.tableView?.isHidden = false
             })
         }
     }
     
-    override func fetchFinished(error: NSError?) {
+    override func fetchFinished(_ error: Error?) {
         super.fetchFinished(error)
-        self.navigationItem.rightBarButtonItem?.enabled = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return max(self.events.count, 1)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.events.count == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.emptyCellIdentifier, forIndexPath: indexPath)
-            cell.backgroundColor = UIColor.clearColor()
-            cell.selectionStyle = .None
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.emptyCellIdentifier, for: indexPath)
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
             cell.textLabel?.textColor = UIColor(white: 0, alpha: 0.4)
-            cell.textLabel?.textAlignment = .Center
+            cell.textLabel?.textAlignment = .center
             cell.textLabel?.text = "No events occur on this day."
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.eventCellIdentifier, forIndexPath: indexPath) as! EventCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.eventCellIdentifier, for: indexPath) as! EventCell
             cell.event = self.events[indexPath.row]
             return cell
         }
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.events.count > 0 {
             let viewController = CalendarEventViewController(event: self.events[indexPath.row])
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -119,7 +119,7 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
     
     // MARK: Event Cell
     class EventCell: UITableViewCell {
-        private let dateFormatter: NSDateFormatter
+        fileprivate let dateFormatter: DateFormatter
         
         var dateFormat = "h:mm a" {
             didSet {
@@ -139,10 +139,10 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
         }
         
         override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-            self.dateFormatter = NSDateFormatter()
+            self.dateFormatter = DateFormatter()
             self.dateFormatter.dateFormat = self.dateFormat
-            super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-            self.accessoryType = .DisclosureIndicator
+            super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+            self.accessoryType = .disclosureIndicator
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -154,28 +154,28 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
             var eventDetails = Array<String>()
             
             if let startDate = event.startDate {
-                let startTime = self.dateFormatter.stringFromDate(startDate)
+                let startTime = self.dateFormatter.string(from: startDate)
                 if startTime != "12:00 AM" {
                     eventDetails.append(startTime)
                 }
             }
             
-            if let location = event.location where location.characters.count > 0 {
+            if let location = event.location, location.characters.count > 0 {
                 if location != "Newman Catholic" {
                     eventDetails.append("@ " + location)
                 }
             }
             
-            if let details = event.details where eventDetails.count == 0 {
+            if let details = event.details, eventDetails.count == 0 {
                 eventDetails.append(details)
             }
             
-            if let status = event.status where status.characters.count > 0 {
+            if let status = event.status, status.characters.count > 0 {
                 eventDetails.append("(" + status + ")")
             }
             
             self.textLabel?.text = event.computedTitle()
-            self.detailTextLabel?.text = eventDetails.joinWithSeparator(" ")
+            self.detailTextLabel?.text = eventDetails.joined(separator: " ")
         }
     }
 }

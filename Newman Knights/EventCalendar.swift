@@ -9,34 +9,34 @@
 import Foundation
 
 class EventCalendar {
-    let calendar: NSCalendar
+    let calendar: Calendar
     
-    private var datesBeingFetched: Set<NSDate>
-    private var datesAlreadyFetched: Dictionary<NSDate, NSDate>
-    private var datesContainingEvents: Set<NSDate>
+    fileprivate var datesBeingFetched: Set<Date>
+    fileprivate var datesAlreadyFetched: Dictionary<Date, Date>
+    fileprivate var datesContainingEvents: Set<Date>
     
     init() {
-        self.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        self.calendar = Calendar(identifier: .gregorian)
         self.datesBeingFetched = Set()
         self.datesAlreadyFetched = Dictionary()
         self.datesContainingEvents = Set()
     }
     
     // MARK: Class Methods
-    class func fetchEvents(date: NSDate, completionHandler: (events: Array<Event>?, error: NSError?) -> Void) -> (() -> Void)? {
-        let monthYearFormatter = NSDateFormatter()
+    class func fetchEvents(_ date: Date, completionHandler: @escaping (_ events: Array<Event>?, _ error: Error?) -> Void) -> (() -> Void)? {
+        let monthYearFormatter = DateFormatter()
         monthYearFormatter.dateFormat = "MM-yyyy"
         
-        let dayFormatter = NSDateFormatter()
+        let dayFormatter = DateFormatter()
         dayFormatter.dateFormat = "dd"
         
         return self.fetchEvents([
-            "ff_month_year": monthYearFormatter.stringFromDate(date),
-            "ffDay": dayFormatter.stringFromDate(date)
+            "ff_month_year": monthYearFormatter.string(from: date),
+            "ffDay": dayFormatter.string(from: date)
             ], completionHandler: completionHandler)
     }
     
-    class func fetchEvents(query: String, completionHandler: (events: Array<Event>?, error: NSError?) -> Void) -> (() -> Void)? {
+    class func fetchEvents(_ query: String, completionHandler: @escaping (_ events: Array<Event>?, _ error: Error?) -> Void) -> (() -> Void)? {
         return self.fetchEvents([
             "G5statusflag": "view",
             "vw_schoolyear": "1",
@@ -44,28 +44,28 @@ class EventCalendar {
             ], completionHandler: completionHandler)
     }
     
-    private class func fetchEvents(parameters: Dictionary<String, String>, completionHandler: (events: Array<Event>?, error: NSError?) -> Void) -> (() -> Void)? {
+    fileprivate class func fetchEvents(_ parameters: Dictionary<String, String>, completionHandler: @escaping (_ events: Array<Event>?, _ error: Error?) -> Void) -> (() -> Void)? {
         var queryItems = [
-            NSURLQueryItem(name: "G5genie", value: "97"),
-            NSURLQueryItem(name: "school_id", value: "5"),
-            NSURLQueryItem(name: "XMLCalendar", value: "6")
+            URLQueryItem(name: "G5genie", value: "97"),
+            URLQueryItem(name: "school_id", value: "5"),
+            URLQueryItem(name: "XMLCalendar", value: "6")
         ]
         
         for (key, value) in parameters {
-            queryItems.append(NSURLQueryItem(name: key, value: value))
+            queryItems.append(URLQueryItem(name: key, value: value))
         }
         
-        let URLComponents = NSURLComponents(string: "http://www.northiowaconference.org/g5-bin/client.cgi")!
-        URLComponents.queryItems = queryItems
+        var fetchURLComponents = URLComponents(string: "http://www.northiowaconference.org/g5-bin/client.cgi")!
+        fetchURLComponents.queryItems = queryItems
         
-        guard let URL = URLComponents.URL else {
-            completionHandler(events: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
+        guard let fetchURL = fetchURLComponents.url else {
+            completionHandler(nil, NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
             return nil
         }
         
-        let dataTask = NSURLSession.sharedSession().dataTaskWithURL(URL) { (data, response, error) -> Void in
-            guard let data = data where error == nil
-                else { return completionHandler(events: nil, error: error) }
+        let dataTask = URLSession.shared.dataTask(with: fetchURL, completionHandler: { (data, response, error) -> Void in
+            guard let data = data, error == nil
+                else { return completionHandler(nil, error) }
             
             let xml = SWXMLHash.config({ config in
                 config.shouldProcessNamespaces = true
@@ -73,7 +73,7 @@ class EventCalendar {
             
             var events = Array<Event>()
             for eventIndexer in xml["schema"]["element"] {
-                guard let eventElement = eventIndexer.element where eventElement.attributes["name"] == "event"
+                guard let eventElement = eventIndexer.element, eventElement.attributes["name"] == "event"
                     else { continue }
                 
                 var event = Event()
@@ -104,27 +104,27 @@ class EventCalendar {
                     } else if name == "level" {
                         event.gradeLevel = text
                     } else if name == "gender" {
-                        event.gender = text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                        event.gender = text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                     } else if name == "status" {
-                        event.status = text?.stringByReplacingOccurrencesOfString("(", withString: "").stringByReplacingOccurrencesOfString(")", withString: "")
+                        event.status = text?.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
                     } else if name == "homeaway" {
                         event.away = (text == "Away")
                     } else if name == "location" {
                         for locationIndexer in detailIndexer["complexType"]["sequence"]["element"] {
-                            guard let locationElement = locationIndexer.element where locationElement.attributes["name"] == "name"
+                            guard let locationElement = locationIndexer.element, locationElement.attributes["name"] == "name"
                                 else { continue }
                             
-                            event.location = locationElement.text?.stringByReplacingOccurrencesOfString("@ ", withString: "")
+                            event.location = locationElement.text?.replacingOccurrences(of: "@ ", with: "")
                         }
                     } else if name == "opponent" {
-                        if let text = text where detailElement.attributes["type"] == "xsd:string" {
-                            event.opponents = text.componentsSeparatedByString(",")
+                        if let text = text, detailElement.attributes["type"] == "xsd:string" {
+                            event.opponents = text.components(separatedBy: ",")
                         }
                     } else if name == "comment" {
                         for commentIndexer in detailIndexer["complexType"]["sequence"]["element"] {
                             guard let commentElement = commentIndexer.element
                                 else { continue }
-                            guard let commentText = commentElement.text where commentText.characters.count > 0
+                            guard let commentText = commentElement.text, commentText.characters.count > 0
                                 else { continue }
                             
                             if let details = event.details {
@@ -145,37 +145,37 @@ class EventCalendar {
                 }
                 
                 // Start & end dates
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 let dateFormat = (parameters["G5statusflag"] == "view" ? "MM-dd-yy" : "yyyy-MM-dd")
                 
                 if var startDate = eventDate {
                     dateFormatter.dateFormat = dateFormat
                     
-                    if let startTime = startTime where startTime.rangeOfString(":") != nil {
+                    if let startTime = startTime, startTime.range(of: ":") != nil {
                         startDate += " " + startTime
                         dateFormatter.dateFormat = dateFormat + " hh:mma"
                     }
                     
-                    event.startDate = dateFormatter.dateFromString(startDate)
+                    event.startDate = dateFormatter.date(from: startDate)
                 }
                 
                 if var endDate = eventDate {
                     dateFormatter.dateFormat = dateFormat
                     
-                    if let endTime = endTime where endTime.rangeOfString(":") != nil {
+                    if let endTime = endTime, endTime.range(of: ":") != nil {
                         endDate += " " + endTime
                         dateFormatter.dateFormat = dateFormat + " hh:mma"
                     }
                     
-                    event.endDate = dateFormatter.dateFromString(endDate)
+                    event.endDate = dateFormatter.date(from: endDate)
                 }
                 
                 // Append the event
                 events.append(event)
             }
             
-            completionHandler(events: events, error: nil)
-        }
+            completionHandler(events, nil)
+        })
         
         dataTask.resume()
         
@@ -185,58 +185,58 @@ class EventCalendar {
     }
     
     // MARK: Instance Methods
-    func fetchEventOccurrences(month: NSDate, completionHandler: (fetched: Bool, error: NSError?) -> Void) {
-        guard let beginningOfMonth = self.calendar.dateBySettingUnit(.Day, value: 1, ofDate: month, options: [])
-            else { return completionHandler(fetched: false, error: nil) }
+    func fetchEventOccurrences(_ month: Date, completionHandler: @escaping (_ fetched: Bool, _ error: Error?) -> Void) {
+        guard let beginningOfMonth = self.calendar.date(bySetting: .day, value: 1, of: month)
+            else { return completionHandler(false, nil) }
         
-        let fromDate = self.calendar.startOfDayForDate(beginningOfMonth)
+        let fromDate = self.calendar.startOfDay(for: beginningOfMonth)
         if let lastFetchDate = self.datesAlreadyFetched[fromDate] {
-            if NSDate().timeIntervalSinceDate(lastFetchDate) < 60 * 10 {
+            if Date().timeIntervalSince(lastFetchDate) < 60 * 10 {
                 // If this month was fetched within last 10 minutes, use cache
-                return completionHandler(fetched: false, error: nil)
+                return completionHandler(false, nil)
             }
         }
         
         if self.datesBeingFetched.contains(fromDate) {
-            return completionHandler(fetched: false, error: nil)
+            return completionHandler(false, nil)
         } else {
             self.datesBeingFetched.insert(fromDate)
         }
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let URL = NSURL(string: String(format: "http://srv2.advancedview.rschooltoday.com/public/conference/calendar/type/xml/G5genie/97/G5button/13/school_id/5/preview/no/vw_activity/0/vw_conference_events/1/vw_non_conference_events/1/vw_homeonly/1/vw_awayonly/1/vw_schoolonly/1/vw_gender/1/vw_type/0/vw_level/0/vw_opponent/0/opt_show_location/1/opt_show_comments/1/opt_show_bus_times/1/vw_location/0/vw_period/month-yr/vw_month2/%@/vw_monthCnt/01/vw_school_year/0/sortType/time/expandView/1/listact/0/dontshowlocation/1/", dateFormatter.stringFromDate(fromDate)))!
+        let fetchURL = URL(string: String(format: "http://srv2.advancedview.rschooltoday.com/public/conference/calendar/type/xml/G5genie/97/G5button/13/school_id/5/preview/no/vw_activity/0/vw_conference_events/1/vw_non_conference_events/1/vw_homeonly/1/vw_awayonly/1/vw_schoolonly/1/vw_gender/1/vw_type/0/vw_level/0/vw_opponent/0/opt_show_location/1/opt_show_comments/1/opt_show_bus_times/1/vw_location/0/vw_period/month-yr/vw_month2/%@/vw_monthCnt/01/vw_school_year/0/sortType/time/expandView/1/listact/0/dontshowlocation/1/", dateFormatter.string(from: fromDate)))!
         
-        NSURLSession.sharedSession().dataTaskWithURL(URL) { (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: fetchURL, completionHandler: { (data, response, error) -> Void in
             self.datesBeingFetched.remove(fromDate)
             
-            guard let data = data where error == nil
-                else { return completionHandler(fetched: true, error: error) }
+            guard let data = data, error == nil
+                else { return completionHandler(true, error) }
             
             dateFormatter.dateFormat = "EEE, dd MMMM yyyy HH:mm:ss Z"
-            dateFormatter.locale = NSLocale(localeIdentifier: "en")
+            dateFormatter.locale = Locale(identifier: "en")
             
             // Fetch succeeded
             let xml = SWXMLHash.parse(data)
             for eventIndexer in xml["rss"]["channel"]["item"] {
                 guard let eventElement = eventIndexer.element else { continue }
-                for childElement in eventElement.children {
-                    if let text = childElement.text where childElement.name == "pubDate" {
-                        if let pubDate = dateFormatter.dateFromString(text) {
-                            self.datesContainingEvents.insert(self.calendar.startOfDayForDate(pubDate))
+                for childElement in eventElement.xmlChildren {
+                    if let text = childElement.text, childElement.name == "pubDate" {
+                        if let pubDate = dateFormatter.date(from: text) {
+                            self.datesContainingEvents.insert(self.calendar.startOfDay(for: pubDate))
                         }
                         break
                     }
                 }
             }
             
-            self.datesAlreadyFetched[fromDate] = NSDate()
-            completionHandler(fetched: true, error: nil)
-        }.resume()
+            self.datesAlreadyFetched[fromDate] = Date()
+            completionHandler(true, nil)
+        }).resume()
     }
     
-    func eventsOccurOnDate(date: NSDate) -> Bool {
-        return self.datesContainingEvents.contains(self.calendar.startOfDayForDate(date))
+    func eventsOccurOnDate(_ date: Date) -> Bool {
+        return self.datesContainingEvents.contains(self.calendar.startOfDay(for: date))
     }
 }

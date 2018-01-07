@@ -10,14 +10,14 @@ import UIKit
 import MapKit
 
 class ContactViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
-    private let address: String
-    private let phoneNumber: String
-    private let location: CLLocationCoordinate2D
+    fileprivate let address: String
+    fileprivate let phoneNumber: String
+    fileprivate let location: CLLocationCoordinate2D
     
-    private weak var mapView: MKMapView?
-    private weak var tableView: UITableView?
-    private var annotation: MKPointAnnotation?
-    private let cellIdentifier = "Cell"
+    fileprivate weak var mapView: MKMapView?
+    fileprivate weak var tableView: UITableView?
+    fileprivate var annotation: MKPointAnnotation?
+    fileprivate let cellIdentifier = "Cell"
     
     init() {
         self.address = AppConfiguration.School.Address
@@ -35,11 +35,11 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
     override func loadView() {
         super.loadView()
         
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
         
         let mapView = MKMapView()
-        mapView.mapType = .Hybrid
+        mapView.mapType = .hybrid
         mapView.delegate = self
         self.view.addSubview(mapView)
         self.mapView = mapView
@@ -51,10 +51,10 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
         mapView.addAnnotation(annotation)
         self.annotation = annotation
         
-        let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
     }
@@ -62,19 +62,19 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let viewWidth = CGRectGetWidth(self.view.bounds)
-        let viewHeight = CGRectGetHeight(self.view.bounds)
-        let mapViewFrame = CGRectMake(0, 0, viewWidth, (self.traitCollection.horizontalSizeClass == .Regular ? 325 : 150))
+        let viewWidth = self.view.bounds.width
+        let viewHeight = self.view.bounds.height
+        let mapViewFrame = CGRect(x: 0, y: 0, width: viewWidth, height: (self.traitCollection.horizontalSizeClass == .regular ? 325 : 150))
         
         self.mapView?.frame = mapViewFrame
-        self.tableView?.frame = CGRectMake(0, CGRectGetMaxY(mapViewFrame), viewWidth, viewHeight - CGRectGetMaxY(mapViewFrame))
+        self.tableView?.frame = CGRect(x: 0, y: mapViewFrame.maxY, width: viewWidth, height: viewHeight - mapViewFrame.maxY)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
-            self.tableView?.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+            self.tableView?.deselectRow(at: selectedIndexPath, animated: true)
         }
         
         self.mapView?.region = MKCoordinateRegionMake(self.location, MKCoordinateSpanMake(0.0005, 0.0005))
@@ -82,29 +82,29 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     // MARK: MKMapViewDelegate
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "Pin"
-        if let reusedAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) {
+        if let reusedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
             return reusedAnnotationView
         } else {
             let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView.canShowCallout = true
             annotationView.animatesDrop = true
-            annotationView.pinColor = .Green
+            annotationView.pinColor = .green
             return annotationView
         }
     }
     
     // MARK: UITableViewDataSource
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (section == 0 ? 2 : 3)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 1 {
             return 65
         } else {
@@ -112,10 +112,10 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
         cell.textLabel?.numberOfLines = 1
-        cell.accessoryType = .None
+        cell.accessoryType = .none
         
         if indexPath.section == 0 {
             if indexPath.row == 0 {
@@ -127,7 +127,7 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.imageView?.image = UIImage(named: "contactIconLocation")
             }
         } else {
-            cell.accessoryType = .DisclosureIndicator
+            cell.accessoryType = .disclosureIndicator
             cell.imageView?.image = UIImage(named: "contactIconMail")
             
             if indexPath.row == 0 {
@@ -143,37 +143,37 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             
             if indexPath.row == 0 {
-                let phoneURL = NSURL(string: "tel://" + self.phoneNumber.stringByRemovingPercentEncoding!)!
+                let phoneURL = URL(string: "tel://" + self.phoneNumber.removingPercentEncoding!)!
                 
-                if UIApplication.sharedApplication().canOpenURL(phoneURL) {
-                    UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + self.phoneNumber.stringByRemovingPercentEncoding!)!)
+                if UIApplication.shared.canOpenURL(phoneURL) {
+                    UIApplication.shared.openURL(URL(string: "tel://" + self.phoneNumber.removingPercentEncoding!)!)
                 } else {
                     let alertController = UIAlertController(
                         title: "Cannot Place Call",
                         message: "This device does not support placing phone calls.",
-                        preferredStyle: .Alert
+                        preferredStyle: .alert
                     )
-                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 }
             } else {
                 let placemark = MKPlacemark(coordinate: self.location, addressDictionary: nil)
                 let mapItem = MKMapItem(placemark: placemark)
                 mapItem.name = AppConfiguration.School.Title
-                mapItem.openInMapsWithLaunchOptions(nil)
+                mapItem.openInMaps(launchOptions: nil)
             }
         } else if indexPath.section == 1 {
-            var directory: Contact.Directory = .Faculty
+            var directory: Contact.Directory = .faculty
             
             if indexPath.row == 0 {
-                directory = .Administration
+                directory = .administration
             } else if indexPath.row == 1 {
-                directory = .Office
+                directory = .office
             }
             
             self.navigationController?.pushViewController(DirectoryViewController(directory: directory), animated: true)

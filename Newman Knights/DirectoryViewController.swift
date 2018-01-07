@@ -10,9 +10,9 @@ import UIKit
 import MessageUI
 
 class DirectoryViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
-    private let directory: Contact.Directory
-    private var contacts: Array<Contact> = []
-    private weak var tableView: UITableView?
+    fileprivate let directory: Contact.Directory
+    fileprivate var contacts: Array<Contact> = []
+    fileprivate weak var tableView: UITableView?
     
     init(directory: Contact.Directory) {
         self.directory = directory
@@ -27,21 +27,21 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
         super.loadView()
         
         switch self.directory {
-        case .Administration:
+        case .administration:
             self.title = "Administration"
-        case .Office:
+        case .office:
             self.title = "Office"
-        case .Faculty:
+        case .faculty:
             self.title = "Teachers"
         }
         
-        let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.hidden = true
+        tableView.isHidden = true
         tableView.rowHeight = 50
         self.view.addSubview(tableView)
-        self.view.sendSubviewToBack(tableView)
+        self.view.sendSubview(toBack: tableView)
         self.tableView = tableView
     }
     
@@ -52,16 +52,16 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.performSelector("fetch", withObject: nil, afterDelay: 0.2)
+        self.perform(#selector(fetch), with: nil, afterDelay: 0.2)
     }
     
     override func fetch() {
-        self.tableView?.hidden = true
+        self.tableView?.isHidden = true
         super.fetch()
         
         DataSource.fetchContacts(self.directory) { (contacts, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                guard let contacts = contacts where error == nil else {
+            DispatchQueue.main.async(execute: {
+                guard let contacts = contacts, error == nil else {
                     let fallbackError = NSError(
                         domain: NSURLErrorDomain,
                         code: NSURLErrorUnknown,
@@ -73,23 +73,23 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
                 self.contacts = contacts
                 self.fetchFinished(nil)
                 self.tableView?.reloadData()
-                self.tableView?.hidden = false
+                self.tableView?.isHidden = false
             })
         }
     }
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.contacts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-            cell?.accessoryType = .DisclosureIndicator
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+            cell?.accessoryType = .disclosureIndicator
         }
         
         let contact = self.contacts[indexPath.row]
@@ -100,8 +100,8 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let contact = self.contacts[indexPath.row]
         let email = "\"" + contact.name + "\" <" + contact.email + ">"
@@ -110,18 +110,18 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
             let viewController = MFMailComposeViewController()
             viewController.mailComposeDelegate = self
             viewController.setToRecipients([email])
-            viewController.navigationBar.barStyle = .Black
-            viewController.navigationBar.tintColor = UIColor.whiteColor()
-            self.presentViewController(viewController, animated: true, completion: { () -> Void in
-                UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+            viewController.navigationBar.barStyle = .black
+            viewController.navigationBar.tintColor = .white
+            self.present(viewController, animated: true, completion: { () -> Void in
+                UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
             })
-        } else if let mailtoURL = NSURL(string: "mailto://" + contact.email) {
-            UIApplication.sharedApplication().openURL(mailtoURL)
+        } else if let mailtoURL = URL(string: "mailto://" + contact.email) {
+            UIApplication.shared.openURL(mailtoURL)
         }
     }
     
     // MARK: MFMailComposeViewControllerDelegate
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

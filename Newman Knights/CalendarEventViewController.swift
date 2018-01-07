@@ -10,13 +10,13 @@ import UIKit
 
 class CalendarEventViewController: UITableViewController {
     let event: Event
-    private let detailsCellIdentifier = "Details"
-    private let locationCellIdentifier = "Location"
-    private let opponentsCellIdentifier = "Opponents"
+    fileprivate let detailsCellIdentifier = "Details"
+    fileprivate let locationCellIdentifier = "Location"
+    fileprivate let opponentsCellIdentifier = "Opponents"
     
     init(event: Event) {
         self.event = event
-        super.init(style: .Grouped)
+        super.init(style: .grouped)
         self.title = "Event Details"
     }
     
@@ -27,27 +27,27 @@ class CalendarEventViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sharePressed")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
         self.tableView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.tableView.separatorColor = UIColor(red: 200/255, green: 199/255, blue: 204/255, alpha: 1)
-        self.tableView.registerClass(DetailsCell.self, forCellReuseIdentifier: self.detailsCellIdentifier)
-        self.tableView.registerClass(DetailsCell.self, forCellReuseIdentifier: self.opponentsCellIdentifier)
-        self.tableView.registerClass(LocationCell.self, forCellReuseIdentifier: self.locationCellIdentifier)
+        self.tableView.register(DetailsCell.self, forCellReuseIdentifier: self.detailsCellIdentifier)
+        self.tableView.register(DetailsCell.self, forCellReuseIdentifier: self.opponentsCellIdentifier)
+        self.tableView.register(LocationCell.self, forCellReuseIdentifier: self.locationCellIdentifier)
     }
     
     func sharePressed() {
         if let identifier = self.event.identifier {
-            let URL = NSURL(string: "http://www.northiowaconference.org/g5-bin/client.cgi?cwellOnly=1&G5statusflag=view_note&schoolname=&school_id=5&G5button=13&G5genie=97&view_id=" + identifier)!
-            let viewController = UIActivityViewController(activityItems: [URL], applicationActivities: nil)
-            self.presentViewController(viewController, animated: true, completion: nil)
+            let shareURL = URL(string: "http://www.northiowaconference.org/g5-bin/client.cgi?cwellOnly=1&G5statusflag=view_note&schoolname=&school_id=5&G5button=13&G5genie=97&view_id=" + identifier)!
+            let viewController = UIActivityViewController(activityItems: [shareURL], applicationActivities: nil)
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     
     // MARK: UITableViewDataSource
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 1
         
-        if let location = self.event.location where location.characters.count > 0 {
+        if let location = self.event.location, location.characters.count > 0 {
             rows += 1
         }
         
@@ -58,7 +58,7 @@ class CalendarEventViewController: UITableViewController {
         return rows
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             let attributedString = DetailsCell.attributedStringFromEvent(self.event)
             return DetailsCell.heightWithAttributedString(attributedString, contentWidth: tableView.bounds.size.width - 20)
@@ -70,35 +70,35 @@ class CalendarEventViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.detailsCellIdentifier, forIndexPath: indexPath) as! DetailsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.detailsCellIdentifier, for: indexPath) as! DetailsCell
             cell.textLabel?.attributedText = DetailsCell.attributedStringFromEvent(self.event)
             return cell
         } else if indexPath.row == 1 && self.event.location != nil {
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.locationCellIdentifier, forIndexPath: indexPath) as! LocationCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.locationCellIdentifier, for: indexPath) as! LocationCell
             cell.textLabel?.text = "Location"
             cell.detailTextLabel?.text = self.event.location!
             
             if self.event.location != "TBA" {
-                cell.accessoryType = .DisclosureIndicator
+                cell.accessoryType = .disclosureIndicator
             }
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.opponentsCellIdentifier, forIndexPath: indexPath) as! DetailsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.opponentsCellIdentifier, for: indexPath) as! DetailsCell
             cell.textLabel?.attributedText = DetailsCell.attributedStringFromOpponents(self.event.opponents)
             return cell
         }
     }
     
     // MARK: UITableViewDelegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 1 {
-            if let location = self.event.location where location.characters.count > 0 && location != "TBA" {
-                UIApplication.sharedApplication().openURL(NSURL(string: "https://maps.apple.com/maps?q=" + location.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!)
+            if let location = self.event.location, location.characters.count > 0 && location != "TBA" {
+                UIApplication.shared.openURL(URL(string: "https://maps.apple.com/maps?q=" + location.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!)
             }
         }
     }
@@ -107,7 +107,7 @@ class CalendarEventViewController: UITableViewController {
     class DetailsCell: UITableViewCell {
         override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
-            self.selectionStyle = .None
+            self.selectionStyle = .none
             self.textLabel?.numberOfLines = 0
         }
         
@@ -115,55 +115,55 @@ class CalendarEventViewController: UITableViewController {
             fatalError("init(coder:) has not been implemented")
         }
         
-        private class func dateStringForEvent(event: Event) -> String? {
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .LongStyle
+        fileprivate class func dateStringForEvent(_ event: Event) -> String? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
             
-            let timeFormatter = NSDateFormatter()
+            let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "h:mm a"
             
             var dateString = ""
             
             if let startDate = event.startDate {
-                dateString = dateFormatter.stringFromDate(startDate)
+                dateString = dateFormatter.string(from: startDate)
                 
-                let startTime = timeFormatter.stringFromDate(startDate)
+                let startTime = timeFormatter.string(from: startDate)
                 if startTime != "12:00 AM" {
                     dateString += "\n" + startTime
                 }
                 
                 if let endDate = event.endDate {
-                    let endTime = timeFormatter.stringFromDate(endDate)
+                    let endTime = timeFormatter.string(from: endDate)
                     if endTime != "12:00 AM" {
                         dateString += " to " + endTime
                     }
                 }
             } else if let endDate = event.endDate {
-                let endTime = timeFormatter.stringFromDate(endDate)
+                let endTime = timeFormatter.string(from: endDate)
                 if endTime != "12:00 AM" {
                     dateString += "Ends at " + endTime
                 }
             }
             
-            if let status = event.status where status.characters.count > 0 {
+            if let status = event.status, status.characters.count > 0 {
                 dateString += (dateString.characters.count > 0 ? "\n" : "") + status
             }
             
             return (dateString.characters.count > 0 ? dateString : nil)
         }
         
-        class func attributedStringFromEvent(event: Event) -> NSAttributedString {
-            let paragraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        class func attributedStringFromEvent(_ event: Event) -> NSAttributedString {
+            let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
             paragraphStyle.lineSpacing = 5
             
             let attributedString = NSMutableAttributedString()
             
             if let title = event.computedTitle() {
-                attributedString.appendAttributedString(
+                attributedString.append(
                     NSAttributedString(
                         string: title,
                         attributes: [
-                            NSFontAttributeName: UIFont.systemFontOfSize(20),
+                            NSFontAttributeName: UIFont.systemFont(ofSize: 20),
                             NSParagraphStyleAttributeName: paragraphStyle
                         ]
                     )
@@ -171,11 +171,11 @@ class CalendarEventViewController: UITableViewController {
             }
             
             if let date = self.dateStringForEvent(event) {
-                attributedString.appendAttributedString(
+                attributedString.append(
                     NSAttributedString(
                         string: (attributedString.length > 0 ? "\n" : "") + date,
                         attributes: [
-                            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
+                            NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline),
                             NSForegroundColorAttributeName: UIColor(white: 0.5, alpha: 1)
                         ]
                     )
@@ -183,10 +183,10 @@ class CalendarEventViewController: UITableViewController {
             }
             
             if let comment = event.details {
-                attributedString.appendAttributedString(
+                attributedString.append(
                     NSAttributedString(
                         string: (attributedString.length > 0 ? "\n" : "") + comment,
-                        attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14)]
+                        attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)]
                     )
                 )
             }
@@ -194,23 +194,23 @@ class CalendarEventViewController: UITableViewController {
             return attributedString
         }
         
-        class func attributedStringFromOpponents(opponents: Array<String>) -> NSAttributedString {
-            let paragraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        class func attributedStringFromOpponents(_ opponents: Array<String>) -> NSAttributedString {
+            let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
             paragraphStyle.lineSpacing = 5
             
             let attributedString = NSMutableAttributedString(
                 string: "Opponents\n",
                 attributes: [
-                    NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody),
+                    NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body),
                     NSParagraphStyleAttributeName: paragraphStyle
                 ]
             )
             
-            attributedString.appendAttributedString(
+            attributedString.append(
                 NSAttributedString(
-                    string: opponents.joinWithSeparator("\n"),
+                    string: opponents.joined(separator: "\n"),
                     attributes: [
-                        NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline),
+                        NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline),
                         NSForegroundColorAttributeName: UIColor(white: 0.5, alpha: 1)
                     ]
                 )
@@ -219,10 +219,10 @@ class CalendarEventViewController: UITableViewController {
             return attributedString
         }
         
-        class func heightWithAttributedString(attributedString: NSAttributedString, contentWidth: CGFloat) -> CGFloat {
-            return attributedString.boundingRectWithSize(
-                CGSizeMake(contentWidth, CGFloat.max),
-                options: [.UsesLineFragmentOrigin],
+        class func heightWithAttributedString(_ attributedString: NSAttributedString, contentWidth: CGFloat) -> CGFloat {
+            return attributedString.boundingRect(
+                with: CGSize(width: contentWidth, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin],
                 context: nil
             ).height + 30
         }
@@ -230,7 +230,7 @@ class CalendarEventViewController: UITableViewController {
     
     class LocationCell: UITableViewCell {
         override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-            super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
+            super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         }
         
         required init?(coder aDecoder: NSCoder) {

@@ -10,14 +10,14 @@ import UIKit
 
 class FetchedViewController: UIViewController {
     var fetching: Bool = false
-    private weak var loadingView: LoadingView?
-    private weak var errorView: ErrorView?
+    fileprivate weak var loadingView: LoadingView?
+    fileprivate weak var errorView: ErrorView?
     
     override func loadView() {
         super.loadView()
         
         self.view.backgroundColor = UIColor(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1)
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
         
         let loadingView = LoadingView()
@@ -26,7 +26,7 @@ class FetchedViewController: UIViewController {
         
         let errorView = ErrorView()
         errorView.delegate = self
-        errorView.hidden = true
+        errorView.isHidden = true
         self.view.addSubview(errorView)
         self.errorView = errorView
     }
@@ -34,44 +34,44 @@ class FetchedViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let loadingSize = CGSizeMake(100, 20)
-        let errorSize = CGSizeMake(250, 190)
+        let loadingSize = CGSize(width: 100, height: 20)
+        let errorSize = CGSize(width: 250, height: 190)
         let viewSize = self.view.bounds.size
         
-        self.loadingView?.frame = CGRectMake((viewSize.width - loadingSize.width)/2, (viewSize.height - loadingSize.height)/2, loadingSize.width, loadingSize.height)
-        self.errorView?.frame = CGRectMake((viewSize.width - errorSize.width)/2, (viewSize.height - errorSize.height)/2, errorSize.width, errorSize.height)
+        self.loadingView?.frame = CGRect(x: (viewSize.width - loadingSize.width)/2, y: (viewSize.height - loadingSize.height)/2, width: loadingSize.width, height: loadingSize.height)
+        self.errorView?.frame = CGRect(x: (viewSize.width - errorSize.width)/2, y: (viewSize.height - errorSize.height)/2, width: errorSize.width, height: errorSize.height)
     }
     
     func fetch() {
         // Implemented by subclasses
-        self.errorView?.hidden = true
-        self.loadingView?.hidden = false
+        self.errorView?.isHidden = true
+        self.loadingView?.isHidden = false
         self.fetching = true
     }
     
-    func fetchFinished(error: NSError?) {
-        self.loadingView?.hidden = true
-        self.errorView?.hidden = (error == nil)
+    func fetchFinished(_ error: Error?) {
+        self.loadingView?.isHidden = true
+        self.errorView?.isHidden = (error == nil)
         self.errorView?.message = error?.localizedDescription
         self.fetching = false
     }
     
     class LoadingView: UIView {
-        private weak var indicatorView: UIActivityIndicatorView?
-        private weak var indicatorLabel: UILabel?
+        fileprivate weak var indicatorView: UIActivityIndicatorView?
+        fileprivate weak var indicatorLabel: UILabel?
         
         override init(frame: CGRect) {
             super.init(frame: frame)
             
-            let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+            let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             indicatorView.startAnimating()
             self.addSubview(indicatorView)
             self.indicatorView = indicatorView
             
             let indicatorLabel = UILabel()
             indicatorLabel.text = "Loading..."
-            indicatorLabel.font = UIFont.systemFontOfSize(14)
-            indicatorLabel.textColor = UIColor.darkGrayColor()
+            indicatorLabel.font = UIFont.systemFont(ofSize: 14)
+            indicatorLabel.textColor = .darkGray
             self.addSubview(indicatorLabel)
             self.indicatorLabel = indicatorLabel
         }
@@ -83,8 +83,8 @@ class FetchedViewController: UIViewController {
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            self.indicatorView?.frame = CGRectMake(0, (CGRectGetHeight(self.frame) - 20)/2, 20, 20)
-            self.indicatorLabel?.frame = CGRectMake(28, 0, CGRectGetWidth(self.frame) - 28, CGRectGetHeight(self.frame))
+            self.indicatorView?.frame = CGRect(x: 0, y: (self.frame.height - 20)/2, width: 20, height: 20)
+            self.indicatorLabel?.frame = CGRect(x: 28, y: 0, width: self.frame.width - 28, height: self.frame.height)
         }
     }
     
@@ -95,7 +95,7 @@ class FetchedViewController: UIViewController {
                 if let message = message {
                     let paragraphStyle = NSMutableParagraphStyle()
                     paragraphStyle.lineSpacing = 4
-                    paragraphStyle.alignment = .Center
+                    paragraphStyle.alignment = .center
                     
                     let attributedString = NSMutableAttributedString(string: message)
                     attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, message.characters.count))
@@ -106,9 +106,9 @@ class FetchedViewController: UIViewController {
             }
         }
         
-        private weak var errorLabel: UILabel?
-        private weak var imageView: UIImageView?
-        private weak var retryButton: UIButton?
+        fileprivate weak var errorLabel: UILabel?
+        fileprivate weak var imageView: UIImageView?
+        fileprivate weak var retryButton: UIButton?
         
         override init(frame: CGRect) {
             super.init(frame: frame)
@@ -118,19 +118,19 @@ class FetchedViewController: UIViewController {
             self.addSubview(imageView)
             self.imageView = imageView
             
-            let retryButton = UIButton(type: .System)
-            retryButton.titleLabel?.font = UIFont.systemFontOfSize(16)
-            retryButton.setTitle("Retry", forState: .Normal)
-            retryButton.setTitleColor(UIColor(red: 0, green: 122/255, blue: 1, alpha: 1), forState: .Normal)
-            retryButton.setBackgroundImage(UIImage(named: "roundedButton"), forState: .Normal)
-            retryButton.addTarget(self, action: "retryPressed", forControlEvents: .TouchUpInside)
+            let retryButton = UIButton(type: .system)
+            retryButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            retryButton.setTitle("Retry", for: UIControlState())
+            retryButton.setTitleColor(UIColor(red: 0, green: 122/255, blue: 1, alpha: 1), for: UIControlState())
+            retryButton.setBackgroundImage(UIImage(named: "roundedButton"), for: UIControlState())
+            retryButton.addTarget(self, action: #selector(retryPressed), for: .touchUpInside)
             self.addSubview(retryButton)
             self.retryButton = retryButton
             
             let errorLabel = UILabel()
             errorLabel.numberOfLines = 4
-            errorLabel.font = UIFont.systemFontOfSize(15)
-            errorLabel.textColor = UIColor.darkGrayColor()
+            errorLabel.font = UIFont.systemFont(ofSize: 15)
+            errorLabel.textColor = .darkGray
             self.addSubview(errorLabel)
             self.errorLabel = errorLabel
         }
@@ -147,12 +147,12 @@ class FetchedViewController: UIViewController {
             super.layoutSubviews()
             
             let viewSize = self.frame.size
-            let imageViewFrame = CGRectMake((viewSize.width - 47)/2, 0, 47, 42)
-            let errorLabelFrame = CGRectMake(0, CGRectGetMaxY(imageViewFrame), viewSize.width, viewSize.height - CGRectGetMaxY(imageViewFrame) - 50)
+            let imageViewFrame = CGRect(x: (viewSize.width - 47)/2, y: 0, width: 47, height: 42)
+            let errorLabelFrame = CGRect(x: 0, y: imageViewFrame.maxY, width: viewSize.width, height: viewSize.height - imageViewFrame.maxY - 50)
             
             self.imageView?.frame = imageViewFrame
             self.errorLabel?.frame = errorLabelFrame
-            self.retryButton?.frame = CGRectMake(0, CGRectGetMaxY(errorLabelFrame) + 10, viewSize.width, 50)
+            self.retryButton?.frame = CGRect(x: 0, y: errorLabelFrame.maxY + 10, width: viewSize.width, height: 50)
         }
     }
 }

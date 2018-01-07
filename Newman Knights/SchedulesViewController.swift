@@ -9,11 +9,11 @@
 import UIKit
 
 class SchedulesViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
-    private var schedules: Array<Schedule> = []
-    private let cellIdentifier = "Cell"
-    private weak var tableView: UITableView?
-    private weak var collectionView: UICollectionView?
-    private weak var collectionViewLayout: UICollectionViewFlowLayout?
+    fileprivate var schedules: Array<Schedule> = []
+    fileprivate let cellIdentifier = "Cell"
+    fileprivate weak var tableView: UITableView?
+    fileprivate weak var collectionView: UICollectionView?
+    fileprivate weak var collectionViewLayout: UICollectionViewFlowLayout?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,34 +28,34 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "fetch")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetch))
         
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSizeMake(250, 250)
+        collectionViewLayout.itemSize = CGSize(width: 250, height: 250)
         collectionViewLayout.minimumInteritemSpacing = 50
         collectionViewLayout.minimumLineSpacing = 50
         collectionViewLayout.sectionInset = UIEdgeInsetsMake(70, 70, 70, 70)
         self.collectionViewLayout = collectionViewLayout
         
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.hidden = true
+        collectionView.isHidden = true
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = self.view.backgroundColor
-        collectionView.registerClass(Cell.self, forCellWithReuseIdentifier: self.cellIdentifier)
+        collectionView.register(Cell.self, forCellWithReuseIdentifier: self.cellIdentifier)
         self.view.addSubview(collectionView)
-        self.view.sendSubviewToBack(collectionView)
+        self.view.sendSubview(toBack: collectionView)
         self.collectionView = collectionView
         
-        let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.hidden = true
+        tableView.isHidden = true
         tableView.backgroundColor = self.view.backgroundColor
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         self.view.addSubview(tableView)
-        self.view.sendSubviewToBack(tableView)
+        self.view.sendSubview(toBack: tableView)
         self.tableView = tableView
     }
     
@@ -65,20 +65,20 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
         self.tableView?.frame = self.view.bounds
         self.collectionView?.frame = self.view.bounds
         
-        self.tableView?.hidden = (self.fetching || self.traitCollection.horizontalSizeClass == .Regular)
-        self.collectionView?.hidden = (self.fetching || self.traitCollection.horizontalSizeClass != .Regular)
+        self.tableView?.isHidden = (self.fetching || self.traitCollection.horizontalSizeClass == .regular)
+        self.collectionView?.isHidden = (self.fetching || self.traitCollection.horizontalSizeClass != .regular)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let selectedIndexPath = self.tableView?.indexPathForSelectedRow {
-            self.tableView?.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+            self.tableView?.deselectRow(at: selectedIndexPath, animated: true)
         }
         
-        if let selectedIndexPaths = self.collectionView?.indexPathsForSelectedItems() {
+        if let selectedIndexPaths = self.collectionView?.indexPathsForSelectedItems {
             for indexPath in selectedIndexPaths {
-                self.collectionView?.deselectItemAtIndexPath(indexPath, animated: true)
+                self.collectionView?.deselectItem(at: indexPath, animated: true)
             }
         }
     }
@@ -89,14 +89,14 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
     }
     
     override func fetch() {
-        self.tableView?.hidden = true
-        self.collectionView?.hidden = true
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        self.tableView?.isHidden = true
+        self.collectionView?.isHidden = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         super.fetch()
         
         DataSource.fetchSchedules { (schedules, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                guard let schedules = schedules where error == nil else {
+            DispatchQueue.main.async(execute: {
+                guard let schedules = schedules, error == nil else {
                     let fallbackError = NSError(
                         domain: NSURLErrorDomain,
                         code: NSURLErrorUnknown,
@@ -111,18 +111,18 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
                 self.tableView?.reloadData()
                 self.collectionView?.reloadData()
                 
-                self.tableView?.hidden = (self.traitCollection.horizontalSizeClass == .Regular)
-                self.collectionView?.hidden = (self.traitCollection.horizontalSizeClass != .Regular)
+                self.tableView?.isHidden = (self.traitCollection.horizontalSizeClass == .regular)
+                self.collectionView?.isHidden = (self.traitCollection.horizontalSizeClass != .regular)
             })
         }
     }
     
-    override func fetchFinished(error: NSError?) {
+    override func fetchFinished(_ error: Error?) {
         super.fetchFinished(error)
-        self.navigationItem.rightBarButtonItem?.enabled = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
-    func selectScheduleAtIndex(index: Int) {
+    func selectScheduleAtIndex(_ index: Int) {
         let schedule = self.schedules[index]
         var viewController: UIViewController
         
@@ -139,41 +139,41 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
     }
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.schedules.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath)
-        cell.accessoryType = .DisclosureIndicator
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = self.schedules[indexPath.row].title
         return cell
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectScheduleAtIndex(indexPath.row)
     }
     
     // MARK: UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.schedules.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! Cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! Cell
         cell.title = self.schedules[indexPath.item].title
         return cell
     }
     
     // MARK: UICollectionViewDelegate
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectScheduleAtIndex(indexPath.item)
     }
     
     // MARK: Collection View Cell
     class Cell: UICollectionViewCell {
-        private weak var titleLabel: UILabel?
+        fileprivate weak var titleLabel: UILabel?
         
         var title: String? {
             get {
@@ -187,8 +187,8 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
         override init(frame: CGRect) {
             super.init(frame: frame)
             
-            self.backgroundColor = UIColor.whiteColor()
-            self.layer.borderColor = UIColor(red: 200/255, green: 199/255, blue: 204/255, alpha: 1).CGColor
+            self.backgroundColor = .white
+            self.layer.borderColor = UIColor(red: 200/255, green: 199/255, blue: 204/255, alpha: 1).cgColor
             self.layer.borderWidth = 1
             self.layer.cornerRadius = 8
             self.layer.masksToBounds = true
@@ -197,8 +197,8 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
             self.selectedBackgroundView!.backgroundColor = UIColor(white: 217/255, alpha: 1)
             
             let titleLabel = UILabel()
-            titleLabel.font = UIFont.systemFontOfSize(18)
-            titleLabel.textAlignment = .Center
+            titleLabel.font = UIFont.systemFont(ofSize: 18)
+            titleLabel.textAlignment = .center
             titleLabel.numberOfLines = 0
             self.contentView.addSubview(titleLabel)
             self.titleLabel = titleLabel

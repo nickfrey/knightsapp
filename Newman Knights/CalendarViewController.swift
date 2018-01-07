@@ -9,9 +9,9 @@
 import UIKit
 
 class CalendarViewController: UIViewController, MNCalendarViewDelegate {
-    private var eventCalendar: EventCalendar
-    private weak var calendarView: CalendarView?
-    private var hasScrolledToToday: Bool = false
+    fileprivate var eventCalendar: EventCalendar
+    fileprivate weak var calendarView: CalendarView?
+    fileprivate var hasScrolledToToday: Bool = false
     
     init() {
         self.eventCalendar = EventCalendar()
@@ -27,32 +27,32 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
     override func loadView() {
         super.loadView()
         
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(white: 0.97, alpha: 1)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .Plain, target: self, action: "scrollToTodayAnimated")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "invokeSearch")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(scrollToTodayAnimated))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(invokeSearch))
         
         let calendarView = CalendarView(frame: self.view.bounds)
         calendarView.delegate = self
         calendarView.calendar = self.eventCalendar.calendar
         calendarView.eventCalendar = self.eventCalendar
-        calendarView.selectedDate = NSDate()
+        calendarView.selectedDate = Date()
         calendarView.separatorColor = UIColor(white: 0, alpha: 0.1)
         calendarView.collectionView.scrollsToTop = false
         calendarView.registerUICollectionViewClasses()
         self.view.addSubview(calendarView)
         self.calendarView = calendarView
         
-        let fromDateComponents = NSDateComponents()
+        var fromDateComponents = DateComponents()
         fromDateComponents.year = 2011
-        calendarView.fromDate = calendarView.calendar.dateFromComponents(fromDateComponents)
+        calendarView.fromDate = calendarView.calendar.date(from: fromDateComponents)
         
-        let toDateComponents = NSDateComponents()
+        var toDateComponents = DateComponents()
         toDateComponents.year = 2
-        calendarView.toDate = calendarView.calendar.dateByAddingComponents(toDateComponents, toDate: NSDate(), options: [])
+        calendarView.toDate = calendarView.calendar.date(byAdding: toDateComponents, to: Date())
         calendarView.reloadData()
     }
     
@@ -62,7 +62,7 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         self.calendarView?.collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !self.hasScrolledToToday {
             self.scrollToToday(false)
@@ -70,14 +70,14 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         }
     }
     
-    func scrollToToday(animated: Bool) {
+    func scrollToToday(_ animated: Bool) {
         guard let calendarView = self.calendarView else { return }
         
-        let dateComponents = calendarView.calendar.components(.Month, fromDate: calendarView.fromDate, toDate: NSDate(), options: [])
-        let indexPath = NSIndexPath(forRow: 0, inSection: dateComponents.month)
+        let dateComponents = calendarView.calendar.dateComponents([.month], from: calendarView.fromDate, to: Date())
+        let indexPath = IndexPath(row: 0, section: dateComponents.month!)
         
-        calendarView.selectedDate = NSDate()
-        calendarView.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Top, animated: animated)
+        calendarView.selectedDate = Date()
+        calendarView.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
         calendarView.reloadData()
     }
     
@@ -88,37 +88,37 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
     func invokeSearch() {
         let viewController = CalendarSearchViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .Popover
+        navigationController.modalPresentationStyle = .popover
         navigationController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
-    func indexPathForDate(date: NSDate) -> NSIndexPath? {
+    func indexPathForDate(_ date: Date) -> IndexPath? {
         guard let calendarView = self.calendarView else { return nil }
         
-        let difference = self.eventCalendar.calendar.components(.Month, fromDate: calendarView.fromDate, toDate: date, options: [])
+        let difference = self.eventCalendar.calendar.dateComponents([.month], from: calendarView.fromDate, to: date)
         let section = difference.month
         
-        let components = self.eventCalendar.calendar.components([.Day, .Weekday], fromDate: date)
+        let components = self.eventCalendar.calendar.dateComponents([.day, .weekday], from: date)
         let daysInWeek = 7
-        let item = daysInWeek + components.day + components.weekday
+        let item = daysInWeek + components.day! + components.weekday!
         
-        return NSIndexPath(forItem: item, inSection: section)
+        return IndexPath(item: item, section: section!)
     }
     
     // MARK: MNCalendarViewDelegate
-    func calendarView(calendarView: MNCalendarView, didSelectDate date: NSDate) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+    func calendarView(_ calendarView: MNCalendarView, didSelect date: Date) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
             let viewController = CalendarDayViewController(date: date)
             
-            if self.traitCollection.horizontalSizeClass == .Regular {
+            if self.traitCollection.horizontalSizeClass == .regular {
                 let indexPath = self.indexPathForDate(date)!
-                let cell = calendarView.collectionView.cellForItemAtIndexPath(indexPath)
+                let cell = calendarView.collectionView.cellForItem(at: indexPath)
                 let navigationController = UINavigationController(rootViewController: viewController)
-                navigationController.modalPresentationStyle = .Popover
+                navigationController.modalPresentationStyle = .popover
                 navigationController.popoverPresentationController?.sourceView = cell
                 navigationController.popoverPresentationController?.sourceRect = cell!.bounds
-                self.presentViewController(navigationController, animated: true, completion: nil)
+                self.present(navigationController, animated: true, completion: nil)
             } else {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
@@ -138,28 +138,28 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
             fatalError("init(coder:) has not been implemented")
         }
         
-        override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+        override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = super.collectionView(collectionView, cellForItemAt: indexPath)
             if let dayCell = cell as? DayCell {
                 dayCell.hasEvents = (self.eventCalendar == nil ? false : self.eventCalendar!.eventsOccurOnDate(dayCell.date))
             }
             return cell
         }
         
-        override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
             guard let cell = cell as? DayCell else { return }
             guard let eventCalendar = self.eventCalendar else { return }
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            DispatchQueue.global().async(execute: {
                 eventCalendar.fetchEventOccurrences(cell.date, completionHandler: { (fetched, error) -> Void in
                     if fetched && error == nil {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            let components = eventCalendar.calendar.components(.Month, fromDate: self.fromDate, toDate: cell.date, options: [])
-                            let section = (components.month + 1)
-                            let numberOfCells = collectionView.numberOfItemsInSection(section)
+                        DispatchQueue.main.async(execute: {
+                            let components = eventCalendar.calendar.dateComponents([.month], from: self.fromDate, to: cell.date)
+                            let section = ((components.month ?? 0) + 1)
+                            let numberOfCells = collectionView.numberOfItems(inSection: section)
                             
                             for i in 1...numberOfCells {
-                                let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forRow: i - 1, inSection: section))
+                                let cell = collectionView.cellForItem(at: IndexPath(row: i - 1, section: section))
                                 if let dayCell = cell as? DayCell {
                                     dayCell.hasEvents = eventCalendar.eventsOccurOnDate(dayCell.date)
                                 }
@@ -177,7 +177,7 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
                 }
             }
             
-            private var selectedColor: UIColor?
+            fileprivate var selectedColor: UIColor?
             
             override init(frame: CGRect) {
                 super.init(frame: frame)
@@ -192,34 +192,34 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
             override func layoutSubviews() {
                 super.layoutSubviews()
                 
-                if self.traitCollection.horizontalSizeClass == .Regular {
-                    self.titleLabel.font = UIFont.systemFontOfSize(18)
+                if self.traitCollection.horizontalSizeClass == .regular {
+                    self.titleLabel.font = UIFont.systemFont(ofSize: 18)
                 }
             }
             
-            override var highlighted: Bool {
+            override var isHighlighted: Bool {
                 didSet {
-                    self.backgroundColor = (highlighted ? self.selectedColor : UIColor.whiteColor())
+                    self.backgroundColor = (isHighlighted ? self.selectedColor : .white)
                 }
             }
             
-            override var selected: Bool {
+            override var isSelected: Bool {
                 didSet {
-                    self.backgroundColor = (selected ? self.selectedColor : UIColor.whiteColor())
+                    self.backgroundColor = (isSelected ? self.selectedColor : .white)
                 }
             }
             
-            override func drawRect(rect: CGRect) {
-                super.drawRect(rect)
+            override func draw(_ rect: CGRect) {
+                super.draw(rect)
                 
-                if self.hasEvents && self.enabled {
-                    UIColor.redColor().set()
+                if self.hasEvents && self.isEnabled {
+                    UIColor.red.set()
                     let size = floor(self.bounds.size.height * 0.15)
                     let path = UIBezierPath()
-                    path.moveToPoint(CGPoint(x: self.frame.size.width, y: 0))
-                    path.addLineToPoint(CGPoint(x: self.frame.size.width, y: size))
-                    path.addLineToPoint(CGPoint(x: self.frame.size.width - size, y: 0))
-                    path.closePath()
+                    path.move(to: CGPoint(x: self.frame.size.width, y: 0))
+                    path.addLine(to: CGPoint(x: self.frame.size.width, y: size))
+                    path.addLine(to: CGPoint(x: self.frame.size.width - size, y: 0))
+                    path.close()
                     path.fill()
                 }
             }
