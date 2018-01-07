@@ -68,7 +68,7 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         }
     }
     
-    override func fetch() {
+    @objc override func fetch() {
         super.fetch()
         
         DataSource.fetchSocialPosts(35) { (posts, error) -> Void in
@@ -241,7 +241,7 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
             totalHeight += post.content.boundingRect(
                 with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
                 options: [.usesLineFragmentOrigin],
-                attributes: [NSFontAttributeName: self.contentFont()],
+                attributes: [NSAttributedStringKey.font: self.contentFont()],
                 context: nil
             ).height
             
@@ -249,14 +249,14 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
                 totalHeight += (displayName.boundingRect(
                     with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
                     options: [.usesLineFragmentOrigin],
-                    attributes: [NSFontAttributeName: self.displayNameFont()],
+                    attributes: [NSAttributedStringKey.font: self.displayNameFont()],
                     context: nil
                 ).height + 2)
             } else if let username = post.author.username {
                 totalHeight += (username.boundingRect(
                     with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
                     options: [.usesLineFragmentOrigin],
-                    attributes: [NSFontAttributeName: self.displayNameFont()],
+                    attributes: [NSAttributedStringKey.font: self.displayNameFont()],
                     context: nil
                 ).height + 2)
             }

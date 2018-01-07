@@ -75,8 +75,8 @@ class CalendarSearchViewController: UITableViewController, UISearchBarDelegate {
         self.searchBar?.becomeFirstResponder()
     }
     
-    func fetchResults() {
-        guard let searchText = self.searchBar?.text, searchText.characters.count > 2
+    @objc func fetchResults() {
+        guard let searchText = self.searchBar?.text, searchText.count > 2
             else { return }
         
         if let cancelHandler = self.currentCancelHandler {
@@ -109,7 +109,7 @@ class CalendarSearchViewController: UITableViewController, UISearchBarDelegate {
             return searchResults.count
         }
         
-        return (self.searchBar?.text?.characters.count > 0 ? 1 : 0)
+        return (self.searchBar?.text?.count > 0 ? 1 : 0)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

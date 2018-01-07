@@ -98,7 +98,7 @@ class FetchedViewController: UIViewController {
                     paragraphStyle.alignment = .center
                     
                     let attributedString = NSMutableAttributedString(string: message)
-                    attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, message.characters.count))
+                    attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, message.count))
                     self.errorLabel?.attributedText = attributedString
                 } else {
                     self.errorLabel?.attributedText = nil
@@ -139,7 +139,7 @@ class FetchedViewController: UIViewController {
             fatalError("init(coder:) has not been implemented")
         }
         
-        func retryPressed() {
+        @objc func retryPressed() {
             self.delegate?.fetch()
         }
         

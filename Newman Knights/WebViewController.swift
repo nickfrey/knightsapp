@@ -51,7 +51,7 @@ class WebViewController: FetchedViewController, WKNavigationDelegate {
         return self.initialURL
     }
     
-    func sharePressed() {
+    @objc func sharePressed() {
         guard let sharableURL = self.sharableURL()
             else { return }
         

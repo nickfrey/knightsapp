@@ -88,7 +88,7 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
         self.fetch()
     }
     
-    override func fetch() {
+    @objc override func fetch() {
         self.tableView?.isHidden = true
         self.collectionView?.isHidden = true
         self.navigationItem.rightBarButtonItem?.isEnabled = false

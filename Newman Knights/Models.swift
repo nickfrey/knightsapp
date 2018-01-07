@@ -99,11 +99,11 @@ struct Event {
             eventTitle = title
         }
         
-        if let gradeLevel = self.gradeLevel, gradeLevel.characters.count > 0 {
+        if let gradeLevel = self.gradeLevel, gradeLevel.count > 0 {
             eventTitle = gradeLevel + " " + eventTitle
         }
         
-        if let gender = self.gender, gender.characters.count > 0 {
+        if let gender = self.gender, gender.count > 0 {
             eventTitle = gender + " " + eventTitle
         }
         

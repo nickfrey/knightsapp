@@ -81,11 +81,11 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         calendarView.reloadData()
     }
     
-    func scrollToTodayAnimated() {
+    @objc func scrollToTodayAnimated() {
         self.scrollToToday(true)
     }
     
-    func invokeSearch() {
+    @objc func invokeSearch() {
         let viewController = CalendarSearchViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .popover

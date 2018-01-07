@@ -72,8 +72,8 @@ class EventCalendar {
             }).parse(data)
             
             var events = Array<Event>()
-            for eventIndexer in xml["schema"]["element"] {
-                guard let eventElement = eventIndexer.element, eventElement.attributes["name"] == "event"
+            for eventIndexer in xml["schema"]["element"].children {
+                guard let eventElement = eventIndexer.element, eventElement.attribute(by: "name")?.text == "event"
                     else { continue }
                 
                 var event = Event()
@@ -82,11 +82,11 @@ class EventCalendar {
                 var startTime: String?
                 var endTime: String?
                 
-                for detailIndexer in eventIndexer["complexType"]["sequence"]["element"] {
+                for detailIndexer in eventIndexer["complexType"]["sequence"]["element"].children {
                     guard let detailElement = detailIndexer.element
                         else { continue }
                     
-                    let name = detailElement.attributes["name"]
+                    let name = detailElement.attribute(by: "name")?.text
                     let text = detailElement.text
                     
                     if name == "game_date" {
@@ -104,27 +104,29 @@ class EventCalendar {
                     } else if name == "level" {
                         event.gradeLevel = text
                     } else if name == "gender" {
-                        event.gender = text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                        event.gender = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                     } else if name == "status" {
-                        event.status = text?.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+                        event.status = text.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
                     } else if name == "homeaway" {
                         event.away = (text == "Away")
                     } else if name == "location" {
-                        for locationIndexer in detailIndexer["complexType"]["sequence"]["element"] {
-                            guard let locationElement = locationIndexer.element, locationElement.attributes["name"] == "name"
+                        for locationIndexer in detailIndexer["complexType"]["sequence"]["element"].children {
+                            guard let locationElement = locationIndexer.element, locationElement.attribute(by: "name")?.text == "name"
                                 else { continue }
                             
-                            event.location = locationElement.text?.replacingOccurrences(of: "@ ", with: "")
+                            event.location = locationElement.text.replacingOccurrences(of: "@ ", with: "")
                         }
                     } else if name == "opponent" {
-                        if let text = text, detailElement.attributes["type"] == "xsd:string" {
+                        if detailElement.attribute(by: "type")?.text == "xsd:string" {
                             event.opponents = text.components(separatedBy: ",")
                         }
                     } else if name == "comment" {
-                        for commentIndexer in detailIndexer["complexType"]["sequence"]["element"] {
+                        for commentIndexer in detailIndexer["complexType"]["sequence"]["element"].children {
                             guard let commentElement = commentIndexer.element
                                 else { continue }
-                            guard let commentText = commentElement.text, commentText.characters.count > 0
+                            
+                            let commentText = commentElement.text
+                            guard commentText.count > 0
                                 else { continue }
                             
                             if let details = event.details {
@@ -219,11 +221,11 @@ class EventCalendar {
             
             // Fetch succeeded
             let xml = SWXMLHash.parse(data)
-            for eventIndexer in xml["rss"]["channel"]["item"] {
+            for eventIndexer in xml["rss"]["channel"]["item"].children {
                 guard let eventElement = eventIndexer.element else { continue }
                 for childElement in eventElement.xmlChildren {
-                    if let text = childElement.text, childElement.name == "pubDate" {
-                        if let pubDate = dateFormatter.date(from: text) {
+                    if childElement.name == "pubDate" {
+                        if let pubDate = dateFormatter.date(from: childElement.text) {
                             self.datesContainingEvents.insert(self.calendar.startOfDay(for: pubDate))
                         }
                         break

@@ -55,7 +55,7 @@ class DirectoryViewController: FetchedViewController, UITableViewDataSource, UIT
         self.perform(#selector(fetch), with: nil, afterDelay: 0.2)
     }
     
-    override func fetch() {
+    @objc override func fetch() {
         self.tableView?.isHidden = true
         super.fetch()
         

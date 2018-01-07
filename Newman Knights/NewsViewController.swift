@@ -92,7 +92,7 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    override func fetch() {
+    @objc override func fetch() {
         super.fetch()
         DataSource.fetchSocialPosts(10) { (posts, error) -> Void in
             guard let posts = posts, error == nil else {
@@ -353,7 +353,7 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
             })
         }
         
-        func buttonPressed() {
+        @objc func buttonPressed() {
             self.delegate?.coverViewPressed()
         }
     }

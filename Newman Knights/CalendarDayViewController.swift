@@ -64,7 +64,7 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
         self.fetch()
     }
     
-    override func fetch() {
+    @objc override func fetch() {
         self.tableView?.isHidden = true
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         super.fetch()
@@ -160,7 +160,7 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
                 }
             }
             
-            if let location = event.location, location.characters.count > 0 {
+            if let location = event.location, location.count > 0 {
                 if location != "Newman Catholic" {
                     eventDetails.append("@ " + location)
                 }
@@ -170,7 +170,7 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
                 eventDetails.append(details)
             }
             
-            if let status = event.status, status.characters.count > 0 {
+            if let status = event.status, status.count > 0 {
                 eventDetails.append("(" + status + ")")
             }
             

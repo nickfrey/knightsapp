@@ -35,7 +35,7 @@ class CalendarEventViewController: UITableViewController {
         self.tableView.register(LocationCell.self, forCellReuseIdentifier: self.locationCellIdentifier)
     }
     
-    func sharePressed() {
+    @objc func sharePressed() {
         if let identifier = self.event.identifier {
             let shareURL = URL(string: "http://www.northiowaconference.org/g5-bin/client.cgi?cwellOnly=1&G5statusflag=view_note&schoolname=&school_id=5&G5button=13&G5genie=97&view_id=" + identifier)!
             let viewController = UIActivityViewController(activityItems: [shareURL], applicationActivities: nil)
@@ -47,7 +47,7 @@ class CalendarEventViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 1
         
-        if let location = self.event.location, location.characters.count > 0 {
+        if let location = self.event.location, location.count > 0 {
             rows += 1
         }
         
@@ -97,7 +97,7 @@ class CalendarEventViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 1 {
-            if let location = self.event.location, location.characters.count > 0 && location != "TBA" {
+            if let location = self.event.location, location.count > 0 && location != "TBA" {
                 UIApplication.shared.openURL(URL(string: "https://maps.apple.com/maps?q=" + location.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!)
             }
         }
@@ -145,11 +145,11 @@ class CalendarEventViewController: UITableViewController {
                 }
             }
             
-            if let status = event.status, status.characters.count > 0 {
-                dateString += (dateString.characters.count > 0 ? "\n" : "") + status
+            if let status = event.status, status.count > 0 {
+                dateString += (dateString.count > 0 ? "\n" : "") + status
             }
             
-            return (dateString.characters.count > 0 ? dateString : nil)
+            return (dateString.count > 0 ? dateString : nil)
         }
         
         class func attributedStringFromEvent(_ event: Event) -> NSAttributedString {
@@ -163,8 +163,8 @@ class CalendarEventViewController: UITableViewController {
                     NSAttributedString(
                         string: title,
                         attributes: [
-                            NSFontAttributeName: UIFont.systemFont(ofSize: 20),
-                            NSParagraphStyleAttributeName: paragraphStyle
+                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
+                            NSAttributedStringKey.paragraphStyle: paragraphStyle
                         ]
                     )
                 )
@@ -175,8 +175,8 @@ class CalendarEventViewController: UITableViewController {
                     NSAttributedString(
                         string: (attributedString.length > 0 ? "\n" : "") + date,
                         attributes: [
-                            NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline),
-                            NSForegroundColorAttributeName: UIColor(white: 0.5, alpha: 1)
+                            NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
+                            NSAttributedStringKey.foregroundColor: UIColor(white: 0.5, alpha: 1)
                         ]
                     )
                 )
@@ -186,7 +186,7 @@ class CalendarEventViewController: UITableViewController {
                 attributedString.append(
                     NSAttributedString(
                         string: (attributedString.length > 0 ? "\n" : "") + comment,
-                        attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)]
+                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
                     )
                 )
             }
@@ -201,8 +201,8 @@ class CalendarEventViewController: UITableViewController {
             let attributedString = NSMutableAttributedString(
                 string: "Opponents\n",
                 attributes: [
-                    NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body),
-                    NSParagraphStyleAttributeName: paragraphStyle
+                    NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body),
+                    NSAttributedStringKey.paragraphStyle: paragraphStyle
                 ]
             )
             
@@ -210,8 +210,8 @@ class CalendarEventViewController: UITableViewController {
                 NSAttributedString(
                     string: opponents.joined(separator: "\n"),
                     attributes: [
-                        NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline),
-                        NSForegroundColorAttributeName: UIColor(white: 0.5, alpha: 1)
+                        NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline),
+                        NSAttributedStringKey.foregroundColor: UIColor(white: 0.5, alpha: 1)
                     ]
                 )
             )
