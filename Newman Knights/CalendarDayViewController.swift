@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarDayViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate {
+class CalendarDayViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate {
     let date: Date
     fileprivate var events: Array<Event> = []
     fileprivate weak var tableView: UITableView?
@@ -44,6 +44,8 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.emptyCellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
+        
+        registerForPreviewing(with: self, sourceView: tableView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -115,6 +117,22 @@ class CalendarDayViewController: FetchedViewController, UITableViewDataSource, U
             let viewController = CalendarEventViewController(event: self.events[indexPath.row])
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    // MARK: UIViewControllerPreviewingDelegate
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard
+            let tableView = self.tableView,
+            let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) as? EventCell,
+            let event = cell.event
+            else { return nil }
+        
+        return CalendarEventViewController(event: event)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
     // MARK: Event Cell

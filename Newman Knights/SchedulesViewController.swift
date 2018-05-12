@@ -180,7 +180,7 @@ class SchedulesViewController: FetchedViewController, UITableViewDataSource, UIT
                 return self.titleLabel?.text
             }
             set {
-                self.titleLabel?.text = title
+                self.titleLabel?.text = newValue
             }
         }
         

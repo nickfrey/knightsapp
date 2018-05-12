@@ -148,10 +148,10 @@ class ContactViewController: UIViewController, UITableViewDataSource, UITableVie
             tableView.deselectRow(at: indexPath, animated: true)
             
             if indexPath.row == 0 {
-                let phoneURL = URL(string: "tel://" + self.phoneNumber.removingPercentEncoding!)!
+                let phoneURL = URL(string: "tel://" + self.phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())!
                 
                 if UIApplication.shared.canOpenURL(phoneURL) {
-                    UIApplication.shared.openURL(URL(string: "tel://" + self.phoneNumber.removingPercentEncoding!)!)
+                    UIApplication.shared.openURL(phoneURL)
                 } else {
                     let alertController = UIAlertController(
                         title: "Cannot Place Call",

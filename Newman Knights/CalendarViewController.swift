@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, MNCalendarViewDelegate {
+class CalendarViewController: UIViewController, MNCalendarViewDelegate, UIViewControllerPreviewingDelegate {
     fileprivate var eventCalendar: EventCalendar
     fileprivate weak var calendarView: CalendarView?
     fileprivate var hasScrolledToToday: Bool = false
@@ -29,8 +29,6 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         
         self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(white: 0.97, alpha: 1)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(scrollToTodayAnimated))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(invokeSearch))
@@ -54,6 +52,8 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         toDateComponents.year = 2
         calendarView.toDate = calendarView.calendar.date(byAdding: toDateComponents, to: Date())
         calendarView.reloadData()
+        
+        registerForPreviewing(with: self, sourceView: calendarView.collectionView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -90,20 +90,22 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .popover
         navigationController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        navigationController.navigationBar.isTranslucent = false
         self.present(navigationController, animated: true, completion: nil)
     }
     
     func indexPathForDate(_ date: Date) -> IndexPath? {
         guard let calendarView = self.calendarView else { return nil }
+        let calendar = self.eventCalendar.calendar
+        let differenceInMonthComponents = calendar.dateComponents([.month], from: calendarView.fromDate, to: date)
+        let dayOfMonthComponents = calendar.dateComponents([.day], from: date)
         
-        let difference = self.eventCalendar.calendar.dateComponents([.month], from: calendarView.fromDate, to: date)
-        let section = difference.month
+        var firstOfMonthComponents = calendar.dateComponents([.month, .year], from: date)
+        firstOfMonthComponents.day = 1
         
-        let components = self.eventCalendar.calendar.dateComponents([.day, .weekday], from: date)
-        let daysInWeek = 7
-        let item = daysInWeek + components.day! + components.weekday!
-        
-        return IndexPath(item: item, section: section!)
+        let daysInWeek = 7 // Compensate for weekday title cells
+        let weekdayOfFirstOfMonthComponents = calendar.dateComponents([.weekday], from: calendar.date(from: firstOfMonthComponents)!)
+        return IndexPath(item: daysInWeek + (dayOfMonthComponents.day! - 1) + (weekdayOfFirstOfMonthComponents.weekday! - 1), section: differenceInMonthComponents.month!)
     }
     
     // MARK: MNCalendarViewDelegate
@@ -118,11 +120,27 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
                 navigationController.modalPresentationStyle = .popover
                 navigationController.popoverPresentationController?.sourceView = cell
                 navigationController.popoverPresentationController?.sourceRect = cell!.bounds
+                navigationController.navigationBar.isTranslucent = false
                 self.present(navigationController, animated: true, completion: nil)
             } else {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         })
+    }
+    
+    // MARK: UIViewControllerPreviewingDelegate
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard
+            let calendarView = self.calendarView,
+            let indexPath = calendarView.collectionView.indexPathForItem(at: location),
+            let cell = calendarView.collectionView.cellForItem(at: indexPath) as? CalendarView.DayCell
+            else { return nil }
+        
+        return CalendarDayViewController(date: cell.date)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
     // MARK: Calendar View
@@ -141,7 +159,11 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = super.collectionView(collectionView, cellForItemAt: indexPath)
             if let dayCell = cell as? DayCell {
-                dayCell.hasEvents = (self.eventCalendar == nil ? false : self.eventCalendar!.eventsOccurOnDate(dayCell.date))
+                if let eventCalendar = self.eventCalendar {
+                    dayCell.hasEvents = eventCalendar.eventsOccurOnDate(dayCell.date)
+                } else {
+                    dayCell.hasEvents = false
+                }
             }
             return cell
         }
@@ -154,13 +176,8 @@ class CalendarViewController: UIViewController, MNCalendarViewDelegate {
                 eventCalendar.fetchEventOccurrences(cell.date, completionHandler: { (fetched, error) -> Void in
                     if fetched && error == nil {
                         DispatchQueue.main.async(execute: {
-                            let components = eventCalendar.calendar.dateComponents([.month], from: self.fromDate, to: cell.date)
-                            let section = ((components.month ?? 0) + 1)
-                            let numberOfCells = collectionView.numberOfItems(inSection: section)
-                            
-                            for i in 1...numberOfCells {
-                                let cell = collectionView.cellForItem(at: IndexPath(row: i - 1, section: section))
-                                if let dayCell = cell as? DayCell {
+                            for visibleCell in collectionView.visibleCells {
+                                if let dayCell = visibleCell as? DayCell {
                                     dayCell.hasEvents = eventCalendar.eventsOccurOnDate(dayCell.date)
                                 }
                             }

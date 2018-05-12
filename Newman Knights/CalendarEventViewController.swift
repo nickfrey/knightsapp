@@ -158,7 +158,7 @@ class CalendarEventViewController: UITableViewController {
             
             let attributedString = NSMutableAttributedString()
             
-            if let title = event.computedTitle() {
+            if let title = event.computedTitle(), title.count > 0 {
                 attributedString.append(
                     NSAttributedString(
                         string: title,
@@ -182,11 +182,16 @@ class CalendarEventViewController: UITableViewController {
                 )
             }
             
-            if let comment = event.details {
+            if let comment = event.details, comment.count > 0 {
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.paragraphSpacingBefore = 5
                 attributedString.append(
                     NSAttributedString(
                         string: (attributedString.length > 0 ? "\n" : "") + comment,
-                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
+                        attributes: [
+                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                            NSAttributedStringKey.paragraphStyle: paragraphStyle
+                        ]
                     )
                 )
             }

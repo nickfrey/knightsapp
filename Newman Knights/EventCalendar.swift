@@ -72,7 +72,7 @@ class EventCalendar {
             }).parse(data)
             
             var events = Array<Event>()
-            for eventIndexer in xml["schema"]["element"].children {
+            for eventIndexer in xml["schema"]["element"].all {
                 guard let eventElement = eventIndexer.element, eventElement.attribute(by: "name")?.text == "event"
                     else { continue }
                 
@@ -81,8 +81,9 @@ class EventCalendar {
                 var eventDate: String?
                 var startTime: String?
                 var endTime: String?
+                var comments = [String]()
                 
-                for detailIndexer in eventIndexer["complexType"]["sequence"]["element"].children {
+                for detailIndexer in eventIndexer["complexType"]["sequence"]["element"].all {
                     guard let detailElement = detailIndexer.element
                         else { continue }
                     
@@ -110,7 +111,7 @@ class EventCalendar {
                     } else if name == "homeaway" {
                         event.away = (text == "Away")
                     } else if name == "location" {
-                        for locationIndexer in detailIndexer["complexType"]["sequence"]["element"].children {
+                        for locationIndexer in detailIndexer["complexType"]["sequence"]["element"].all {
                             guard let locationElement = locationIndexer.element, locationElement.attribute(by: "name")?.text == "name"
                                 else { continue }
                             
@@ -118,21 +119,26 @@ class EventCalendar {
                         }
                     } else if name == "opponent" {
                         if detailElement.attribute(by: "type")?.text == "xsd:string" {
-                            event.opponents = text.components(separatedBy: ",")
+                            event.opponents = text.components(separatedBy: ",").flatMap({ opponent -> String? in
+                                let trimmedOpponent = opponent.trimmingCharacters(in: .whitespacesAndNewlines)
+                                if trimmedOpponent.count > 0 {
+                                    return opponent
+                                } else {
+                                    return nil
+                                }
+                            })
                         }
                     } else if name == "comment" {
-                        for commentIndexer in detailIndexer["complexType"]["sequence"]["element"].children {
+                        for commentIndexer in detailIndexer["complexType"]["sequence"]["element"].all {
                             guard let commentElement = commentIndexer.element
                                 else { continue }
                             
-                            let commentText = commentElement.text
+                            let commentText = commentElement.text.trimmingCharacters(in: .whitespacesAndNewlines)
                             guard commentText.count > 0
                                 else { continue }
                             
-                            if let details = event.details {
-                                event.details = details + "\n\n" + commentText
-                            } else {
-                                event.details = commentText
+                            if !comments.contains(commentText) {
+                                comments.append(commentText)
                             }
                         }
                     }
@@ -145,6 +151,8 @@ class EventCalendar {
                         event.title = eventType
                     }
                 }
+                
+                event.details = comments.joined(separator: "\n\n")
                 
                 // Start & end dates
                 let dateFormatter = DateFormatter()
@@ -221,7 +229,7 @@ class EventCalendar {
             
             // Fetch succeeded
             let xml = SWXMLHash.parse(data)
-            for eventIndexer in xml["rss"]["channel"]["item"].children {
+            for eventIndexer in xml["rss"]["channel"]["item"].all {
                 guard let eventElement = eventIndexer.element else { continue }
                 for childElement in eventElement.xmlChildren {
                     if childElement.name == "pubDate" {

@@ -23,31 +23,52 @@ class CalendarSearchViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.noneCellIdentifier)
         self.tableView.register(CalendarDayViewController.EventCell.self, forCellReuseIdentifier: self.resultCellIdentifier)
         
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.placeholder = "Search"
-        searchBar.showsCancelButton = true
-        searchBar.backgroundImage = UIImage()
-        searchBar.tintColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1)
-        self.searchBar = searchBar
-        
-        let barWrapperView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width - 15, height: 44))
-        barWrapperView.addSubview(searchBar)
-        searchBar.sizeToFit()
-        
-        self.navigationItem.titleView = barWrapperView
+        if #available(iOS 11.0, *) {
+            self.title = NSLocalizedString("Search Events", comment: "Title for calendar search")
+            
+            let searchController = UISearchController(searchResultsController: nil)
+            searchController.obscuresBackgroundDuringPresentation = false
+            searchController.hidesNavigationBarDuringPresentation = false
+            self.navigationItem.searchController = searchController
+            self.navigationItem.hidesSearchBarWhenScrolling = false
+            
+            let searchBar = searchController.searchBar
+            searchBar.delegate = self
+            searchBar.tintColor = .white
+            self.searchBar = searchBar
+        } else {
+            let searchBar = UISearchBar()
+            searchBar.delegate = self
+            searchBar.placeholder = NSLocalizedString("Search", comment: "Search bar placeholder")
+            searchBar.showsCancelButton = true
+            searchBar.backgroundImage = UIImage()
+            searchBar.tintColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1)
+            self.searchBar = searchBar
+            
+            let barWrapperView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width - 15, height: 44))
+            barWrapperView.addSubview(searchBar)
+            searchBar.sizeToFit()
+            
+            self.navigationItem.titleView = barWrapperView
+        }
         
         UIBarButtonItem.swift_appearanceWhenContained(in: [UISearchBar.self]).tintColor = .white
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.searchBar?.becomeFirstResponder()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.searchBar?.becomeFirstResponder()
+        
+        if #available(iOS 11.0, *) {
+            DispatchQueue.main.async {
+                self.searchBar?.becomeFirstResponder()
+            }
+        } else {
+            self.searchBar?.becomeFirstResponder()
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     @objc func fetchResults() {

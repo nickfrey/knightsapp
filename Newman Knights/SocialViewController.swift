@@ -34,13 +34,10 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.isHidden = true
         tableView.estimatedRowHeight = 50
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.register(Cell.self, forCellReuseIdentifier: self.cellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
-        
-        if #available(iOS 9.0, *) {
-            tableView.cellLayoutMarginsFollowReadableWidth = false
-        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
@@ -156,7 +153,7 @@ class SocialViewController: FetchedViewController, UITableViewDataSource, UITabl
                 return self.avatarImageView.imageCache
             }
             set {
-                self.avatarImageView.imageCache = imageCache
+                self.avatarImageView.imageCache = newValue
             }
         }
         

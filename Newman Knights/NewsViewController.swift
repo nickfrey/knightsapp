@@ -9,7 +9,7 @@
 import UIKit
 import QuickLook
 
-class NewsViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, QLPreviewControllerDataSource {
+class NewsViewController: FetchedViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, QLPreviewControllerDataSource, QLPreviewControllerDelegate, UIViewControllerPreviewingDelegate {
     fileprivate weak var tableView: UITableView?
     fileprivate weak var coverView: CoverView?
     fileprivate var coverViewPreviewItem: CoverView.PreviewItem?
@@ -50,15 +50,14 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
         tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.coverViewHeight, 0, 0, 0)
         tableView.estimatedRowHeight = 50
         tableView.alwaysBounceVertical = true
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.register(SocialViewController.Cell.self, forCellReuseIdentifier: self.socialCellIdentifier)
         tableView.register(CalendarDayViewController.EventCell.self, forCellReuseIdentifier: self.eventCellIdentifier)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.emptyCellIdentifier)
         self.view.addSubview(tableView)
         self.tableView = tableView
         
-        if #available(iOS 9.0, *) {
-            tableView.cellLayoutMarginsFollowReadableWidth = false
-        }
+        registerForPreviewing(with: self, sourceView: tableView)
         
         let coverView = CoverView()
         coverView.isHidden = true
@@ -143,6 +142,7 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
             
             let viewController = PreviewController()
             viewController.dataSource = self
+            viewController.delegate = self
             self.present(viewController, animated: true, completion: nil)
         } catch _ {
         }
@@ -155,6 +155,10 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return (self.coverViewPreviewItem == nil ? 0 : 1)
+    }
+    
+    func previewController(_ controller: QLPreviewController, transitionViewFor item: QLPreviewItem) -> UIView? {
+        return self.coverView
     }
     
     // MARK: UITableViewDataSource
@@ -242,12 +246,29 @@ class NewsViewController: FetchedViewController, UITableViewDataSource, UITableV
                     navigationController.modalPresentationStyle = .popover
                     navigationController.popoverPresentationController?.sourceView = cell
                     navigationController.popoverPresentationController?.sourceRect = cell!.bounds
+                    navigationController.navigationBar.isTranslucent = false
                     self.present(navigationController, animated: true, completion: nil)
                 } else {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
         }
+    }
+    
+    // MARK: UIViewControllerPreviewingDelegate
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard
+            let tableView = self.tableView,
+            let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) as? CalendarDayViewController.EventCell,
+            let event = cell.event
+            else { return nil }
+        
+        return CalendarEventViewController(event: event)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
     // MARK: UIScrollViewDelegate

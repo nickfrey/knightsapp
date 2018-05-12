@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Global navigation bar settings
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigationBar"), for: .default)
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.7803921569, green: 0.2352941176, blue: 0.2431372549, alpha: 1)
         
         // Prepare view controllers
         let viewControllers = [
@@ -31,13 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         
         self.navigationControllers = viewControllers.map({ (viewController) -> UINavigationController in
-            return UINavigationController(rootViewController: viewController)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.isTranslucent = false
+            return navigationController
         })
         
         // Setup window
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = self.navigationControllers
         tabBarController.customizableViewControllers = nil
+        tabBarController.moreNavigationController.navigationBar.isTranslucent = false
         self.tabBarController = tabBarController
         
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -46,10 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
-        if #available(iOS 9.0, *) {
-            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-                self.application(application, performActionFor: shortcutItem, completionHandler: {_ in })
-            }
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            self.application(application, performActionFor: shortcutItem, completionHandler: {_ in })
         }
         
         return true
@@ -84,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         if shortcutItem.type == "org.newmancatholic.knightsapp.shortcut.events" {
             self.tabBarController?.selectedIndex = 1
