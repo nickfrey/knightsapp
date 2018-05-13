@@ -38,20 +38,45 @@
 		B29E47FF1C43971E00736315 /* MNCalendarViewWeekdayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */; };
 		B29E48001C43971E00736315 /* MNFastDateEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */; };
 		B29E48011C43971E00736315 /* NSDate+MNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */; };
-		B29E48221C43973400736315 /* Dictionary+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48031C43973300736315 /* Dictionary+Swifter.swift */; };
-		B29E48241C43973400736315 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48051C43973300736315 /* JSON.swift */; };
-		B29E48261C43973400736315 /* NSURL+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48071C43973300736315 /* NSURL+Swifter.swift */; };
-		B29E48271C43973400736315 /* String+Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48081C43973300736315 /* String+Swifter.swift */; };
-		B29E48281C43973400736315 /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480B1C43973300736315 /* Swifter.swift */; };
-		B29E48291C43973400736315 /* SwifterAccountsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480C1C43973300736315 /* SwifterAccountsClient.swift */; };
-		B29E482A1C43973400736315 /* SwifterAppOnlyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */; };
-		B29E482B1C43973400736315 /* SwifterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480E1C43973300736315 /* SwifterAuth.swift */; };
-		B29E482C1C43973400736315 /* SwifterClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E480F1C43973300736315 /* SwifterClientProtocol.swift */; };
-		B29E482D1C43973400736315 /* SwifterCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48101C43973300736315 /* SwifterCredential.swift */; };
-		B29E48311C43973400736315 /* SwifterHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48141C43973300736315 /* SwifterHTTPRequest.swift */; };
-		B29E48341C43973400736315 /* SwifterOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48171C43973400736315 /* SwifterOAuthClient.swift */; };
-		B29E483B1C43973400736315 /* SwifterTimelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E481E1C43973400736315 /* SwifterTimelines.swift */; };
 		B29E48411C43977600736315 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E48401C43977600736315 /* SWXMLHash.swift */; };
+		B2D041C52002D2B70071907C /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D041C42002D2B70071907C /* SWXMLHash+TypeConversion.swift */; };
+		B2F5A3A02002DC8600E69746 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A37B2002DC8400E69746 /* JSON.swift */; };
+		B2F5A3A12002DC8600E69746 /* SwifterUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A37C2002DC8400E69746 /* SwifterUsers.swift */; };
+		B2F5A3A22002DC8600E69746 /* Data++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A37D2002DC8400E69746 /* Data++.swift */; };
+		B2F5A3A32002DC8600E69746 /* Dictionary++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A37E2002DC8400E69746 /* Dictionary++.swift */; };
+		B2F5A3A42002DC8600E69746 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A37F2002DC8400E69746 /* HMAC.swift */; };
+		B2F5A3A52002DC8600E69746 /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3802002DC8400E69746 /* String++.swift */; };
+		B2F5A3A62002DC8600E69746 /* Operator++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3812002DC8400E69746 /* Operator++.swift */; };
+		B2F5A3A72002DC8600E69746 /* SwifterFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3822002DC8400E69746 /* SwifterFavorites.swift */; };
+		B2F5A3A82002DC8600E69746 /* SwifterGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3832002DC8400E69746 /* SwifterGIF.swift */; };
+		B2F5A3A92002DC8600E69746 /* SwifterMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3842002DC8400E69746 /* SwifterMessages.swift */; };
+		B2F5A3AA2002DC8600E69746 /* SwifterSpam.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3852002DC8400E69746 /* SwifterSpam.swift */; };
+		B2F5A3AB2002DC8600E69746 /* SwifterOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3862002DC8400E69746 /* SwifterOAuthClient.swift */; };
+		B2F5A3AC2002DC8600E69746 /* SwifterTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3872002DC8400E69746 /* SwifterTag.swift */; };
+		B2F5A3AD2002DC8600E69746 /* SwifterFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3882002DC8400E69746 /* SwifterFollowers.swift */; };
+		B2F5A3AE2002DC8600E69746 /* SwifterSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3892002DC8400E69746 /* SwifterSearch.swift */; };
+		B2F5A3AF2002DC8600E69746 /* SwifterLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38A2002DC8400E69746 /* SwifterLists.swift */; };
+		B2F5A3B02002DC8600E69746 /* SwifterTimelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38B2002DC8400E69746 /* SwifterTimelines.swift */; };
+		B2F5A3B12002DC8600E69746 /* SwifterPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38C2002DC8400E69746 /* SwifterPlaces.swift */; };
+		B2F5A3B22002DC8600E69746 /* URL++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38D2002DC8400E69746 /* URL++.swift */; };
+		B2F5A3B32002DC8600E69746 /* SwifterAccountsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38E2002DC8400E69746 /* SwifterAccountsClient.swift */; };
+		B2F5A3B42002DC8600E69746 /* SwifterSavedSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A38F2002DC8400E69746 /* SwifterSavedSearches.swift */; };
+		B2F5A3B52002DC8600E69746 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3902002DC8400E69746 /* Utils.swift */; };
+		B2F5A3B62002DC8600E69746 /* SwifterAppOnlyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3912002DC8400E69746 /* SwifterAppOnlyClient.swift */; };
+		B2F5A3B72002DC8600E69746 /* SwifterClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3922002DC8400E69746 /* SwifterClientProtocol.swift */; };
+		B2F5A3B82002DC8600E69746 /* SwifterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3932002DC8400E69746 /* SwifterError.swift */; };
+		B2F5A3B92002DC8600E69746 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3942002DC8500E69746 /* SHA1.swift */; };
+		B2F5A3BA2002DC8600E69746 /* SwifterSuggested.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3952002DC8500E69746 /* SwifterSuggested.swift */; };
+		B2F5A3BB2002DC8600E69746 /* SwifterCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3962002DC8500E69746 /* SwifterCredential.swift */; };
+		B2F5A3BC2002DC8600E69746 /* SwifterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3972002DC8500E69746 /* SwifterAuth.swift */; };
+		B2F5A3BD2002DC8600E69746 /* Scanner++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3982002DC8500E69746 /* Scanner++.swift */; };
+		B2F5A3BE2002DC8600E69746 /* Int++.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A3992002DC8500E69746 /* Int++.swift */; };
+		B2F5A3BF2002DC8600E69746 /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39A2002DC8500E69746 /* Swifter.swift */; };
+		B2F5A3C02002DC8600E69746 /* SwifterHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39B2002DC8500E69746 /* SwifterHTTPRequest.swift */; };
+		B2F5A3C12002DC8600E69746 /* SwifterStreaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39C2002DC8600E69746 /* SwifterStreaming.swift */; };
+		B2F5A3C22002DC8600E69746 /* SwifterHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39D2002DC8600E69746 /* SwifterHelp.swift */; };
+		B2F5A3C32002DC8600E69746 /* SwifterTweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39E2002DC8600E69746 /* SwifterTweets.swift */; };
+		B2F5A3C42002DC8600E69746 /* SwifterTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5A39F2002DC8600E69746 /* SwifterTrends.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,38 +106,63 @@
 		B292F3091C2C870D00DF0FC0 /* CalendarDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayViewController.swift; sourceTree = "<group>"; };
 		B292F30B1C2C87CB00DF0FC0 /* CalendarEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventViewController.swift; sourceTree = "<group>"; };
 		B29E47E21C430AEF00736315 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
-		B29E47E51C43971300736315 /* MHPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHPrettyDate.h; path = External/MHPrettyDate/MHPrettyDate/MHPrettyDate.h; sourceTree = SOURCE_ROOT; };
-		B29E47E61C43971300736315 /* MHPrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHPrettyDate.m; path = External/MHPrettyDate/MHPrettyDate/MHPrettyDate.m; sourceTree = SOURCE_ROOT; };
-		B29E47E91C43971E00736315 /* MNCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarHeaderView.h; sourceTree = "<group>"; };
-		B29E47EA1C43971E00736315 /* MNCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarHeaderView.m; sourceTree = "<group>"; };
-		B29E47EC1C43971E00736315 /* MNCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarView.h; sourceTree = "<group>"; };
-		B29E47ED1C43971E00736315 /* MNCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarView.m; sourceTree = "<group>"; };
-		B29E47EE1C43971E00736315 /* MNCalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewCell.h; sourceTree = "<group>"; };
-		B29E47EF1C43971E00736315 /* MNCalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewCell.m; sourceTree = "<group>"; };
-		B29E47F01C43971E00736315 /* MNCalendarViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewDayCell.h; sourceTree = "<group>"; };
-		B29E47F11C43971E00736315 /* MNCalendarViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewDayCell.m; sourceTree = "<group>"; };
-		B29E47F21C43971E00736315 /* MNCalendarViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewLayout.h; sourceTree = "<group>"; };
-		B29E47F31C43971E00736315 /* MNCalendarViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewLayout.m; sourceTree = "<group>"; };
-		B29E47F41C43971E00736315 /* MNCalendarViewWeekdayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCalendarViewWeekdayCell.h; sourceTree = "<group>"; };
-		B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCalendarViewWeekdayCell.m; sourceTree = "<group>"; };
-		B29E47F61C43971E00736315 /* MNFastDateEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNFastDateEnumeration.h; sourceTree = "<group>"; };
-		B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNFastDateEnumeration.m; sourceTree = "<group>"; };
-		B29E47F81C43971E00736315 /* NSDate+MNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MNAdditions.h"; sourceTree = "<group>"; };
-		B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MNAdditions.m"; sourceTree = "<group>"; };
-		B29E48031C43973300736315 /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
-		B29E48051C43973300736315 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		B29E48071C43973300736315 /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
-		B29E48081C43973300736315 /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
-		B29E480B1C43973300736315 /* Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swifter.swift; sourceTree = "<group>"; };
-		B29E480C1C43973300736315 /* SwifterAccountsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAccountsClient.swift; sourceTree = "<group>"; };
-		B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAppOnlyClient.swift; sourceTree = "<group>"; };
-		B29E480E1C43973300736315 /* SwifterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterAuth.swift; sourceTree = "<group>"; };
-		B29E480F1C43973300736315 /* SwifterClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterClientProtocol.swift; sourceTree = "<group>"; };
-		B29E48101C43973300736315 /* SwifterCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterCredential.swift; sourceTree = "<group>"; };
-		B29E48141C43973300736315 /* SwifterHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterHTTPRequest.swift; sourceTree = "<group>"; };
-		B29E48171C43973400736315 /* SwifterOAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterOAuthClient.swift; sourceTree = "<group>"; };
-		B29E481E1C43973400736315 /* SwifterTimelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTimelines.swift; sourceTree = "<group>"; };
-		B29E48401C43977600736315 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = External/SWXMLHash/Source/SWXMLHash.swift; sourceTree = SOURCE_ROOT; };
+		B29E47E51C43971300736315 /* MHPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHPrettyDate.h; path = MHPrettyDate/MHPrettyDate.h; sourceTree = "<group>"; };
+		B29E47E61C43971300736315 /* MHPrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHPrettyDate.m; path = MHPrettyDate/MHPrettyDate.m; sourceTree = "<group>"; };
+		B29E47E91C43971E00736315 /* MNCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarHeaderView.h; path = MNCalendarView/MNCalendarHeaderView.h; sourceTree = "<group>"; };
+		B29E47EA1C43971E00736315 /* MNCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarHeaderView.m; path = MNCalendarView/MNCalendarHeaderView.m; sourceTree = "<group>"; };
+		B29E47EC1C43971E00736315 /* MNCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarView.h; path = MNCalendarView/MNCalendarView.h; sourceTree = "<group>"; };
+		B29E47ED1C43971E00736315 /* MNCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarView.m; path = MNCalendarView/MNCalendarView.m; sourceTree = "<group>"; };
+		B29E47EE1C43971E00736315 /* MNCalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarViewCell.h; path = MNCalendarView/MNCalendarViewCell.h; sourceTree = "<group>"; };
+		B29E47EF1C43971E00736315 /* MNCalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarViewCell.m; path = MNCalendarView/MNCalendarViewCell.m; sourceTree = "<group>"; };
+		B29E47F01C43971E00736315 /* MNCalendarViewDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarViewDayCell.h; path = MNCalendarView/MNCalendarViewDayCell.h; sourceTree = "<group>"; };
+		B29E47F11C43971E00736315 /* MNCalendarViewDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarViewDayCell.m; path = MNCalendarView/MNCalendarViewDayCell.m; sourceTree = "<group>"; };
+		B29E47F21C43971E00736315 /* MNCalendarViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarViewLayout.h; path = MNCalendarView/MNCalendarViewLayout.h; sourceTree = "<group>"; };
+		B29E47F31C43971E00736315 /* MNCalendarViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarViewLayout.m; path = MNCalendarView/MNCalendarViewLayout.m; sourceTree = "<group>"; };
+		B29E47F41C43971E00736315 /* MNCalendarViewWeekdayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNCalendarViewWeekdayCell.h; path = MNCalendarView/MNCalendarViewWeekdayCell.h; sourceTree = "<group>"; };
+		B29E47F51C43971E00736315 /* MNCalendarViewWeekdayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNCalendarViewWeekdayCell.m; path = MNCalendarView/MNCalendarViewWeekdayCell.m; sourceTree = "<group>"; };
+		B29E47F61C43971E00736315 /* MNFastDateEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNFastDateEnumeration.h; path = MNCalendarView/MNFastDateEnumeration.h; sourceTree = "<group>"; };
+		B29E47F71C43971E00736315 /* MNFastDateEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNFastDateEnumeration.m; path = MNCalendarView/MNFastDateEnumeration.m; sourceTree = "<group>"; };
+		B29E47F81C43971E00736315 /* NSDate+MNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+MNAdditions.h"; path = "MNCalendarView/NSDate+MNAdditions.h"; sourceTree = "<group>"; };
+		B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+MNAdditions.m"; path = "MNCalendarView/NSDate+MNAdditions.m"; sourceTree = "<group>"; };
+		B29E48401C43977600736315 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = Source/SWXMLHash.swift; sourceTree = "<group>"; };
+		B2D041C42002D2B70071907C /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SWXMLHash+TypeConversion.swift"; path = "Source/SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
+		B2F5A37B2002DC8400E69746 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/JSON.swift; sourceTree = "<group>"; };
+		B2F5A37C2002DC8400E69746 /* SwifterUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterUsers.swift; path = Sources/SwifterUsers.swift; sourceTree = "<group>"; };
+		B2F5A37D2002DC8400E69746 /* Data++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data++.swift"; path = "Sources/Data++.swift"; sourceTree = "<group>"; };
+		B2F5A37E2002DC8400E69746 /* Dictionary++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary++.swift"; path = "Sources/Dictionary++.swift"; sourceTree = "<group>"; };
+		B2F5A37F2002DC8400E69746 /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMAC.swift; path = Sources/HMAC.swift; sourceTree = "<group>"; };
+		B2F5A3802002DC8400E69746 /* String++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String++.swift"; path = "Sources/String++.swift"; sourceTree = "<group>"; };
+		B2F5A3812002DC8400E69746 /* Operator++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Operator++.swift"; path = "Sources/Operator++.swift"; sourceTree = "<group>"; };
+		B2F5A3822002DC8400E69746 /* SwifterFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterFavorites.swift; path = Sources/SwifterFavorites.swift; sourceTree = "<group>"; };
+		B2F5A3832002DC8400E69746 /* SwifterGIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterGIF.swift; path = Sources/SwifterGIF.swift; sourceTree = "<group>"; };
+		B2F5A3842002DC8400E69746 /* SwifterMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterMessages.swift; path = Sources/SwifterMessages.swift; sourceTree = "<group>"; };
+		B2F5A3852002DC8400E69746 /* SwifterSpam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterSpam.swift; path = Sources/SwifterSpam.swift; sourceTree = "<group>"; };
+		B2F5A3862002DC8400E69746 /* SwifterOAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterOAuthClient.swift; path = Sources/SwifterOAuthClient.swift; sourceTree = "<group>"; };
+		B2F5A3872002DC8400E69746 /* SwifterTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterTag.swift; path = Sources/SwifterTag.swift; sourceTree = "<group>"; };
+		B2F5A3882002DC8400E69746 /* SwifterFollowers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterFollowers.swift; path = Sources/SwifterFollowers.swift; sourceTree = "<group>"; };
+		B2F5A3892002DC8400E69746 /* SwifterSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterSearch.swift; path = Sources/SwifterSearch.swift; sourceTree = "<group>"; };
+		B2F5A38A2002DC8400E69746 /* SwifterLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterLists.swift; path = Sources/SwifterLists.swift; sourceTree = "<group>"; };
+		B2F5A38B2002DC8400E69746 /* SwifterTimelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterTimelines.swift; path = Sources/SwifterTimelines.swift; sourceTree = "<group>"; };
+		B2F5A38C2002DC8400E69746 /* SwifterPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterPlaces.swift; path = Sources/SwifterPlaces.swift; sourceTree = "<group>"; };
+		B2F5A38D2002DC8400E69746 /* URL++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL++.swift"; path = "Sources/URL++.swift"; sourceTree = "<group>"; };
+		B2F5A38E2002DC8400E69746 /* SwifterAccountsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterAccountsClient.swift; path = Sources/SwifterAccountsClient.swift; sourceTree = "<group>"; };
+		B2F5A38F2002DC8400E69746 /* SwifterSavedSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterSavedSearches.swift; path = Sources/SwifterSavedSearches.swift; sourceTree = "<group>"; };
+		B2F5A3902002DC8400E69746 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
+		B2F5A3912002DC8400E69746 /* SwifterAppOnlyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterAppOnlyClient.swift; path = Sources/SwifterAppOnlyClient.swift; sourceTree = "<group>"; };
+		B2F5A3922002DC8400E69746 /* SwifterClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterClientProtocol.swift; path = Sources/SwifterClientProtocol.swift; sourceTree = "<group>"; };
+		B2F5A3932002DC8400E69746 /* SwifterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterError.swift; path = Sources/SwifterError.swift; sourceTree = "<group>"; };
+		B2F5A3942002DC8500E69746 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = Sources/SHA1.swift; sourceTree = "<group>"; };
+		B2F5A3952002DC8500E69746 /* SwifterSuggested.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterSuggested.swift; path = Sources/SwifterSuggested.swift; sourceTree = "<group>"; };
+		B2F5A3962002DC8500E69746 /* SwifterCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterCredential.swift; path = Sources/SwifterCredential.swift; sourceTree = "<group>"; };
+		B2F5A3972002DC8500E69746 /* SwifterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterAuth.swift; path = Sources/SwifterAuth.swift; sourceTree = "<group>"; };
+		B2F5A3982002DC8500E69746 /* Scanner++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scanner++.swift"; path = "Sources/Scanner++.swift"; sourceTree = "<group>"; };
+		B2F5A3992002DC8500E69746 /* Int++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int++.swift"; path = "Sources/Int++.swift"; sourceTree = "<group>"; };
+		B2F5A39A2002DC8500E69746 /* Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swifter.swift; path = Sources/Swifter.swift; sourceTree = "<group>"; };
+		B2F5A39B2002DC8500E69746 /* SwifterHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterHTTPRequest.swift; path = Sources/SwifterHTTPRequest.swift; sourceTree = "<group>"; };
+		B2F5A39C2002DC8600E69746 /* SwifterStreaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterStreaming.swift; path = Sources/SwifterStreaming.swift; sourceTree = "<group>"; };
+		B2F5A39D2002DC8600E69746 /* SwifterHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterHelp.swift; path = Sources/SwifterHelp.swift; sourceTree = "<group>"; };
+		B2F5A39E2002DC8600E69746 /* SwifterTweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterTweets.swift; path = Sources/SwifterTweets.swift; sourceTree = "<group>"; };
+		B2F5A39F2002DC8600E69746 /* SwifterTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwifterTrends.swift; path = Sources/SwifterTrends.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +255,7 @@
 				B29E483F1C43976A00736315 /* SWXMLHash */,
 			);
 			name = External;
+			path = ../External;
 			sourceTree = "<group>";
 		};
 		B292F3061C2C84A300DF0FC0 /* Events */ = {
@@ -224,7 +275,7 @@
 				B29E47E51C43971300736315 /* MHPrettyDate.h */,
 				B29E47E61C43971300736315 /* MHPrettyDate.m */,
 			);
-			name = MHPrettyDate;
+			path = MHPrettyDate;
 			sourceTree = "<group>";
 		};
 		B29E47E81C43971E00736315 /* MNCalendarView */ = {
@@ -247,37 +298,60 @@
 				B29E47F81C43971E00736315 /* NSDate+MNAdditions.h */,
 				B29E47F91C43971E00736315 /* NSDate+MNAdditions.m */,
 			);
-			name = MNCalendarView;
-			path = External/MNCalendarView/MNCalendarView;
-			sourceTree = SOURCE_ROOT;
+			path = MNCalendarView;
+			sourceTree = "<group>";
 		};
 		B29E48021C43973300736315 /* Swifter */ = {
 			isa = PBXGroup;
 			children = (
-				B29E48031C43973300736315 /* Dictionary+Swifter.swift */,
-				B29E48051C43973300736315 /* JSON.swift */,
-				B29E48071C43973300736315 /* NSURL+Swifter.swift */,
-				B29E48081C43973300736315 /* String+Swifter.swift */,
-				B29E480B1C43973300736315 /* Swifter.swift */,
-				B29E480C1C43973300736315 /* SwifterAccountsClient.swift */,
-				B29E480D1C43973300736315 /* SwifterAppOnlyClient.swift */,
-				B29E480E1C43973300736315 /* SwifterAuth.swift */,
-				B29E480F1C43973300736315 /* SwifterClientProtocol.swift */,
-				B29E48101C43973300736315 /* SwifterCredential.swift */,
-				B29E48141C43973300736315 /* SwifterHTTPRequest.swift */,
-				B29E48171C43973400736315 /* SwifterOAuthClient.swift */,
-				B29E481E1C43973400736315 /* SwifterTimelines.swift */,
+				B2F5A37D2002DC8400E69746 /* Data++.swift */,
+				B2F5A37E2002DC8400E69746 /* Dictionary++.swift */,
+				B2F5A37F2002DC8400E69746 /* HMAC.swift */,
+				B2F5A3992002DC8500E69746 /* Int++.swift */,
+				B2F5A37B2002DC8400E69746 /* JSON.swift */,
+				B2F5A3812002DC8400E69746 /* Operator++.swift */,
+				B2F5A3982002DC8500E69746 /* Scanner++.swift */,
+				B2F5A3942002DC8500E69746 /* SHA1.swift */,
+				B2F5A3802002DC8400E69746 /* String++.swift */,
+				B2F5A39A2002DC8500E69746 /* Swifter.swift */,
+				B2F5A38E2002DC8400E69746 /* SwifterAccountsClient.swift */,
+				B2F5A3912002DC8400E69746 /* SwifterAppOnlyClient.swift */,
+				B2F5A3972002DC8500E69746 /* SwifterAuth.swift */,
+				B2F5A3922002DC8400E69746 /* SwifterClientProtocol.swift */,
+				B2F5A3962002DC8500E69746 /* SwifterCredential.swift */,
+				B2F5A3932002DC8400E69746 /* SwifterError.swift */,
+				B2F5A3822002DC8400E69746 /* SwifterFavorites.swift */,
+				B2F5A3882002DC8400E69746 /* SwifterFollowers.swift */,
+				B2F5A3832002DC8400E69746 /* SwifterGIF.swift */,
+				B2F5A39D2002DC8600E69746 /* SwifterHelp.swift */,
+				B2F5A39B2002DC8500E69746 /* SwifterHTTPRequest.swift */,
+				B2F5A38A2002DC8400E69746 /* SwifterLists.swift */,
+				B2F5A3842002DC8400E69746 /* SwifterMessages.swift */,
+				B2F5A3862002DC8400E69746 /* SwifterOAuthClient.swift */,
+				B2F5A38C2002DC8400E69746 /* SwifterPlaces.swift */,
+				B2F5A38F2002DC8400E69746 /* SwifterSavedSearches.swift */,
+				B2F5A3892002DC8400E69746 /* SwifterSearch.swift */,
+				B2F5A3852002DC8400E69746 /* SwifterSpam.swift */,
+				B2F5A39C2002DC8600E69746 /* SwifterStreaming.swift */,
+				B2F5A3952002DC8500E69746 /* SwifterSuggested.swift */,
+				B2F5A3872002DC8400E69746 /* SwifterTag.swift */,
+				B2F5A38B2002DC8400E69746 /* SwifterTimelines.swift */,
+				B2F5A39F2002DC8600E69746 /* SwifterTrends.swift */,
+				B2F5A39E2002DC8600E69746 /* SwifterTweets.swift */,
+				B2F5A37C2002DC8400E69746 /* SwifterUsers.swift */,
+				B2F5A38D2002DC8400E69746 /* URL++.swift */,
+				B2F5A3902002DC8400E69746 /* Utils.swift */,
 			);
-			name = Swifter;
-			path = External/Swifter/Swifter;
-			sourceTree = SOURCE_ROOT;
+			path = Swifter;
+			sourceTree = "<group>";
 		};
 		B29E483F1C43976A00736315 /* SWXMLHash */ = {
 			isa = PBXGroup;
 			children = (
 				B29E48401C43977600736315 /* SWXMLHash.swift */,
+				B2D041C42002D2B70071907C /* SWXMLHash+TypeConversion.swift */,
 			);
-			name = SWXMLHash;
+			path = SWXMLHash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,11 +381,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Nick Frey";
 				TargetAttributes = {
 					B292F2721C2763C200DF0FC0 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -350,49 +425,74 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F5A3C02002DC8600E69746 /* SwifterHTTPRequest.swift in Sources */,
+				B2D041C52002D2B70071907C /* SWXMLHash+TypeConversion.swift in Sources */,
+				B2F5A3A22002DC8600E69746 /* Data++.swift in Sources */,
+				B2F5A3A42002DC8600E69746 /* HMAC.swift in Sources */,
 				B29E48011C43971E00736315 /* NSDate+MNAdditions.m in Sources */,
 				B29E47FB1C43971E00736315 /* MNCalendarView.m in Sources */,
+				B2F5A3B92002DC8600E69746 /* SHA1.swift in Sources */,
+				B2F5A3B62002DC8600E69746 /* SwifterAppOnlyClient.swift in Sources */,
 				B292F30C1C2C87CB00DF0FC0 /* CalendarEventViewController.swift in Sources */,
+				B2F5A3BD2002DC8600E69746 /* Scanner++.swift in Sources */,
 				B29E47E31C430AEF00736315 /* RemoteImageView.swift in Sources */,
+				B2F5A3AD2002DC8600E69746 /* SwifterFollowers.swift in Sources */,
+				B2F5A3BE2002DC8600E69746 /* Int++.swift in Sources */,
+				B2F5A3BF2002DC8600E69746 /* Swifter.swift in Sources */,
 				B292F2911C2768AF00DF0FC0 /* GradesViewController.swift in Sources */,
-				B29E482C1C43973400736315 /* SwifterClientProtocol.swift in Sources */,
 				B292F2891C27658800DF0FC0 /* DataSource.swift in Sources */,
+				B2F5A3A62002DC8600E69746 /* Operator++.swift in Sources */,
 				B292F2931C2768C000DF0FC0 /* SocialViewController.swift in Sources */,
+				B2F5A3BA2002DC8600E69746 /* SwifterSuggested.swift in Sources */,
 				B29E47FD1C43971E00736315 /* MNCalendarViewDayCell.m in Sources */,
-				B29E48241C43973400736315 /* JSON.swift in Sources */,
 				B292F3081C2C84BA00DF0FC0 /* CalendarSearchViewController.swift in Sources */,
-				B29E48311C43973400736315 /* SwifterHTTPRequest.swift in Sources */,
+				B2F5A3B32002DC8600E69746 /* SwifterAccountsClient.swift in Sources */,
+				B2F5A3BB2002DC8600E69746 /* SwifterCredential.swift in Sources */,
+				B2F5A3A12002DC8600E69746 /* SwifterUsers.swift in Sources */,
 				B29E47FC1C43971E00736315 /* MNCalendarViewCell.m in Sources */,
 				B292F2A11C2872B200DF0FC0 /* EventCalendar.swift in Sources */,
+				B2F5A3B42002DC8600E69746 /* SwifterSavedSearches.swift in Sources */,
 				B21AA1491C35E2700041DCD5 /* AppConfiguration.swift in Sources */,
+				B2F5A3AE2002DC8600E69746 /* SwifterSearch.swift in Sources */,
 				B292F30A1C2C870D00DF0FC0 /* CalendarDayViewController.swift in Sources */,
 				B292F29B1C27783A00DF0FC0 /* DocumentViewController.swift in Sources */,
+				B2F5A3C12002DC8600E69746 /* SwifterStreaming.swift in Sources */,
 				B292F29F1C2792EB00DF0FC0 /* FetchedViewController.swift in Sources */,
-				B29E48341C43973400736315 /* SwifterOAuthClient.swift in Sources */,
+				B2F5A3A32002DC8600E69746 /* Dictionary++.swift in Sources */,
+				B2F5A3AB2002DC8600E69746 /* SwifterOAuthClient.swift in Sources */,
+				B2F5A3A82002DC8600E69746 /* SwifterGIF.swift in Sources */,
 				B292F3051C2A198600DF0FC0 /* UIAppearance+Swift.m in Sources */,
-				B29E48261C43973400736315 /* NSURL+Swifter.swift in Sources */,
 				B292F2771C2763C200DF0FC0 /* AppDelegate.swift in Sources */,
 				B21AA14B1C38CFDE0041DCD5 /* DirectoryViewController.swift in Sources */,
 				B29E47FA1C43971E00736315 /* MNCalendarHeaderView.m in Sources */,
-				B29E482D1C43973400736315 /* SwifterCredential.swift in Sources */,
 				B292F2991C276EB400DF0FC0 /* Models.swift in Sources */,
-				B29E482B1C43973400736315 /* SwifterAuth.swift in Sources */,
-				B29E48221C43973400736315 /* Dictionary+Swifter.swift in Sources */,
-				B29E482A1C43973400736315 /* SwifterAppOnlyClient.swift in Sources */,
+				B2F5A3B12002DC8600E69746 /* SwifterPlaces.swift in Sources */,
 				B292F29D1C27787700DF0FC0 /* WebViewController.swift in Sources */,
-				B29E48271C43973400736315 /* String+Swifter.swift in Sources */,
+				B2F5A3AF2002DC8600E69746 /* SwifterLists.swift in Sources */,
+				B2F5A3A72002DC8600E69746 /* SwifterFavorites.swift in Sources */,
 				B29E48001C43971E00736315 /* MNFastDateEnumeration.m in Sources */,
 				B29E48411C43977600736315 /* SWXMLHash.swift in Sources */,
-				B29E48281C43973400736315 /* Swifter.swift in Sources */,
+				B2F5A3C22002DC8600E69746 /* SwifterHelp.swift in Sources */,
+				B2F5A3BC2002DC8600E69746 /* SwifterAuth.swift in Sources */,
 				B292F2971C2768EB00DF0FC0 /* ContactViewController.swift in Sources */,
 				B292F28D1C27686A00DF0FC0 /* NewsViewController.swift in Sources */,
+				B2F5A3AA2002DC8600E69746 /* SwifterSpam.swift in Sources */,
+				B2F5A3A92002DC8600E69746 /* SwifterMessages.swift in Sources */,
+				B2F5A3C32002DC8600E69746 /* SwifterTweets.swift in Sources */,
+				B2F5A3B52002DC8600E69746 /* Utils.swift in Sources */,
 				B292F28F1C27688F00DF0FC0 /* CalendarViewController.swift in Sources */,
-				B29E48291C43973400736315 /* SwifterAccountsClient.swift in Sources */,
+				B2F5A3B22002DC8600E69746 /* URL++.swift in Sources */,
 				B292F2951C2768E100DF0FC0 /* SchedulesViewController.swift in Sources */,
+				B2F5A3C42002DC8600E69746 /* SwifterTrends.swift in Sources */,
+				B2F5A3A52002DC8600E69746 /* String++.swift in Sources */,
+				B2F5A3AC2002DC8600E69746 /* SwifterTag.swift in Sources */,
 				B29E47FF1C43971E00736315 /* MNCalendarViewWeekdayCell.m in Sources */,
 				B29E47E71C43971300736315 /* MHPrettyDate.m in Sources */,
-				B29E483B1C43973400736315 /* SwifterTimelines.swift in Sources */,
+				B2F5A3B82002DC8600E69746 /* SwifterError.swift in Sources */,
 				B29E47FE1C43971E00736315 /* MNCalendarViewLayout.m in Sources */,
+				B2F5A3A02002DC8600E69746 /* JSON.swift in Sources */,
+				B2F5A3B02002DC8600E69746 /* SwifterTimelines.swift in Sources */,
+				B2F5A3B72002DC8600E69746 /* SwifterClientProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,13 +518,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -446,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -463,13 +571,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -485,9 +601,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -498,11 +615,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Newman Knights/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.newmancatholic.knightsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Newman Knights/Newman Knights-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -511,11 +629,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Newman Knights/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.newmancatholic.knightsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Newman Knights/Newman Knights-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

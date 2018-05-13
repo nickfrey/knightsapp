@@ -10,11 +10,11 @@ import UIKit
 import WebKit
 
 class WebViewController: FetchedViewController, WKNavigationDelegate {
-    private let initialURL: NSURL?
-    private var hasLoaded: Bool = false
-    private(set) weak var webView: WKWebView?
+    fileprivate let initialURL: URL?
+    fileprivate var hasLoaded: Bool = false
+    fileprivate(set) weak var webView: WKWebView?
     
-    init(URL: NSURL?) {
+    init(URL: URL?) {
         self.initialURL = URL
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,13 +26,13 @@ class WebViewController: FetchedViewController, WKNavigationDelegate {
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sharePressed")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
         
         let webView = WKWebView()
-        webView.hidden = true
+        webView.isHidden = true
         webView.navigationDelegate = self
         self.view.addSubview(webView)
-        self.view.sendSubviewToBack(webView)
+        self.view.sendSubview(toBack: webView)
         self.webView = webView
     }
     
@@ -47,19 +47,19 @@ class WebViewController: FetchedViewController, WKNavigationDelegate {
     }
     
     // MARK: Sharing
-    func sharableURL() -> NSURL? {
+    func sharableURL() -> URL? {
         return self.initialURL
     }
     
-    func sharePressed() {
+    @objc func sharePressed() {
         guard let sharableURL = self.sharableURL()
             else { return }
         
         let viewController = UIActivityViewController(activityItems: [sharableURL], applicationActivities: nil)
-        viewController.modalPresentationStyle = .Popover
+        viewController.modalPresentationStyle = .popover
         viewController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        viewController.popoverPresentationController?.permittedArrowDirections = .Up
-        self.presentViewController(viewController, animated: true, completion: nil)
+        viewController.popoverPresentationController?.permittedArrowDirections = .up
+        self.present(viewController, animated: true, completion: nil)
     }
     
     // MARK: Fetched View Controller
@@ -67,33 +67,33 @@ class WebViewController: FetchedViewController, WKNavigationDelegate {
         super.fetch()
         
         if let initialURL = self.initialURL {
-            self.webView?.loadRequest(NSURLRequest(URL: initialURL))
+            self.webView?.load(URLRequest(url: initialURL))
         }
     }
     
-    override func fetchFinished(error: NSError?) {
+    override func fetchFinished(_ error: Error?) {
         super.fetchFinished(error)
         
         if !self.hasLoaded {
             if error == nil {
                 self.hasLoaded = true
-                self.webView?.hidden = false
+                self.webView?.isHidden = false
             } else {
-                self.webView?.hidden = true
+                self.webView?.isHidden = true
             }
         }
     }
     
     // MARK: WKNavigationDelegate
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
         self.fetchFinished(nil)
     }
     
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         self.fetchFinished(error)
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation, withError error: Error) {
         self.fetchFinished(error)
     }
 }

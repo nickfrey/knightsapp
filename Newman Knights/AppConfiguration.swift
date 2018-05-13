@@ -15,7 +15,7 @@ struct AppConfiguration {
     struct School {
         static let Title = "Newman Catholic Schools"
         static let Subtitle = "Mason City, Iowa"
-        static let PhoneNumber = "641-423-6939"
+        static let PhoneNumber = "(641) 423-6939"
         static let Address = "2445 19th St. SW\nMason City, IA 50401"
         
         struct Coordinate {

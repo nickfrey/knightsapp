@@ -10,27 +10,27 @@ import Foundation
 
 struct Bookmark {
     enum Icon {
-        case Default
-        case Book
+        case `default`
+        case book
     }
     
     var title: String
     var icon: Icon
-    var URL: NSURL?
+    var URL: URL?
     var documentID: String?
 }
 
 struct Schedule {
     var title: String
-    var URL: NSURL?
+    var URL: URL?
     var documentID: String?
 }
 
 struct Contact {
     enum Directory {
-        case Administration
-        case Office
-        case Faculty
+        case administration
+        case office
+        case faculty
     }
     
     var name: String
@@ -42,39 +42,39 @@ struct SocialPost {
     struct Author {
         var username: String?
         var displayName: String?
-        var avatarURL: NSURL?
+        var avatarURL: URL?
     }
     
     enum Source {
-        case Twitter
-        case Facebook
+        case twitter
+        case facebook
     }
     
     var identifier: String
     var author: Author
     var content: String
-    var creationDate: NSDate
-    var images: Array<NSURL>
-    var permalink: NSURL?
+    var creationDate: Date
+    var images: Array<URL>
+    var permalink: URL?
     var source: Source
     var retweetCount: Int?
     var favoriteCount: Int?
     
     func openInExternalApplication() {
-        if self.source == .Twitter {
+        if self.source == .twitter {
             var URLString: String
             
-            if UIApplication.sharedApplication().canOpenURL(NSURL(string: "tweetbot://")!) {
+            if UIApplication.shared.canOpenURL(URL(string: "tweetbot://")!) {
                 URLString = "tweetbot://" + self.author.username! + "/status/" + self.identifier
-            } else if UIApplication.sharedApplication().canOpenURL(NSURL(string: "twitter://")!) {
+            } else if UIApplication.shared.canOpenURL(URL(string: "twitter://")!) {
                 URLString = "twitter://status?id=" + self.identifier
             } else {
                 URLString = "https://twitter.com/" + self.author.username! + "/status/" + self.identifier
             }
             
-            UIApplication.sharedApplication().openURL(NSURL(string: URLString)!)
+            UIApplication.shared.openURL(URL(string: URLString)!)
         } else if let permalink = self.permalink {
-            UIApplication.sharedApplication().openURL(permalink)
+            UIApplication.shared.openURL(permalink)
         }
     }
 }
@@ -83,8 +83,8 @@ struct Event {
     var identifier: String?
     var title: String?
     var details: String?
-    var startDate: NSDate?
-    var endDate: NSDate?
+    var startDate: Date?
+    var endDate: Date?
     var status: String?
     var location: String?
     var gradeLevel: String?
@@ -99,11 +99,11 @@ struct Event {
             eventTitle = title
         }
         
-        if let gradeLevel = self.gradeLevel where gradeLevel.characters.count > 0 {
+        if let gradeLevel = self.gradeLevel, gradeLevel.count > 0 {
             eventTitle = gradeLevel + " " + eventTitle
         }
         
-        if let gender = self.gender where gender.characters.count > 0 {
+        if let gender = self.gender, gender.count > 0 {
             eventTitle = gender + " " + eventTitle
         }
         

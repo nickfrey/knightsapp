@@ -9,7 +9,7 @@
 import UIKit
 
 class DocumentViewController: WebViewController {
-    private let documentIdentifier: String
+    fileprivate let documentIdentifier: String
     
     init(identifier: String) {
         self.documentIdentifier = identifier
@@ -24,11 +24,11 @@ class DocumentViewController: WebViewController {
         super.fetch()
         
         let URLString = "https://www.googleapis.com/drive/v2/files/" + self.documentIdentifier + "?key=" + AppConfiguration.GoogleDrive.APIKey + "&fields=exportLinks"
-        let URL = NSURL(string: URLString)!
+        let fetchURL = URL(string: URLString)!
         
-        NSURLSession.sharedSession().dataTaskWithURL(URL, completionHandler: { (data, response, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                guard let data = data where error == nil else {
+        URLSession.shared.dataTask(with: fetchURL, completionHandler: { (data, response, error) -> Void in
+            DispatchQueue.main.async(execute: {
+                guard let data = data, error == nil else {
                     let fallbackError = NSError(
                         domain: NSURLErrorDomain,
                         code: NSURLErrorUnknown,
@@ -38,12 +38,12 @@ class DocumentViewController: WebViewController {
                 }
                 
                 do {
-                    let JSONObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+                    let JSONObject = try JSONSerialization.jsonObject(with: data, options: [])
                     if let responseDictionary = JSONObject as? Dictionary<String, AnyObject> {
                         if let exportLinks = responseDictionary["exportLinks"] as? Dictionary<String, String> {
                             if let pdfURL = exportLinks["application/pdf"] {
-                                if let pageURL = NSURL(string: pdfURL) {
-                                    self.webView?.loadRequest(NSURLRequest(URL: pageURL))
+                                if let pageURL = URL(string: pdfURL) {
+                                    self.webView?.load(URLRequest(url: pageURL))
                                     return
                                 }
                             }
@@ -61,7 +61,7 @@ class DocumentViewController: WebViewController {
         }).resume()
     }
     
-    override func sharableURL() -> NSURL? {
-        return NSURL(string: "https://docs.google.com/document/d/" + self.documentIdentifier)
+    override func sharableURL() -> URL? {
+        return URL(string: "https://docs.google.com/document/d/" + self.documentIdentifier)
     }
 }
